@@ -1,0 +1,676 @@
+/* ====================================================
+   POPULAR GROUND — Glacier Glass Edition
+   Matches the navbar's premium frosted-glass aesthetic
+   ==================================================== */
+
+/* ---- Keyframes ---- */
+@keyframes pg-shimmerPulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pg-shimmerSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes pg-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pg-skeletonPulse {
+
+  0%,
+  100% {
+    background-position: 200% 0;
+  }
+
+  50% {
+    background-position: -200% 0;
+  }
+}
+
+/* -------------------------------------------------- */
+/*  OUTER WRAPPER — Glacier glass                     */
+/* -------------------------------------------------- */
+.pg-wrapper {
+  position: relative;
+  margin: 24px 16px 10px;
+  padding: 22px 0 26px;
+  border-radius: 24px;
+  overflow: hidden;
+
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(225, 242, 255, 0.76) 45%,
+      rgba(210, 235, 255, 0.72) 75%,
+      rgba(235, 250, 245, 0.78) 100%);
+  backdrop-filter: blur(26px) saturate(170%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+
+  border: 1.5px solid rgba(200, 230, 255, 0.58);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.52) inset,
+    0 4px 24px rgba(80, 160, 230, 0.14),
+    0 12px 40px rgba(50, 130, 200, 0.09);
+}
+
+.pg-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(180, 225, 255, 0.80) 30%,
+      rgba(220, 245, 255, 1) 50%,
+      rgba(180, 225, 255, 0.80) 70%,
+      transparent);
+  pointer-events: none;
+  border-radius: 24px 24px 0 0;
+}
+
+/* ── Ambient blobs ── */
+.pg-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+  opacity: 0.55;
+}
+
+.pg-blob--1 {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(180, 235, 255, 0.70), transparent 70%);
+  animation: pgBlobDrift 9s ease-in-out infinite alternate;
+}
+
+.pg-blob--2 {
+  width: 180px;
+  height: 180px;
+  top: 10px;
+  right: -30px;
+  background: radial-gradient(circle, rgba(160, 230, 200, 0.60), transparent 70%);
+  animation: pgBlobDrift 12s ease-in-out infinite alternate-reverse;
+}
+
+.pg-blob--3 {
+  width: 140px;
+  height: 140px;
+  bottom: -40px;
+  left: 40%;
+  background: radial-gradient(circle, rgba(200, 230, 255, 0.55), transparent 70%);
+  animation: pgBlobDrift 7s ease-in-out infinite alternate;
+  animation-delay: 2s;
+}
+
+@keyframes pgBlobDrift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(18px, 12px) scale(1.06);
+  }
+}
+
+.pg-section1 {
+  margin: 28px 16px 18px;
+  padding: 0;
+  animation: pg-fadeUp 0.5s ease 0.1s both;
+}
+
+/* -------------------------------------------------- */
+/*  SECTION HEADER                                    */
+/* -------------------------------------------------- */
+.pg-header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+  margin-bottom: 18px;
+}
+
+.pg-header1 h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.2px;
+  background: none;
+  -webkit-text-fill-color: initial;
+  filter: none;
+}
+
+/* view-all pill */
+.pg-view-all1 {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #0a7c3c;
+  background: rgba(10, 124, 60, 0.08);
+  border: 1px solid rgba(10, 124, 60, 0.18);
+  transition: background 0.22s ease, color 0.22s ease,
+    border-color 0.22s ease, transform 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.pg-view-all1:hover {
+  background: rgba(234, 83, 12, 0.10);
+  color: #ea530c;
+  border-color: rgba(234, 83, 12, 0.28);
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------- */
+/*  SCROLLABLE STRIP  (aligned same as Nearby)        */
+/* -------------------------------------------------- */
+.pg-container1 {
+  display: flex;
+  gap: 14px;
+  margin-left: 10px;
+  padding: 12px 30px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  position: relative;
+  z-index: 2;
+}
+
+.pg-container1::-webkit-scrollbar {
+  display: none;
+}
+
+/* Grid view (View All) */
+.pg-container1.grid-view1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  overflow: hidden;
+  padding: 12px 30px 16px;
+  gap: 14px;
+}
+
+/* -------------------------------------------------- */
+/*  CARD — Glacier Glass                              */
+/* -------------------------------------------------- */
+.pg-card1 {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  min-width: 220px;
+  width: 220px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  cursor: pointer;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+
+  /* Glacier glass shell */
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(224, 244, 255, 0.80) 50%,
+      rgba(210, 238, 255, 0.75) 100%);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(190, 230, 255, 0.65);
+  box-shadow:
+    0 2px 12px rgba(100, 180, 240, 0.14),
+    0 1px 0 rgba(255, 255, 255, 0.70) inset,
+    0 -1px 0 rgba(147, 210, 255, 0.18) inset;
+
+  transition: transform 0.34s cubic-bezier(0.34, 1.46, 0.64, 1),
+    box-shadow 0.34s ease,
+    border-color 0.28s ease;
+}
+
+/* Shimmer overlay stripe */
+.pg-card1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.30) 45%,
+      rgba(220, 242, 255, 0.45) 50%,
+      rgba(255, 255, 255, 0.30) 55%,
+      transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pg-card1:hover::before {
+  opacity: 1;
+  animation: pg-shimmerSlide 0.7s ease forwards;
+}
+
+/* Top-edge ice glow */
+.pg-card1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(147, 210, 255, 0.70) 30%,
+      rgba(200, 235, 255, 0.90) 50%,
+      rgba(147, 210, 255, 0.70) 70%,
+      transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+  animation: pg-shimmerPulse 3.5s ease-in-out infinite;
+}
+
+.pg-card1:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(10, 124, 60, 0.30);
+  box-shadow:
+    0 16px 40px rgba(100, 180, 240, 0.22),
+    0 6px 18px rgba(10, 124, 60, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+}
+
+/* -------------------------------------------------- */
+/*  IMAGE WRAPPER                                     */
+/* -------------------------------------------------- */
+.pg-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+  margin: 8px 8px 0;
+}
+
+.pg-img1 {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.pg-card1:hover .pg-img1 {
+  transform: scale(1.08);
+}
+
+/* -------------------------------------------------- */
+/*  CARD BODY TEXT                                    */
+/* -------------------------------------------------- */
+.pg-card1 h4 {
+  margin: 8px 10px 4px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1a2a3a;
+  letter-spacing: -0.1px;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 3;
+}
+
+.pg-card1:hover h4 {
+  color: #0a7c3c;
+}
+
+/* PopularGround's own location, games and game-tag classes */
+.pg-loc1 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #5a7080;
+  margin: 0 10px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 3;
+}
+
+.pg-loc1 svg {
+  color: #0a7c3c;
+  flex-shrink: 0;
+}
+
+.pg-games1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 3;
+}
+
+.pg-game-tag1 {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: rgba(210, 238, 255, 0.60);
+  color: #000;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  border: 1px solid rgba(147, 210, 255, 0.45);
+  transition: all 0.2s ease;
+}
+
+.pg-game-tag1:hover {
+  background: rgba(147, 210, 255, 0.50);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.pg-game-tag1.pg-more {
+  background: rgba(0, 0, 0, 0.08);
+  color: #333;
+}
+
+/* -------------------------------------------------- */
+/*  LOADING / SKELETON / EMPTY                        */
+/* -------------------------------------------------- */
+.pg-loading1 {
+  padding: 16px 20px;
+  color: #5a7080;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pg-empty1 {
+  padding: 18px 20px;
+  font-size: 14px;
+  color: #7a8a9a;
+}
+
+.pg-skeleton1 {
+  min-width: 220px;
+  width: 220px;
+  flex-shrink: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(90deg,
+      rgba(220, 238, 255, 0.55) 0%,
+      rgba(240, 250, 255, 0.80) 30%,
+      rgba(220, 238, 255, 0.55) 60%);
+  background-size: 200% 100%;
+  animation: pg-skeletonPulse 1.6s ease-in-out infinite;
+  border: 1px solid rgba(190, 230, 255, 0.40);
+}
+
+.pg-skeleton1-img {
+  height: 156px;
+  background: rgba(190, 225, 255, 0.30);
+}
+
+.pg-skeleton1-body {
+  padding: 10px 12px;
+}
+
+.pg-skeleton1-line {
+  height: 12px;
+  border-radius: 6px;
+  background: rgba(160, 210, 255, 0.28);
+  margin-bottom: 8px;
+}
+
+.pg-skeleton1-line.short {
+  width: 60%;
+}
+
+.pg-skeleton1-line.long {
+  width: 85%;
+}
+
+.pg-skeleton1-line.xlong {
+  width: 90%;
+}
+
+/* ---------------------------------------------------------------- */
+/*  RESPONSIVE — aligned like Newonadugalam                         */
+/* ---------------------------------------------------------------- */
+
+/* Larger Tablets */
+@media (max-width: 900px) {
+
+  .pg-card1,
+  .pg-skeleton1 {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .pg-container1.grid-view1 {
+    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    gap: 16px;
+    overflow-x: hidden;
+  }
+}
+
+/* Tablets & big phones */
+@media (max-width: 650px) {
+
+  .pg-card1,
+  .pg-skeleton1 {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .pg-img1,
+  .pg-skeleton1-img {
+    height: 130px;
+  }
+
+  .pg-card1 h4 {
+    font-size: 13px;
+    transition: color 0.3s ease;
+  }
+
+  .pg-loc1 {
+    font-size: 11px;
+  }
+
+  .pg-container1.grid-view1 {
+    grid-template-columns: repeat(2, 40%);
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .pg-header1 h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0;
+    letter-spacing: -0.2px;
+    background: none;
+    -webkit-text-fill-color: initial;
+    filter: none;
+  }
+
+  .pg-container1 {
+    width: 100%;
+    padding: 10px;
+    overflow-x: auto;
+    display: flex;
+    gap: 16px;
+  }
+
+  /* GRID VIEW: Clean 2-column layout */
+  .pg-container1.grid-view1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  /* NORMAL MODE (scroll) – smaller cards */
+  .pg-container1:not(.grid-view1) .pg-card1,
+  .pg-container1:not(.grid-view1) .pg-skeleton1 {
+    min-width: 220px;
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  /* GRID MODE (view all) – full responsive cards */
+  .pg-container1.grid-view1 .pg-card1,
+  .pg-container1.grid-view1 .pg-skeleton1 {
+    width: 100%;
+    min-width: auto;
+    height: auto;
+    padding: 8px;
+  }
+
+  .pg-img1,
+  .pg-skeleton1-img {
+    height: 120px;
+  }
+
+  .pg-card1 h4 {
+    font-size: 12px;
+  }
+
+  .pg-loc1 {
+    font-size: 11px;
+  }
+
+  .pg-game-tag1 {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+
+  .pg-view-all1 {
+    font-size: 12px;
+    padding: 4px 11px;
+  }
+}
+
+/* -------------------------------------------------- */
+/*  HEART FAVOURITE BUTTON                            */
+/* -------------------------------------------------- */
+.pg-heart-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pg-heart-btn .filled,
+.pg-heart-btn .empty {
+  fill: #64748b;
+  transition: opacity 100ms ease-in-out, fill 0.2s ease, transform 0.2s ease;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.pg-heart-btn .filled {
+  position: absolute;
+  opacity: 0;
+}
+
+.pg-heart-btn.pg-heart-active .empty {
+  opacity: 0;
+}
+
+.pg-heart-btn.pg-heart-active .filled {
+  opacity: 1;
+  fill: #ec4899;
+}
+
+.pg-heart-btn:hover {
+  transform: scale(1.18);
+  background: white;
+  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.22);
+  color: #ec4899;
+}
+
+.pg-heart-btn:active {
+  transform: scale(0.88);
+}
+
+.pg-heart-btn.pg-heart-active {
+  background: rgba(255, 235, 245, 0.95);
+  box-shadow: 0 2px 10px rgba(236, 72, 153, 0.30);
+}
+
+.pg-heart-btn.pg-heart-active:hover {
+  transform: scale(1.18);
+  background: pink;
+}
+
+.pg-heart-btn:hover .empty,
+.pg-heart-btn:hover .filled {
+  fill: #ec4899;
+}
+
+.pg-heart-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}

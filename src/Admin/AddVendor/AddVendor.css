@@ -1,0 +1,222 @@
+.vendor-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.vendor-card {
+  background: white;
+  max-width: 1100px;
+  width: 100%;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.vendor-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.vendor-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.vendor-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.vendor-field.full {
+  grid-column: span 2;
+}
+
+.vendor-field input,
+.vendor-field select {
+  padding: 12px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+}
+
+.games-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.game-chip {
+  background: #eef1f4;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.vendor-submit-btn {
+  grid-column: span 2;
+  padding: 14px;
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.vendor-submit-btn:hover {
+  background: #157347;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .vendor-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-field.full,
+  .vendor-submit-btn {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 1400px) {
+  .vendor-card {
+    max-width: 1200px;
+  }
+
+  .vendor-form-grid {
+    gap: 22px;
+  }
+}
+
+
+
+@media (max-width: 1200px) {
+  .vendor-card {
+    max-width: 1000px;
+  }
+}
+
+
+/* =========================
+   SMALL LAPTOP / TABLET LANDSCAPE
+========================= */
+@media (max-width: 992px) {
+  .vendor-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-field.full,
+  .vendor-submit-btn {
+    grid-column: span 1;
+  }
+
+  .vendor-card {
+    padding: 22px;
+  }
+}
+
+
+/*   TABLET PORTRAIT */
+@media (max-width: 768px) {
+  .vendor-page {
+    padding: 18px;
+  }
+
+  .vendor-card {
+    padding: 20px;
+  }
+
+  .vendor-title {
+    font-size: 20px;
+  }
+
+  .games-wrapper {
+    gap: 8px;
+  }
+
+  .game-chip {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+
+/* 
+   LARGE MOBILE
+ */
+@media (max-width: 600px) {
+  .vendor-page {
+    padding: 12px;
+  }
+
+  .vendor-card {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .vendor-field input,
+  .vendor-field select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .vendor-submit-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+
+/* 
+   SMALL MOBILE
+    */
+
+@media (max-width: 420px) {
+  .vendor-title {
+    font-size: 18px;
+  }
+
+  .vendor-card {
+    padding: 14px;
+  }
+
+  .game-chip {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── Validation Error Styles ── */
+.input-error {
+  border-color: #dc3545 !important;
+  background: #fff5f5;
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+  border-color: #dc3545;
+}
+
+.field-error {
+  color: #dc3545;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-top: 4px;
+  display: block;
+  animation: fadeInError 0.25s ease;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

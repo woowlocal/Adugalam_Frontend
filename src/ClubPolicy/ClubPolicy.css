@@ -1,0 +1,105 @@
+.club-policy-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: #000;
+  position: relative;
+}
+
+/* HEADER */
+.policy-headerr {
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 900px;
+  z-index: 100000;
+  padding: 0 8px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.policy-headerr > * {
+  pointer-events: auto;
+}
+
+/* Title */
+.club-policy-title {
+  font-size: 15px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* List */
+.club-policy-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.club-policy-list li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: justify;
+  word-break: break-word;
+}
+
+/* Dash bullet like PDF */
+.club-policy-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ========================= */
+/* 📱 Mobile Devices */
+/* ========================= */
+@media (max-width: 768px) {
+  .club-policy-container {
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  .club-policy-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .club-policy-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    padding-left: 16px;
+    margin-bottom: 8px;
+  }
+}
+
+/* ========================= */
+/* 📱 Small Mobile (≤480px) */
+/* ========================= */
+@media (max-width: 480px) {
+  .club-policy-container {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  .club-policy-title {
+    font-size: 13px;
+  }
+
+  .club-policy-list li {
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding-left: 14px;
+  }
+
+  .club-policy-list li::before {
+    left: 0;
+  }
+}

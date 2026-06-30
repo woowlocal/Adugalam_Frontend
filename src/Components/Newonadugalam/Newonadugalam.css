@@ -1,0 +1,429 @@
+/* ── Outer Wrapper — Glacier glass (matches pg-wrapper) ── */
+.na-section1 {
+  position: relative;
+  margin: 24px 16px 10px;
+  padding: 22px 0 26px;
+  border-radius: 24px;
+  overflow: hidden;
+
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(225, 242, 255, 0.76) 45%,
+      rgba(210, 235, 255, 0.72) 75%,
+      rgba(235, 250, 245, 0.78) 100%);
+  backdrop-filter: blur(26px) saturate(170%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+
+  border: 1.5px solid rgba(200, 230, 255, 0.58);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.52) inset,
+    0 4px 24px rgba(80, 160, 230, 0.14),
+    0 12px 40px rgba(50, 130, 200, 0.09);
+}
+
+/* Shimmer top edge */
+.na-section1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(180, 225, 255, 0.80) 30%,
+      rgba(220, 245, 255, 1) 50%,
+      rgba(180, 225, 255, 0.80) 70%,
+      transparent);
+  pointer-events: none;
+  border-radius: 24px 24px 0 0;
+}
+
+.cat {
+  background-color: #ea580c;
+  border-radius: 50px;
+  width: 70px;
+  height: 30px;
+  border: none;
+}
+
+/* Header */
+.na-header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.na-header1 h3 {
+  font-family: var(--font-title) !important;
+}
+
+.na-view-all1 {
+  font-size: 14px;
+  color: var(--primary-green) !important;
+  font-weight: 600;
+  margin-right: 20px;
+  cursor: pointer;
+  /* Make it clickable */
+}
+
+.na-view-all1:hover {
+  color: var(--action-orange);
+}
+
+/* Scrollable container - default view */
+.na-container1 {
+  width: 100%;
+  display: flex;
+  margin-left: 10px;
+  gap: 14px;
+  padding: 12px 30px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  position: relative;
+  z-index: 2;
+}
+
+.na-container1::-webkit-scrollbar {
+  display: none;
+}
+
+/* Grid view when View All is active */
+.na-container1.na-grid-view1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 columns with equal width */
+  gap: 16px;
+  overflow-x: hidden;
+  scroll-snap-type: none;
+}
+
+/* Card */
+.na-card1 {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  min-width: 220px;
+  width: 220px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  cursor: pointer;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+
+  /* Glacier glass shell — matches Nearby & Popular */
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(224, 244, 255, 0.80) 50%,
+      rgba(210, 238, 255, 0.75) 100%);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(190, 230, 255, 0.65);
+  border-radius: 18px;
+  box-shadow:
+    0 2px 12px rgba(100, 180, 240, 0.14),
+    0 1px 0 rgba(255, 255, 255, 0.70) inset,
+    0 -1px 0 rgba(147, 210, 255, 0.18) inset;
+  transition: transform 0.34s cubic-bezier(0.34, 1.46, 0.64, 1),
+    box-shadow 0.34s ease, border-color 0.28s ease;
+}
+
+
+.na-card1:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(10, 124, 60, 0.30);
+  box-shadow:
+    0 16px 40px rgba(100, 180, 240, 0.22),
+    0 6px 18px rgba(10, 124, 60, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+}
+
+
+
+.na-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+  margin: 8px 8px 0;
+}
+
+.na-img1 {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px 12px 0 0;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.na-card1:hover .na-img1 {
+  transform: scale(1.08);
+}
+
+
+.na-card1 h4 {
+  margin: 8px 10px 4px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1a2a3a;
+  letter-spacing: -0.1px;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 3;
+}
+
+.na-card1:hover h4 {
+  color: #0a7c3c;
+}
+
+.na-loc1 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #5a7080;
+  margin: 0 10px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 3;
+}
+
+.na-loc1 svg {
+  color: #0a7c3c;
+  flex-shrink: 0;
+}
+
+/* Game Tags */
+.na-games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 3;
+}
+
+.na-game-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: rgba(210, 238, 255, 0.60);
+  color: #000;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  border: 1px solid rgba(147, 210, 255, 0.45);
+  transition: all 0.2s ease;
+}
+
+.na-game-tag:hover {
+  background: rgba(147, 210, 255, 0.50);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.na-game-tag.na-more {
+  background: rgba(0, 0, 0, 0.08);
+  color: #333;
+}
+
+/* -----------------------------------
+   RESPONSIVE BREAKPOINTS
+----------------------------------- */
+
+/* Larger Tablets */
+@media (max-width: 900px) {
+  .na-card1 {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .na-container1.na-grid-view1 {
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns on tablets */
+
+    display: grid;
+    gap: 16px;
+    overflow-x: hidden;
+
+  }
+}
+
+/* Tablets & big phones */
+@media (max-width: 650px) {
+  .na-card1 {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .na-img1 {
+    height: 130px;
+  }
+
+  .na-card1 h4 {
+    font-size: 13px;
+    transition: color 0.3s ease;
+
+  }
+
+  .na-loc1 {
+    font-size: 11px;
+  }
+
+  .na-container1.na-grid-view1 {
+    grid-template-columns: repeat(2, 40%);
+    /* 2 columns */
+  }
+}
+
+
+/* Mobile phones */
+@media (max-width: 480px) {
+
+  .na-container1 {
+    width: 100%;
+    padding: 10px;
+    overflow-x: auto;
+    /* allow scroll in non-view-all mode */
+    display: flex;
+    gap: 16px;
+  }
+
+  /* GRID VIEW: Clean 2-column layout */
+  .na-container1.na-grid-view1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px;
+    overflow: hidden;
+    /* stop horizontal scroll */
+  }
+
+  /* NORMAL MODE (scroll) – smaller cards */
+  .na-container1:not(.na-grid-view1) .na-card1 {
+    min-width: 220px;
+    width: 220px;
+    flex-shrink: 0;
+    /* prevents shrinking */
+  }
+
+  /* GRID MODE (view all) – full responsive cards */
+  .na-container1.na-grid-view1 .na-card1 {
+    width: 100%;
+    min-width: auto;
+    height: auto;
+    padding: 8px;
+  }
+
+  .na-img1 {
+    height: 120px;
+  }
+
+  .na-card1 h4 {
+    font-size: 12px;
+  }
+
+  .icons1 {
+    font-size: 16px;
+  }
+}
+
+/* -------------------------------------------------- */
+/*  HEART FAVOURITE BUTTON                            */
+/* -------------------------------------------------- */
+.na-heart-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.na-heart-btn .filled,
+.na-heart-btn .empty {
+  fill: #64748b;
+  transition: opacity 100ms ease-in-out, fill 0.2s ease, transform 0.2s ease;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.na-heart-btn .filled {
+  position: absolute;
+  opacity: 0;
+}
+
+.na-heart-btn.na-heart-active .empty {
+  opacity: 0;
+}
+
+.na-heart-btn.na-heart-active .filled {
+  opacity: 1;
+  fill: #ec4899;
+}
+
+.na-heart-btn:hover {
+  transform: scale(1.18);
+  background: white;
+  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.22);
+  color: #ec4899;
+}
+
+.na-heart-btn:active {
+  transform: scale(0.88);
+}
+
+.na-heart-btn.na-heart-active {
+  background: rgba(255, 235, 245, 0.95);
+  box-shadow: 0 2px 10px rgba(236, 72, 153, 0.30);
+}
+
+.na-heart-btn.na-heart-active:hover {
+  transform: scale(1.18);
+  background: pink;
+}
+
+.na-heart-btn:hover .empty,
+.na-heart-btn:hover .filled {
+  fill: #ec4899;
+}
+
+.na-heart-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}

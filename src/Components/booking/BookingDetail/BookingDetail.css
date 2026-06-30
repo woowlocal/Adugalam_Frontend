@@ -1,0 +1,113 @@
+/* src/styles/BookingDetailView.css */
+
+.detail-view-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px; /* Increased padding */
+  border-bottom: 1px solid #eee;
+  background-color: white;
+}
+
+.back-btn {
+
+  font-size: 2.2em; /* Larger button */
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  border: none;
+}
+
+.back-btn:hover {
+  color: #008080;
+}
+
+.detail-header h3 {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+  transform: translateX(-20px); /* Adjust for larger back button */
+  font-size: 1.8em; /* Larger title */
+  font-weight: 600;
+  color: #333;
+}
+
+.detail-hero {
+  height: 250px; /* Taller banner */
+  border-radius: 20px;
+  overflow: hidden;
+  border: none;
+}
+.detail-hero img{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+
+}
+
+.detail-content {
+  padding: 40px; /* More padding */
+  flex-grow: 1;
+  background-color: white;
+  line-height: 1.6; /* Better readability */
+  font-size: 1.1em;
+}
+
+.detail-content h4 {
+  font-size: 2em; /* Larger heading */
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.detail-content p {
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.detail-footer {
+  padding: 30px; /* More padding */
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+}
+
+.action-button {
+  width: 100%;
+  padding: 15px 25px; /* Larger button */
+  border-radius: 8px; /* More rounded */
+  font-size: 1.2em; /* Larger font */
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cancel-button {
+  background-color: #008080; /* Dark Teal */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
+.cancel-button:hover {
+  background-color: #006666; /* Darker on hover */
+  transform: translateY(-1px);
+}
+
+.status-message {
+  text-align: center;
+  color: #777;
+  font-size: 1em;
+  padding: 10px 0;
+}

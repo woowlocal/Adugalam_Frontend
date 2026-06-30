@@ -1,0 +1,466 @@
+/* ============================================================
+   LOGIN & FORGOT-PASSWORD GLACIER GLASS STYLES
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ---------- PAGE CONTAINER ---------- */
+.login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  font-family: 'Inter', 'Space Grotesk', sans-serif !important;
+}
+
+/* ---------- BACKGROUND VIDEO ---------- */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Darker, cooler tinted overlay for icy mood */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(160deg,
+      rgba(5, 18, 40, 0.55) 0%,
+      rgba(0, 30, 60, 0.50) 50%,
+      rgba(5, 18, 40, 0.60) 100%);
+  z-index: -1;
+}
+
+/* ============================================================
+   PREMIUM GLACIER CARD — Frosted Glass Popup Panel
+   ============================================================ */
+div.login-container div.premium-glacier-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 44px 36px 38px;
+
+  /* Deep layered glacier glass — translucent icy crystal */
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(230, 246, 255, 0.74) 30%,
+      rgba(210, 236, 255, 0.68) 65%,
+      rgba(232, 250, 255, 0.76) 100%) !important;
+
+  /* Stronger frosted blur for premium glass */
+  backdrop-filter: blur(36px) saturate(200%) brightness(1.04) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(200%) brightness(1.04) !important;
+
+  border-radius: 30px !important;
+
+  /* Icy crystal border with subtle luminance */
+  border: 1.5px solid rgba(190, 225, 255, 0.70) !important;
+  outline: none !important;
+
+  /* Multi-layered depth — inner rim + outer glow rings + drop shadow */
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.65) inset,
+    0 0 0 4px rgba(180, 220, 255, 0.10) inset,
+    0 6px 24px rgba(60, 140, 220, 0.20),
+    0 18px 56px rgba(40, 110, 195, 0.15),
+    0 40px 100px rgba(20, 80, 160, 0.10),
+    0 2px 8px rgba(0, 0, 0, 0.12) !important;
+
+  text-align: center !important;
+  color: #1a2a3a !important;
+  z-index: 10 !important;
+
+  /* Popup entry + smooth hover transition */
+  animation: glacierCardIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.40s ease,
+    background 0.40s ease,
+    border-color 0.40s ease !important;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top shimmer edge — bright icy highlight stripe */
+div.login-container div.premium-glacier-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg,
+      transparent 5%,
+      rgba(160, 215, 255, 0.80) 25%,
+      rgba(225, 248, 255, 1.00) 50%,
+      rgba(160, 215, 255, 0.80) 75%,
+      transparent 95%);
+  border-radius: 30px 30px 0 0;
+  pointer-events: none;
+  animation: shimmerShift 4s ease-in-out infinite alternate;
+}
+
+@keyframes shimmerShift {
+  from {
+    opacity: 0.75;
+  }
+
+  to {
+    opacity: 1.00;
+  }
+}
+
+/* Ambient corner glow — bottom-right warm ice light */
+div.login-container div.premium-glacier-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(130, 200, 255, 0.28), transparent 65%);
+  pointer-events: none;
+}
+
+/* ---- HOVER — Elevated glacial glow ---- */
+div.login-container div.premium-glacier-card:hover {
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(230, 248, 255, 0.85) 35%,
+      rgba(212, 240, 255, 0.80) 70%,
+      rgba(242, 252, 255, 0.88) 100%) !important;
+  backdrop-filter: blur(40px) saturate(210%) brightness(1.06) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(210%) brightness(1.06) !important;
+  transform: translateY(-8px) scale(1.015) !important;
+  border-color: rgba(140, 205, 255, 0.85) !important;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.80) inset,
+    0 0 0 4px rgba(160, 218, 255, 0.12) inset,
+    0 14px 48px rgba(50, 140, 225, 0.30),
+    0 32px 90px rgba(30, 110, 200, 0.22),
+    0 0 80px rgba(100, 190, 255, 0.16),
+    0 4px 16px rgba(0, 0, 0, 0.10) !important;
+  color: #1a2a3a !important;
+}
+
+/* ============================================================
+   CARD ENTRY ANIMATION — Popup materialises from blur
+   ============================================================ */
+@keyframes glacierCardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.86);
+    filter: blur(10px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  80% {
+    transform: translateY(-4px) scale(1.010);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.premium-glacier-card h2 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 26px;
+  letter-spacing: -0.3px;
+  /* Glacier-green gradient text */
+  background: linear-gradient(135deg, #0a7c3c 0%, #1ab35a 55%, #0a6aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 4px rgba(10, 124, 60, 0.20));
+  transition: filter 0.3s ease;
+}
+
+.premium-glacier-card:hover h2 {
+  filter: drop-shadow(0 2px 8px rgba(10, 124, 60, 0.35));
+}
+
+/* ============================================================
+   ERROR TEXT
+   ============================================================ */
+.error-text {
+  color: #d94444 !important;
+  font-size: 13.5px !important;
+  font-weight: 500;
+  margin-bottom: 12px;
+  padding: 8px 14px;
+  background: rgba(255, 235, 235, 0.70);
+  border: 1px solid rgba(220, 130, 130, 0.35);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+.premium-glacier-card input {
+  width: 100%;
+  padding: 13px 18px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+
+  /* Glass input surface */
+  background: rgba(255, 255, 255, 0.62) !important;
+  border: 1.5px solid rgba(180, 220, 255, 0.55) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  color: #1a2a3a !important;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  outline: none !important;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.premium-glacier-card input::placeholder {
+  color: #7a9ab5 !important;
+  font-weight: 400;
+}
+
+/* Focus glow */
+.premium-glacier-card input:focus {
+  background: rgba(255, 255, 255, 0.80) !important;
+  border-color: rgba(10, 124, 60, 0.50) !important;
+  box-shadow: 0 0 0 3px rgba(10, 124, 60, 0.12), 0 2px 10px rgba(80, 160, 220, 0.12) !important;
+}
+
+/* Error state input */
+.premium-glacier-card input.error-input {
+  border-color: rgba(217, 68, 68, 0.55) !important;
+  background: rgba(255, 240, 240, 0.65) !important;
+}
+
+/* ============================================================
+   PASSWORD WRAPPER (Login.jsx uses .password-wrapper)
+   ============================================================ */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.password-wrapper input {
+  margin-bottom: 0;
+  padding-right: 52px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7a9ab5;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  transition: color 0.25s ease;
+}
+
+.eye-icon:hover {
+  color: #0a7c3c;
+}
+
+/* ============================================================
+   PASSWORD BOX (SignUp.jsx uses .password-box)
+   ============================================================ */
+.password-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.password-box input {
+  margin-bottom: 0;
+  padding-right: 52px;
+}
+
+.password-box span {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7a9ab5;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  transition: color 0.25s ease;
+}
+
+.password-box span:hover {
+  color: #0a7c3c;
+}
+
+/* ============================================================
+   PASSWORD RULES (SignUp step 3)
+   ============================================================ */
+.password-rules {
+  list-style: none;
+  padding: 6px 10px 10px;
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(180, 220, 255, 0.38);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.password-rules li {
+  color: #8aa8c0 !important;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 2px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.password-rules li.valid {
+  color: #0a7c3c !important;
+  font-weight: 600;
+}
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+.premium-glacier-card button {
+  width: 100%;
+  padding: 14px;
+  border: none !important;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0a7c3c, #19a35a) !important;
+  color: #ffffff !important;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(10, 124, 60, 0.35) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease !important;
+  margin-top: 6px;
+}
+
+.premium-glacier-card button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(10, 124, 60, 0.48) !important;
+}
+
+.premium-glacier-card button:active {
+  transform: translateY(0px) !important;
+  box-shadow: 0 3px 12px rgba(10, 124, 60, 0.30) !important;
+}
+
+/* ============================================================
+   PRIVACY CHECKBOX
+   ============================================================ */
+.privacy-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #4a6070;
+  text-align: left;
+}
+
+.privacy-checkbox-wrapper input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #0a7c3c;
+}
+
+.privacy-checkbox-wrapper label {
+  cursor: pointer;
+}
+
+/* ============================================================
+   LINKS & PARAGRAPHS
+   ============================================================ */
+.premium-glacier-card p {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #4a6070 !important;
+  font-weight: 400;
+}
+
+.premium-glacier-card a {
+  color: #0a7c3c !important;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.premium-glacier-card a:hover {
+  color: #19a35a !important;
+  text-decoration: underline;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 480px) {
+  div.login-container div.premium-glacier-card {
+    margin: 0 16px;
+    padding: 32px 22px 28px;
+    max-width: 100%;
+    border-radius: 24px !important;
+  }
+
+  .premium-glacier-card h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 360px) {
+  div.login-container div.premium-glacier-card {
+    margin: 0 10px;
+    padding: 26px 16px 22px;
+    border-radius: 20px !important;
+  }
+
+  .lt-glow-ring--3 {
+    width: 400px;
+    height: 400px;
+  }
+}

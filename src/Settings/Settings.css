@@ -1,0 +1,269 @@
+/* Settings Page */
+.Settings-Page {
+  min-height: 100vh;
+  background: #f5f6fa;
+  padding: 20px 16px;
+  color: #1a1a2e;
+  font-family: "Inter", sans-serif;
+}
+
+/* Centered inner wrapper */
+.settings-inner {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Header */
+.setting-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* Invisible spacer — mirrors back-button to keep title centered */
+.header-spacer {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.settings-back-btn {
+  position: static;
+  background: #ffffff;
+  border: 1px solid #e8e8f0;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.settings-back-btn:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.Setting-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+/* List */
+.Setting-List {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Individual item — card/bar style */
+.Setting-items {
+  background: #ffffff;
+  border: 1px solid #e8e8f0;
+  border-radius: 14px;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.Setting-items:hover {
+  background: #f9fafb;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  transform: translateY(-2px);
+}
+
+.Setting-items:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.Setting-items span {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+/* Leading icon */
+.Setting-items > svg:first-child {
+  font-size: 18px;
+  color: #4caf76;
+  flex-shrink: 0;
+}
+
+/* Chevron icon */
+.Setting-items > svg:last-child {
+  font-size: 13px;
+  color: #b0b0c0;
+  flex-shrink: 0;
+}
+
+/* Delete danger item */
+.Setting-items.danger > svg:first-child,
+.Setting-items.danger span {
+  color: #e05252;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .Settings-Page {
+    padding: 16px 12px;
+  }
+
+  .Setting-items {
+    padding: 14px 15px;
+    border-radius: 12px;
+  }
+
+  .Setting-items span {
+    font-size: 14px;
+  }
+}
+
+/* ================= MODAL ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.modal-box {
+  background: #ffffff;
+  padding: 28px 24px;
+  width: 90%;
+  max-width: 340px;
+  border-radius: 20px;
+  text-align: center;
+  color: #1a1a2e;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.modal-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: rgba(224, 82, 82, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e05252;
+  font-size: 22px;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-no {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid #4caf76;
+  color: #4caf76;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-no:hover {
+  background: rgba(76, 175, 118, 0.08);
+}
+
+.btn-yes {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: #e05252;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-yes:hover {
+  background: #c94040;
+  box-shadow: 0 4px 12px rgba(224, 82, 82, 0.35);
+}
+
+/* ===== DELETE ACCOUNT REASON MODAL EXTRAS ===== */
+
+.delete-reason-box {
+  max-width: 360px;
+  padding: 28px 22px 22px;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+
+.retire-reason-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #e0e0e8;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #1a1a2e;
+  resize: none;
+  background: #f8f9ff;
+  outline: none;
+  margin-bottom: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.retire-reason-input:focus {
+  border-color: #e05252;
+  background: #fff;
+}
+
+.retire-error {
+  font-size: 12px;
+  color: #e05252;
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+.retire-note {
+  font-size: 11.5px;
+  color: #999;
+  margin-top: 14px;
+  line-height: 1.5;
+}

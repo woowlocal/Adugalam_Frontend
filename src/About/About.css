@@ -1,0 +1,680 @@
+* {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.about-page {
+
+  color: #040509;
+  background: #f9fafb;
+}
+
+/* Hero */
+.about-hero {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.about-hero h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  color: #18181a;
+  text-align: center;
+}
+
+.about-subtitle {
+  max-width: 640px;
+  margin: 0 auto 1rem;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  color: #4b5563;
+  text-align: left;
+  text-align: justify;
+}
+
+.about-stats1 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.stat-card1 h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #16a34a;
+
+}
+
+.stat-card1 p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0px;
+}
+
+
+.stat-line {
+  width: 100%;
+  height: 1px;
+  border: 1px solid #040404;
+  background: #040404;
+  margin: 3rem 0 0;
+}
+
+
+
+/* Sections */
+.about-section {
+
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.new8 {
+  margin-left: 290px;
+  font-size: 17px;
+  color: #4b5563;
+}
+
+.about-section .info-card {
+  border: 2px solid;
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.heart-icon svg {
+  fill: #15803d;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* -------------- */
+.about-section1 {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: left;
+}
+
+.about-section1 h3 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #111827;
+  text-align: left;
+}
+
+.about-section1 p {
+  text-align: justify;
+  font-size: 16px;
+  color: #4b5563;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  /* text-align: left; */
+  max-width: 710px;
+  word-wrap: break-word;
+}
+
+/* -------------- */
+
+
+.about-section {
+  max-width: 750px;
+  margin: 1px auto;
+  padding: 2rem 1rem;
+  text-align: left;
+}
+
+.about-section h3 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #111827;
+  margin-left: 5 0px;
+}
+
+.about-section h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #111827;
+  text-align: center;
+}
+
+.about-section p {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.new9 {
+  margin-left: 320px;
+  font-size: 17px;
+  color: #4b5563;
+}
+
+/* Cards */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+
+.info-card {
+
+  background: #ffffff;
+  border-radius: 0.75rem;
+  border: 3px solid black;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.info-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+
+
+/* Pills (cities) */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  gap: 1.7rem;
+  row-gap: 0.75rem;
+  margin-top: 1.2rem;
+  white-space: normal;
+}
+
+.about-section.where-operate {
+  text-align: center;
+}
+
+
+
+/* Base pill */
+.pill {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: #e5e7eb;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* Hover zoom + lift */
+.pill:hover {
+  transform: scale(1.12) translateY(-2px);
+  background: #ea580c;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Muted / coming soon pill */
+.pill-muted {
+  background: #ea580c;
+  color: #f9fafb;
+}
+
+.pill-muted:hover {
+  transform: scale(1.06);
+  background: #000;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* CTA */
+.about-cta {
+  text-align: center;
+  padding: 3rem 1.5rem 3.5rem;
+  background: #050506;
+  color: #f9fafb;
+}
+
+.about-cta h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.about-cta p {
+  max-width: 620px;
+  margin: 0 auto 1.5rem;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+}
+
+.about-cta>.tropy {
+  font-size: 48px;
+  margin-bottom: 1rem;
+  color: #16a34a;
+
+}
+
+/* carddd */
+
+.info-card {
+  background: #ffffff;
+  border-radius: 0.85rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.info-card:hover {
+  transform: translateY(-6px) scale(1.045);
+  border-color: #a9aeb4;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Circle icon container */
+.team-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #c6cad1;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Icon hover animation */
+.info-card:hover .team-icon {
+  transform: scale(1.18);
+  background: #ea580c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+/* Title */
+.info-card h4 {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: #111827;
+  transition: color 0.3s ease;
+}
+
+.info-card:hover h4 {
+  color: #0f172a;
+}
+
+/* Paragraph text */
+.info-card p {
+  width: 95%;
+  margin: 0 auto;
+  line-height: 1.45;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.info-card p span {
+  display: block;
+  text-align: center;
+}
+
+/* Responsive adjustment */
+@media (max-width: 900px) {
+  .card-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* ===== About stats responsiveness ===== */
+
+/* Tablet (2 columns) */
+/* @media (max-width: 900px) {
+  .about-stats1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+} */
+
+/* Mobile (1 column) */
+/* @media (max-width: 480px) {
+  .about-stats1 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  
+  }
+
+  .stat-card1 h2 {
+    font-size: 1.75rem;
+  }
+
+  .stat-card1 p {
+    font-size: 0.9rem;
+    margin-top: -12px;
+  }
+} */
+
+
+/* .error {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+} */
+
+
+/* ----------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+  /* Page padding */
+  .about-page {
+    padding: 0;
+  }
+
+  /* HERO */
+  .about-hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .about-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .about-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* STATS */
+  .about-stats1 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-card1 h2 {
+    font-size: 1.6rem;
+
+  }
+
+  .stat-card1 p {
+    font-size: 0.85rem;
+  }
+
+  /* SECTIONS */
+  .about-section,
+  .about-section1 {
+    padding: 1.5rem 1rem;
+    max-width: 100%;
+  }
+
+  .about-section h2,
+  .about-section h3,
+  .about-section1 h3 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .about-section1 p,
+  .about-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  /* REMOVE TEXT CUTTING */
+  .about-section p {
+    -webkit-line-clamp: unset;
+    display: block;
+  }
+
+  /* CARDS */
+  .card-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .info-card {
+    padding: 1.25rem;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+  }
+
+  /* TEAM ICON */
+  .team-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* PILLS */
+  .pill-row {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .pill {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.9rem;
+  }
+
+  /* CTA */
+  .about-cta {
+    padding: 2.5rem 1rem;
+  }
+
+  .about-cta h3 {
+    font-size: 1.25rem;
+  }
+
+  .about-cta p {
+    font-size: 0.95rem;
+  }
+
+  .about-cta .tropy {
+    font-size: 40px;
+  }
+}
+
+
+
+
+@media (max-width: 480px) {
+
+
+
+  /* HERO */
+  .about-hero {
+    padding: 2rem 1rem;
+  }
+
+  .about-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .about-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* STATS (2 per row) */
+  .about-stats1 {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .stat-card1 h2 {
+    font-size: 1.4rem;
+  }
+
+  .stat-card1 p {
+    font-size: 0.75rem;
+  }
+
+  /* Fix misaligned subtitles */
+  .new8,
+  .new9 {
+    margin-left: 0;
+    text-align: center;
+    display: block;
+  }
+
+  /* SECTIONS */
+  .about-section,
+  .about-section1 {
+    padding: 1.2rem 1rem;
+    max-width: 100%;
+  }
+
+  .about-section h2,
+  .about-section h3,
+  .about-section1 h3 {
+    font-size: 1.35rem;
+    text-align: center;
+  }
+
+  .about-section p,
+  .about-section1 p {
+
+    font-size: 0.92rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .about-section1 p {
+    text-align: justify;
+  }
+
+  .info-card p {
+    text-align: center;
+
+  }
+
+  /* Remove text cutting */
+  /* .about-section p {
+    -webkit-line-clamp: unset;
+    display: block;
+    margin-left: 10px;
+  } */
+  .new8 {
+    margin-left: 120px;
+
+  }
+
+  .new9 {
+    margin-left: 155px;
+  }
+
+  /* CARDS */
+  .card-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .info-card {
+    padding: 1.2rem;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+  }
+
+  .info-card p {
+    font-size: 0.88rem;
+  }
+
+  /* TEAM ICON */
+  .team-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* CITY PILLS */
+  .pill-row {
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .pill {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* CTA */
+  .about-cta {
+    padding: 2rem 1rem;
+  }
+
+  .about-cta h3 {
+    font-size: 1.2rem;
+  }
+
+  .about-cta p {
+    font-size: 0.9rem;
+  }
+
+  .about-cta .tropy {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+
+  .info-card {
+    min-width: 85%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}

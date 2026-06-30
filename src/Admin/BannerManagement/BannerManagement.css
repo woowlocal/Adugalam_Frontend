@@ -1,0 +1,360 @@
+/* ================= PAGE ================= */
+
+.banner-management-container {
+  padding: 24px;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.banner-management-header {
+  margin-bottom: 30px;
+}
+
+.banner-management-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+}
+
+
+/* ================= FORM SECTION ================= */
+
+.banner-form-section,
+.banner-list-section {
+  background: #fff;
+  padding: 24px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .05);
+}
+
+.banner-form-section h2,
+.banner-list-section h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.banner-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #1da1f2;
+}
+
+.form-full-width {
+  grid-column: 1/-1;
+}
+
+.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-actions {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn-save {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #22c55e;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-save:hover {
+  background: #16a34a;
+}
+
+.btn-cancel {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #6b7280;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #4b5563;
+}
+
+
+/* ================= BANNER LIST — TABLE ================= */
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.banner-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Hide thead — we use card layout instead */
+.banner-table thead {
+  display: none;
+}
+
+.banner-table tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Each Banner Row = Horizontal Card ── */
+.banner-table tr {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+  transition: box-shadow 0.2s ease;
+  height: auto;
+  position: static;
+}
+
+.banner-table tr:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .1);
+}
+
+/* ── Image Cell ── */
+.banner-table td:first-child {
+  position: static;
+  flex: 0 0 160px;
+  height: 110px;
+  padding: 0;
+  inset: unset;
+}
+
+.banner-img-preview {
+  width: 160px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+/* ── Title ── */
+.banner-table td:nth-child(2) {
+  position: static;
+  flex: 1;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  padding: 0;
+  top: unset;
+  left: unset;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+/* ── Category Badge ── */
+.banner-table td:nth-child(3) {
+  position: static;
+  top: unset;
+  left: unset;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: #6366f1;
+  padding: 5px 13px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+/* ── Priority Badge ── */
+.banner-table td:nth-child(4) {
+  position: static;
+  top: unset;
+  left: unset;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: #f59e0b;
+  padding: 5px 13px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.banner-table td:nth-child(4)::before {
+  content: "P ";
+}
+
+/* ── Status Badge ── */
+.banner-table td:nth-child(5) {
+  position: static;
+  top: unset;
+  left: unset;
+  flex: 0 0 auto;
+}
+
+.banner-table td:nth-child(5)::before {
+  content: none;
+}
+
+/* Status text shown directly from JSX */
+.banner-table td:nth-child(5):empty::after {
+  content: "—";
+  color: #9ca3af;
+}
+
+/* ── Action Buttons Cell ── */
+.banner-table td:last-child {
+  position: static;
+  bottom: unset;
+  left: unset;
+  flex: 0 0 auto;
+  display: flex;
+  gap: 8px;
+  padding-right: 16px;
+  z-index: auto;
+}
+
+.banner-table td:last-child button {
+  margin-right: 0;
+}
+
+/* ── Buttons ── */
+.banner-table button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.banner-table button:hover {
+  opacity: 0.85;
+}
+
+.banner-table button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+.banner-table button:last-child {
+  background: #ef4444;
+  color: white;
+}
+
+/* Remove old pseudo-elements (arrows & dots) */
+.banner-table tr::before,
+.banner-table tr::after,
+.banner-table tbody::after {
+  display: none;
+  content: none;
+}
+
+
+/* ── Status pill styles (rendered from JSX) ── */
+.status-pill {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.status-pill.visible {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-pill.hidden {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .banner-table tr {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 14px;
+    gap: 10px;
+    padding-bottom: 14px;
+  }
+
+  .banner-table td:first-child {
+    flex: none;
+    width: 100%;
+    height: 160px;
+  }
+
+  .banner-img-preview {
+    width: 100%;
+    height: 160px;
+    border-radius: 0;
+  }
+
+  .banner-table td:nth-child(2) {
+    max-width: 100%;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .banner-table td:nth-child(3),
+  .banner-table td:nth-child(4),
+  .banner-table td:nth-child(5) {
+    margin-left: 14px;
+  }
+
+  .banner-table td:last-child {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

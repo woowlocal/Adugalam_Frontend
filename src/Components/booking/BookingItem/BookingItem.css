@@ -1,0 +1,93 @@
+
+
+/* Booking Item Styling */
+.booking-items-wrapper {
+  flex-grow: 1; /* Allows the list to take available vertical space */
+  overflow-y: auto; /* Scroll if content exceeds height */
+  padding-right: 10px; /* Space for scrollbar */
+}
+
+.booking-item {
+  display: flex;
+  align-items: center;
+  padding: 18px 10px; /* Larger padding */
+  /* border-bottom: 1px solid #f0f0f0; */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color:  #f9f9f9;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  
+}
+
+.booking-item:last-child {
+  border-bottom: none;
+}
+
+.booking-item:hover {
+  background-color: #f9f9f961; /* Hover effect for items */
+}
+
+.icon {
+  width: 100px; /* Larger icons */
+  height: 100px;
+  border-radius: 12px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-size: 2em; /* If using emoji/text icons */
+}
+
+.icon img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.icon.upcoming {
+  background-color: #e0f2f7; /* Light blue/green */
+  color: #00796b;
+}
+
+.icon.completed {
+  background-color: #e3f2fd; /* Light blue */
+  color: #1976d2;
+}
+
+.details {
+  flex-grow: 1;
+}
+
+.details section{
+  font-weight: 600;
+  color: #333;
+  margin-top: 20px;
+  display: flex;
+  grid-column-gap: 20px;
+}
+
+.i{
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  color: #999;
+
+}
+.name {
+  font-size: 1.3em; /* Larger font */
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.date {
+  font-size: 0.95em; /* Larger font */
+  margin-top: 5px;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.1em;
+}

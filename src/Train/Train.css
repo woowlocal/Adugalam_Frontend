@@ -1,0 +1,365 @@
+.train-page {
+  font-family: "Inter", sans-serif;
+  color: #111;
+}
+
+/* HERO */
+.train-hero {
+  text-align: center;
+  padding: 40px 20px 70px;
+  background: #ffffff;
+}
+
+.train-hero h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.train-hero p {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  max-width: 620px;
+  margin: 0 auto 24px;
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.hero-buttons5 {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.btn-primary5 {
+  background: #000;               /* White background */
+  color: #fff;                    /* Black text */
+  padding: 11px 28px;
+  width: 180px;
+  border-radius: 10px;
+  border: 1.5px solid #000;       /* Black border */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+
+.btn-outline5 {
+   background: #000;               /* White background */
+  color: #fff;                    /* Black text */
+  padding: 11px 28px;
+  border-radius: 10px;
+  border: 1.5px solid #000;       /* Black border */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary5:hover,
+.btn-outline5:hover {
+  background: #ea530c;           /* Orange on hover */
+  color: #fff;
+  border-color: #ea530c;
+  transform: scale(1.08);
+}
+
+/* TRAINING OPTIONS */
+.training-options {
+  padding: 10px 20px;
+  text-align: center;
+}
+.training-options h3{
+  
+  
+  color: #ea530c;
+}
+
+
+.training-options h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+}
+.training-options p{
+   font-size: 18px;
+ color: #4b5563;
+ /* padding-top: 0px; */
+  padding-bottom: 30px;
+}
+
+.options-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.option-card {
+  background: #fff;
+  border: 1.5px solid #000;
+  border-radius: 14px;
+  padding: 26px 22px;
+  text-align: left;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Create orange hover line using ::after */
+.option-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* Hover Effect */
+/* .option-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+} */
+.option-card:hover{
+ box-shadow: 14px 14px 0px #15803d;
+  transform: translate(-8px, -8px);
+}
+
+/* .option-card:hover::after {
+  border-right: 8px solid #ea530c;    
+  border-bottom: 8px solid #ea530c;    
+} */
+
+.option-icon {
+  color: #15803d;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 20px;
+}
+
+.option-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.option-card p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: -10px;
+}
+
+.price {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* SPORTS */
+.sports-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.sport-tag {
+  border: 1px solid #d6d6d6;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #333;
+  background: #fff;
+  cursor: pointer;               
+  white-space: nowrap;
+
+  
+  transition: 
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.sport-tag:hover {
+  background: #f5f5f5;
+  transform: scale(1.08);         
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.sport-tag:not(:hover) {
+  transform: scale(1);
+}
+
+.sports-section h2 {
+  font-size: 30px;          /* smaller like image */
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+.sports-section p{ 
+ font-size: 17px;
+ color: #4b5563;
+ padding-bottom:20px ;
+}
+
+/* Centered pill container */
+.sports-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;                 
+  max-width: 620px;         
+  margin: 0 auto;
+  padding-top: 12px;
+}
+
+
+.sport-tag {
+  border: 1px solid #d6d6d6;
+  padding: 6px 14px;
+  border-radius: 999px;     
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  background: #fff;
+  cursor: default;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+/* Very subtle hover (image has no strong hover) */
+.sport-tag:hover {
+  color: #fff;
+  background: #ea530c;
+  
+  
+}
+
+
+/* TRUST */
+.trust-section {
+  padding: 50px 20px;
+  display: flex;            
+  justify-content: center;
+  gap: 80px;                
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+/* Individual item */
+.trust-item {
+  max-width: 200px;
+}
+
+/* Icon container */
+.trust-item svg {
+  font-size: 18px;
+  color: #15803d;
+  background: #f2f2f2;     
+  width: 52px;
+  height: 52px;
+  padding: 10px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.trust-item h4 {
+  
+  color: #ea530c;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+ 
+}
+
+/* Description */
+.trust-item p {
+  font-size: 15px;
+  color: #777;
+  line-height: 1.4;
+}
+
+/* COMING SOON */
+.coming-soon {
+  
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.coming-soon h2 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.coming-soon p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: #ccc;
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+
+.btn-light {
+  background: #fff;
+  color: #000;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-light:hover {
+  background: #ea530c;           /* Orange on hover */
+  color: #fff;
+  border-color: #ea530c;
+  transform: scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) { 
+  .train-hero h1 {
+    font-size: 28px;
+  }
+}
+
+
+
+@media (max-width: 640px) {
+  .options-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  
+
+  .option-card {
+    min-width: 85%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}

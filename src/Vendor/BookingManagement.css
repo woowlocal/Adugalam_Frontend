@@ -1,0 +1,506 @@
+
+/* ============================================================
+   VENDOR BOOKING MANAGEMENT — Premium Glacier Glass
+   Matches VendorDashboard design language
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Design tokens ── */
+:root {
+  --bm-green:        #0a7c3c;
+  --bm-green-light:  #19a35a;
+  --bm-green-bg:     rgba(10, 124, 60, 0.08);
+  --bm-green-border: rgba(10, 124, 60, 0.22);
+  --bm-orange:       #f97316;
+  --bm-orange-bg:    rgba(249, 115, 22, 0.09);
+  --bm-orange-border:rgba(249, 115, 22, 0.25);
+  --bm-blue:         #1a6aff;
+  --bm-red:          #dc2626;
+  --bm-red-bg:       rgba(220, 38, 38, 0.08);
+  --bm-red-border:   rgba(220, 38, 38, 0.22);
+  --bm-yellow:       #d97706;
+  --bm-yellow-bg:    rgba(217, 119, 6, 0.08);
+  --bm-yellow-border:rgba(217, 119, 6, 0.22);
+  --bm-text:         #0d1e2e;
+  --bm-muted:        #6b7280;
+  --bm-border:       rgba(190, 230, 255, 0.55);
+  --bm-bg:           linear-gradient(160deg, #eef6f0 0%, #e8f4fb 55%, #f0f4f1 100%);
+  --bm-card-bg:      rgba(255, 255, 255, 0.78);
+}
+
+/* ── Keyframes ── */
+@keyframes bm-fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bm-shimmer {
+  0%   { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  20%  { opacity: 0.45; }
+  80%  { opacity: 0.45; }
+  100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+}
+
+@keyframes bm-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bm-dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(74, 222, 128, 0); }
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+.bm-container {
+  min-height: 100vh;
+  padding: 28px 28px 60px;
+  background: var(--bm-bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.bm-inner {
+  width: 100%;
+  max-width: 1200px; /* Wider for tables */
+}
+
+/* ============================================================
+   HERO BANNER
+   ============================================================ */
+.bm-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #104a8e 0%, #1a6aff 45%, #3b82f6 100%);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow:
+    0 10px 40px rgba(16, 74, 142, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation: bm-fadeUp 0.45s ease both;
+}
+
+/* Change Hero color slightly to differentiate from PeakHours but keep premium */
+.bm-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%; left: 0;
+  width: 55%; height: 160%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,0.07) 45%,
+    rgba(255,255,255,0.14) 50%,
+    rgba(255,255,255,0.07) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: bm-shimmer 7s ease-in-out 1.5s infinite;
+}
+
+.bm-hero::after {
+  content: '';
+  position: absolute;
+  width: 180px; height: 180px;
+  top: -60px; right: 60px;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bm-hero-text { position: relative; z-index: 1; }
+
+.bm-hero-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.70);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.bm-hero-title {
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.bm-hero-sub {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.68);
+  margin: 0;
+  font-weight: 400;
+}
+
+.bm-hero-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.2px;
+}
+
+.bm-live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: bm-dotPulse 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   MAIN TABLE CARD 
+   ============================================================ */
+.bm-card {
+  width: 100%;
+  background: var(--bm-card-bg);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-radius: 20px;
+  border: 1.5px solid var(--bm-border);
+  box-shadow:
+    0 4px 24px rgba(100, 180, 240, 0.10),
+    inset 0 1px 0 rgba(255,255,255,0.90);
+  animation: bm-fadeUp 0.5s ease 0.1s both;
+  overflow: hidden; /* Contains the table radius */
+}
+
+/* ── Section divider label inside card ── */
+.bm-card-header {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--bm-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bm-card-header-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  background: var(--bm-green-bg);
+}
+
+.bm-card-header-text h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--bm-text);
+  margin: 0 0 2px;
+  letter-spacing: -0.2px;
+}
+
+.bm-card-header-text p {
+  font-size: 0.78rem;
+  color: var(--bm-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   RESPONSIVE TABLE
+   ============================================================ */
+.bm-table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+/* Table Header */
+.bm-table thead {
+  background: linear-gradient(90deg, rgba(26,106,255,0.04) 0%, rgba(10,124,60,0.06) 100%);
+}
+
+.bm-table th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-bottom: 1px solid rgba(190, 230, 255, 0.40);
+}
+
+/* Table Body */
+.bm-table td {
+  padding: 16px 20px;
+  color: #374151;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(190, 230, 255, 0.20);
+  vertical-align: middle;
+}
+
+.bm-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.bm-table tbody tr {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.bm-table tbody tr:hover {
+  background: rgba(240, 250, 255, 0.55);
+}
+
+/* Specific cell styles inside table */
+.bm-id {
+  font-family: 'Inter', monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #9ca3af;
+  letter-spacing: 0.5px;
+}
+
+.bm-player {
+  font-weight: 700;
+  color: var(--bm-text);
+}
+
+.bm-date-time {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bm-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bm-text);
+}
+
+.bm-time {
+  font-size: 11.5px;
+  color: var(--bm-muted);
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   PILL BADGES
+   ============================================================ */
+.bm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+}
+
+/* Payment Badges */
+.bm-badge--paid {
+  background: var(--bm-green-bg);
+  border: 1px solid var(--bm-green-border);
+  color: var(--bm-green);
+}
+.bm-badge--failed {
+  background: var(--bm-red-bg);
+  border: 1px solid var(--bm-red-border);
+  color: var(--bm-red);
+}
+
+/* Status Badges */
+.bm-badge--status-approved {
+  background: var(--bm-green-bg);
+  border: 1px solid var(--bm-green-border);
+  color: var(--bm-green);
+}
+.bm-badge--status-pending {
+  background: var(--bm-yellow-bg);
+  border: 1px solid var(--bm-yellow-border);
+  color: var(--bm-yellow);
+}
+.bm-badge--status-rejected, 
+.bm-badge--status-cancelled {
+  background: var(--bm-red-bg);
+  border: 1px solid var(--bm-red-border);
+  color: var(--bm-red);
+}
+
+
+/* ============================================================
+   LOADING & EMPTY STATE
+   ============================================================ */
+.bm-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  font-size: 14px;
+  color: var(--bm-muted);
+  font-weight: 600;
+  width: 100%;
+}
+
+.bm-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(26, 106, 255, 0.15);
+  border-top-color: var(--bm-blue);
+  border-radius: 50%;
+  animation: bm-spin 0.8s linear infinite;
+}
+
+.bm-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 80px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.bm-empty-icon {
+  font-size: 3rem;
+  opacity: 0.4;
+  margin-bottom: 8px;
+}
+
+.bm-empty p {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bm-muted);
+  margin: 0;
+}
+.bm-empty span {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* ============================================================
+   RESPONSIVE LAYOUT (Mobile Table -> Card Stack)
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .bm-container {
+    padding: 20px 16px 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bm-hero {
+    padding: 22px 20px;
+  }
+  
+  .bm-hero-title { font-size: 1.4rem; }
+  .bm-hero-badge { display: none; } /* Hide live ping on mobile */
+
+  /* In mobile, we force the table to look like stacked cards */
+  .bm-table thead {
+    display: none;
+  }
+
+  .bm-table, .bm-table tbody, .bm-table tr, .bm-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .bm-table {
+    padding: 16px;
+    background: transparent;
+  }
+
+  .bm-table tr {
+    margin-bottom: 16px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+
+  .bm-table tr:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Redefine cells to absolute layout for perfect alignment */
+  .bm-table td {
+    text-align: right;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(190, 230, 255, 0.20);
+    position: relative;
+    padding-left: 50%;
+    min-height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .bm-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* Insert artificial data labels */
+  .bm-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-right: 10px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bm-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Specific mobile adjustments */
+  .bm-date-time { 
+    align-items: flex-end; 
+    text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
+  .bm-container {
+    padding: 16px 12px 80px;
+  }
+  
+  .bm-card-header {
+    padding: 16px;
+  }
+
+  .bm-hero {
+    padding: 18px 16px;
+  }
+}

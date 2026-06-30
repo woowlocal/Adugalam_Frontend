@@ -1,0 +1,236 @@
+/* ---------- Page ---------- */
+.page {
+  max-width: 950px;
+  margin: auto;
+  padding: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+}
+
+/* ---------- Title ---------- */
+.page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ---------- Form Container ---------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Inputs ---------- */
+.form input,
+.form textarea,
+.form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  font-size: 14px;
+  width: 100%;
+  transition: 0.2s;
+}
+
+.form textarea {
+  min-height: 80px;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  border-color: #0d6efd;
+  outline: none;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  padding: 11px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #0d6efd;
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #0b5ed7;
+}
+
+/* ---------- Section Labels ---------- */
+label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* ---------- Games ---------- */
+.radio-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.radio-chip {
+  background: #eef3ff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid #d6e2ff;
+  transition: 0.2s;
+}
+
+.radio-chip:hover {
+  background: #dce6ff;
+}
+
+/* ---------- Amenities & Features ---------- */
+.check-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.check-row label {
+  background: #f8f9fb;
+  padding: 6px 12px;
+  border-radius: 18px;
+  border: 1px solid #e3e7ee;
+  cursor: pointer;
+}
+
+/* ---------- Image Preview ---------- */
+.preview-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.preview {
+  position: relative;
+  padding-top: 10px;
+  line-height: 0;
+}
+
+.preview img {
+  width: 140px;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  display: block;
+}
+
+.preview.banner img {
+  width: 240px;
+  height: 230px;
+}
+
+.preview button {
+  position: absolute;
+  top: 2px;
+  right: -7px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---------- Slot Timing ---------- */
+.time-row {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.time-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8f9fb;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.time-group label {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.time-group select {
+  width: 80px;
+  padding: 8px;
+}
+
+/* ---------- Slot Preview ---------- */
+.slot-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.slot-chip {
+  background: linear-gradient(135deg, #0d6efd, #00b4ff);
+  color: white;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Location Section with Map ---------- */
+.location-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.location-search-input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  font-size: 14px;
+  width: 100%;
+  transition: 0.2s;
+}
+
+.location-search-input:focus {
+  border-color: #0d6efd;
+  outline: none;
+}
+
+.map-container {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #d0d7de;
+}
+
+.map-loading {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  background: #f8f9fb;
+  border-radius: 6px;
+}
+
+.selected-location {
+  padding: 10px;
+  background: #e8f5e9;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #2e7d32;
+  margin: 0;
+}

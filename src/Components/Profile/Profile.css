@@ -1,0 +1,166 @@
+/* --- Base Styles (Mobile-First) --- */
+
+.profile-container {
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box; /* Added for safer padding/width calculation */
+    /* background-color: aqua;   */
+}
+
+ .edit-profile {
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box; }
+/* Adjusting typography and alignment for better mobile readability */
+.profile-container p, .edit-profile p, .about-container p {
+    /* Reduced font size for mobile screens */
+    font-size: 18px; 
+    font-weight: 600;
+    margin-bottom: 20px; /* Reduced margin */
+    height: auto; /* Let height be determined by content */
+    display: flex;
+    align-items: center;
+    /* Use 'gap' instead of deprecated 'grid-column-gap' */
+    gap: 15px; 
+    text-align: left; /* 'justify' can look bad with limited mobile width */
+}
+
+.option-container {
+    display: flex;
+    flex-direction: column;
+    /* Use 'gap' instead of deprecated 'grid-row-gap' */
+    gap: 15px; 
+}
+
+.option {
+    height: 70px; /* Slightly reduced height for mobile */
+    width: 80%;
+    background-color: rgba(188, 188, 188, 0.455);
+    padding: 15px; /* Slightly reduced padding */
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Reduced blur value for potential performance */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.25s;
+}
+
+.option img {
+    /* Reduced size for mobile icons */
+    height: 50px; 
+    width: 50px;
+    background-color: rgba(161, 161, 161, 0.359);
+    border-radius: 50%; /* Changed from 50px to 50% for standard circle */
+    object-fit: contain;
+}
+
+.option section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.option:hover {
+    background-color: rgba(128, 128, 128, 0.538);
+}
+
+/* Profile Card - CRUCIAL RESPONSIVE FIX */
+.profile-card {
+    height: auto; /* Allow height to adjust */
+    width: 100%; /* **CRUCIAL**: Changed from fixed 600px to 100% */
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-card img {
+    height: 80px; /* Reduced size for mobile profile picture */
+    width: 80px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    gap: 5px;
+}
+
+.top {
+    /* Use a relative height that leaves room for content below the fold 
+       on a tall mobile screen, but doesn't force a large empty space. */
+    height: auto; 
+    padding-bottom: 20px; /* Ensure some space below */
+}
+
+.edit-profile {
+    /* Ensuring the content is between the header and the button at the bottom */
+    justify-content: space-between;
+    padding-bottom: 40px; /* Reduced padding-bottom to allow button to be lower */
+}
+
+.edit-profile button {
+    width: 100%;
+    padding: 12px; /* Slightly increased padding for easier tapping */
+    border-radius: 25px; /* Slightly larger border-radius */
+}
+
+.input-feilds {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px; /* Reduced margin */
+}
+
+.back-icon {
+    height: 35px; /* Slightly increased size for easier tapping */
+    width: 35px;
+    padding: 5px;
+    border-radius: 50%; /* Standard circle */
+}
+
+.input-feilds input {
+    width: 100%;
+    height: 45px; /* Slightly increased height for easier tapping */
+    padding: 0 15px; /* Adjusted padding */
+    border-radius: 25px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* --- Media Query for Tablets and Desktops (Min-width: 768px) --- */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    .profile-container, .edit-profile {
+        /* On desktop, center the content in a max-width container for better readability */
+   
+        padding: 40px; 
+
+    }
+
+    .profile-container p, .edit-profile p, .about-container p {
+        font-size: 25px; /* Restore original font size */
+        margin-bottom: 30px;
+        gap: 20px;
+    }
+
+    .option {
+        height: 80px; /* Restore original height */
+        padding: 20px;
+    }
+
+    .option img {
+        height: 70px; /* Restore original icon size */
+        width: 70px;
+    }
+
+    .profile-card {
+        height: 100px; /* Restore original height */
+        /* Set a max width to prevent it from stretching too wide in the centered container */
+        max-width: 600px; 
+    }
+
+    .profile-card img {
+        height: 100px; /* Restore original profile picture size */
+        width: 100px;
+    }
+}

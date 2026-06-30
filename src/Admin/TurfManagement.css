@@ -1,0 +1,198 @@
+/* ---------- PAGE ---------- */
+.turf-management {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background: white;
+  padding: 25px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header-row {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.header-row p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+/* Vendor button */
+.vendor-btn {
+  margin-top: 15px;
+  padding: 10px 22px;
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.vendor-btn:hover {
+  background: #157347;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  background: white;
+  padding: 25px;
+  margin: 25px auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  max-width: 1000px;
+}
+
+/* ---------- FORM ---------- */
+.card h3 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.card input:focus {
+  border-color: #198754;
+  outline: none;
+}
+
+/* Main button */
+.card button {
+  width: 100%;
+  padding: 13px;
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.card button:hover {
+  background: #157347;
+}
+
+/* ---------- TABLE ---------- */
+.table-container {
+  overflow-x: auto;
+}
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+/* Header */
+th {
+  background: #198754;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Rows */
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: #f3f8f5;
+}
+
+/* Status */
+.status {
+  padding: 4px 8px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+.status.active {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+.status.blocked {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.open {
+  color: green;
+  font-weight: bold;
+}
+
+.closed {
+  color: red;
+  font-weight: bold;
+}
+
+/* Action button */
+td button {
+  padding: 6px 12px;
+  background: #ffc107;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+td button:hover {
+  background: #e0a800;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+
+  .header-row {
+    text-align: center;
+  }
+
+  .vendor-btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .card {
+    margin: 15px;
+    padding: 18px;
+  }
+
+  .card table {
+    min-width: 650px;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .card button {
+    font-size: 14px;
+  }
+}

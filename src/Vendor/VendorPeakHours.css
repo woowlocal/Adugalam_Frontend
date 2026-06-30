@@ -1,0 +1,724 @@
+/* ============================================================
+   VENDOR PEAK HOURS — Premium Glacier Glass Edition
+   Matches VendorDashboard design language
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Design tokens ── */
+:root {
+  --ph-green:        #0a7c3c;
+  --ph-green-light:  #19a35a;
+  --ph-green-bg:     rgba(10, 124, 60, 0.08);
+  --ph-green-border: rgba(10, 124, 60, 0.22);
+  --ph-orange:       #f97316;
+  --ph-orange-dark:  #ea580c;
+  --ph-orange-bg:    rgba(249, 115, 22, 0.09);
+  --ph-orange-border:rgba(249, 115, 22, 0.25);
+  --ph-blue:         #1a6aff;
+  --ph-text:         #0d1e2e;
+  --ph-muted:        #6b7280;
+  --ph-border:       rgba(190, 230, 255, 0.55);
+  --ph-bg:           linear-gradient(160deg, #eef6f0 0%, #e8f4fb 55%, #f0f4f1 100%);
+  --ph-card-bg:      rgba(255, 255, 255, 0.78);
+}
+
+/* ── Keyframes ── */
+@keyframes ph-fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ph-shimmer {
+  0%   { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  20%  { opacity: 0.45; }
+  80%  { opacity: 0.45; }
+  100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+}
+
+@keyframes ph-slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ph-dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+.peak-hour-container {
+  min-height: 100vh;
+  padding: 28px 28px 60px;
+  background: var(--ph-bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ============================================================
+   HERO BANNER
+   ============================================================ */
+.ph-hero {
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #064e26 0%, #0a7c3c 45%, #0d9849 100%);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow:
+    0 10px 40px rgba(6, 78, 38, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation: ph-fadeUp 0.45s ease both;
+}
+
+/* Diagonal shimmer */
+.ph-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%; left: 0;
+  width: 55%; height: 160%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,0.07) 45%,
+    rgba(255,255,255,0.14) 50%,
+    rgba(255,255,255,0.07) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: ph-shimmer 7s ease-in-out 1s infinite;
+}
+
+/* Decorative orb */
+.ph-hero::after {
+  content: '';
+  position: absolute;
+  width: 180px; height: 180px;
+  top: -60px; right: 60px;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ph-hero-text { position: relative; z-index: 1; }
+
+.ph-hero-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.70);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.ph-hero-title {
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.ph-hero-sub {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.68);
+  margin: 0;
+  font-weight: 400;
+}
+
+.ph-hero-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.2px;
+}
+
+.ph-live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: ph-dotPulse 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   MAIN CARD
+   ============================================================ */
+.peak-hour-card {
+  width: 100%;
+  max-width: 900px;
+  background: var(--ph-card-bg);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-radius: 20px;
+  border: 1.5px solid var(--ph-border);
+  padding: 32px;
+  box-shadow:
+    0 4px 24px rgba(100, 180, 240, 0.10),
+    inset 0 1px 0 rgba(255,255,255,0.90);
+  animation: ph-fadeUp 0.5s ease 0.1s both;
+}
+
+/* ── Section divider label ── */
+.ph-section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.ph-section-label-icon {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.ph-section-label-icon--green  { background: var(--ph-green-bg);  }
+.ph-section-label-icon--orange { background: var(--ph-orange-bg); }
+
+.ph-section-label-text h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ph-text);
+  margin: 0 0 2px;
+  letter-spacing: -0.2px;
+}
+
+.ph-section-label-text p {
+  font-size: 0.73rem;
+  color: var(--ph-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Divider line ── */
+.ph-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--ph-border), transparent);
+  margin: 24px 0;
+}
+
+/* ============================================================
+   TOAST ALERTS
+   ============================================================ */
+.ph-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  animation: ph-fadeUp 0.3s ease both;
+}
+
+.ph-alert--error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  color: #dc2626;
+}
+
+.ph-alert--success {
+  background: rgba(10, 124, 60, 0.08);
+  border: 1px solid var(--ph-green-border);
+  color: var(--ph-green);
+}
+
+.ph-alert-icon { font-size: 16px; flex-shrink: 0; }
+
+/* ============================================================
+   VENDOR SECTION (turf select)
+   ============================================================ */
+.vendor-section {
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   FORM GRID
+   ============================================================ */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* ── Labels ── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ph-text);
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+/* ── Inputs ── */
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="text"],
+select {
+  height: 46px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(190, 230, 255, 0.65);
+  background: rgba(255,255,255,0.75);
+  font-size: 0.92rem;
+  color: var(--ph-text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: normal;
+  margin: 0;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--ph-green);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(10, 124, 60, 0.10);
+}
+
+/* ============================================================
+   DAYS SELECTOR
+   ============================================================ */
+.days-selector {
+  margin-bottom: 24px;
+}
+
+.days-selector > label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ph-text);
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.days-flex {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.day-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(190, 230, 255, 0.65);
+  background: rgba(255,255,255,0.75);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: var(--ph-muted);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 0; margin: 0; line-height: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.day-btn:hover {
+  border-color: var(--ph-green-border);
+  color: var(--ph-green);
+  background: var(--ph-green-bg);
+  transform: translateY(-2px) scale(1.08);
+}
+
+.day-btn.active {
+  background: linear-gradient(135deg, var(--ph-green), var(--ph-green-light));
+  color: #fff;
+  border-color: var(--ph-green);
+  box-shadow: 0 4px 14px rgba(10, 124, 60, 0.32);
+  transform: translateY(-2px) scale(1.08);
+}
+
+/* ============================================================
+   PEAK HOURS LIST
+   ============================================================ */
+.peak-hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.peak-hour-row {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(240, 250, 255, 0.55);
+  border: 1.5px solid var(--ph-border);
+  border-radius: 14px;
+  animation: ph-slideIn 0.28s ease both;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s;
+}
+
+.peak-hour-row:hover {
+  border-color: var(--ph-green-border);
+  box-shadow: 0 4px 18px rgba(10, 124, 60, 0.08);
+  transform: translateX(3px);
+}
+
+/* Day pill badge */
+.day-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: var(--ph-green-bg);
+  color: var(--ph-green);
+  border: 1px solid var(--ph-green-border);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* Time connector row */
+.time-connector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time-connector > span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ph-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.time-input-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.time-input-wrapper input {
+  text-align: center;
+}
+
+/* Amount group */
+.amount-wrapper {
+  display: flex;
+  align-items: center;
+  min-width: 120px;
+}
+
+.amount-input-group {
+  display: flex;
+  align-items: stretch;
+  border-radius: 10px;
+  border: 1.5px solid rgba(190, 230, 255, 0.65);
+  background: rgba(255,255,255,0.75);
+  height: 46px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.amount-input-group:focus-within {
+  border-color: var(--ph-green);
+  box-shadow: 0 0 0 3px rgba(10, 124, 60, 0.10);
+  background: #fff;
+}
+
+.currency-symbol {
+  padding: 0 8px 0 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ph-green);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.amount-input-group input {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 10px 0 0 !important;
+  height: 100% !important;
+  box-shadow: none !important;
+  flex: 1;
+  border-radius: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.amount-input-group input:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   LOADING STATE
+   ============================================================ */
+.ph-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0 8px;
+  font-size: 13.5px;
+  color: var(--ph-muted);
+  font-weight: 600;
+}
+
+.ph-spinner {
+  width: 20px; height: 20px;
+  border: 2.5px solid rgba(10, 124, 60, 0.15);
+  border-top-color: var(--ph-green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   ACTION BAR
+   ============================================================ */
+.action-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+  border-top: 1.5px solid var(--ph-border);
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  letter-spacing: 0.2px;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, var(--ph-orange), var(--ph-orange-dark));
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.30);
+}
+
+.btn-save:hover:not(:disabled) {
+  box-shadow: 0 8px 26px rgba(249, 115, 22, 0.42);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.btn-save:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn-save:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ============================================================
+   EMPTY / NO-TURF STATE
+   ============================================================ */
+.ph-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 40px 20px;
+  border-radius: 14px;
+  background: rgba(240, 250, 255, 0.55);
+  border: 1.5px dashed var(--ph-border);
+  text-align: center;
+}
+
+.ph-empty-icon { font-size: 2.4rem; opacity: 0.5; }
+
+.ph-empty p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ph-muted);
+  margin: 0;
+}
+
+/* ============================================================
+   GAMES SECTION
+   ============================================================ */
+.ph-games-section {
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: rgba(240, 250, 255, 0.55);
+  border: 1.5px solid var(--ph-green-border);
+  border-radius: 14px;
+  animation: ph-fadeUp 0.3s ease both;
+}
+
+.ph-games-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.ph-game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--ph-green-bg), rgba(10,124,60,0.14));
+  color: var(--ph-green);
+  border: 1.5px solid var(--ph-green-border);
+  letter-spacing: 0.2px;
+  animation: ph-slideIn 0.25s ease both;
+  white-space: nowrap;
+}
+
+.ph-no-games {
+  font-size: 0.82rem;
+  color: var(--ph-muted);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ============================================================
+   RESPONSIVE — Tablet (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .peak-hour-container {
+    padding: 16px 12px 60px;
+  }
+
+  .ph-hero {
+    padding: 22px 20px;
+    border-radius: 16px;
+  }
+
+  .ph-hero-title { font-size: 1.3rem; }
+
+  .ph-hero-badge { display: none; }
+
+  .peak-hour-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .peak-hour-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .time-connector {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .amount-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .action-bar {
+    justify-content: stretch;
+  }
+
+  .btn-save {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .peak-hour-container {
+    padding: 12px 10px 80px;
+  }
+
+  .ph-hero {
+    padding: 18px 16px;
+    margin-bottom: 16px;
+  }
+
+  .ph-hero-title { font-size: 1.15rem; }
+  .ph-hero-sub   { font-size: 0.78rem; }
+
+  .peak-hour-card { padding: 16px 12px; }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .days-flex { gap: 8px; }
+  .day-btn   { width: 42px; height: 42px; font-size: 0.85rem; }
+
+  .peak-hour-row {
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .time-connector { flex-direction: column; align-items: stretch; }
+  .time-connector > span { text-align: center; }
+
+  .ph-section-label-icon { width: 30px; height: 30px; font-size: 14px; }
+  .ph-section-label-text h3 { font-size: 0.9rem; }
+}

@@ -1,0 +1,493 @@
+/* ============================================================
+   ADMIN EVENT — Light Theme (matches admin page design system)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Page wrapper ── */
+.admin-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f6fa;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  padding: 28px 28px 48px;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   HERO HEADER
+   ============================================================ */
+.admin-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e1b4b 0%, #2d2a7a 45%, #3730a3 100%);
+  border-radius: 18px;
+  margin-bottom: 24px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 40px rgba(30, 27, 75, 0.28),
+              inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  animation: ae-fadeUp 0.5s ease both;
+}
+
+/* shimmer sweep */
+.admin-hero::before {
+  content: "";
+  position: absolute; top: -30%; left: 0;
+  width: 50%; height: 160%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,0.06) 45%,
+    rgba(255,255,255,0.12) 50%,
+    rgba(255,255,255,0.06) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: ae-shimmer 6s ease-in-out 1s infinite;
+}
+@keyframes ae-shimmer {
+  0%   { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.7; }
+  100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+}
+
+.admin-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-hero-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.admin-hero-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.60);
+  letter-spacing: 0.5px;
+  margin: 0 0 2px;
+}
+
+.admin-hero-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 3px;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.admin-hero-sub {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.58);
+  margin: 0;
+}
+
+/* ============================================================
+   FORM CARD
+   ============================================================ */
+.admin-form-card {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(99, 102, 241, 0.14);
+  border-radius: 16px;
+  padding: 32px 36px;
+  box-shadow: 0 4px 24px rgba(30, 27, 75, 0.09);
+  animation: ae-fadeUp 0.45s ease both;
+}
+
+/* ── form layout ── */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Section Title Dividers */
+.form-section-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #4f46e5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 22px 0 12px;
+  border-bottom: 2px solid rgba(79, 70, 229, 0.12);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-badge {
+  background: rgba(79, 70, 229, 0.10);
+  color: #4f46e5;
+  border: 1px solid rgba(79, 70, 229, 0.20);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* 2-column row */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+/* form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+/* labels */
+.form-group label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* inputs, selects, textareas */
+.form-group input,
+.form-group select,
+.form-group textarea,
+.admin-form input[type="text"],
+.admin-form input[type="number"],
+.admin-form input[type="date"],
+.admin-form input[type="time"],
+.admin-form input[type="file"],
+.admin-form select,
+.admin-form textarea {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  color: #1f2937;
+  outline: none;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.form-group select,
+.admin-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-color: #fff;
+  padding-right: 36px;
+}
+
+.form-group textarea,
+.admin-form textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+/* file input styling */
+.form-group input[type="file"],
+.admin-form input[type="file"] {
+  color: #6b7280;
+  cursor: pointer;
+  padding: 9px 12px;
+}
+.form-group input[type="file"]::-webkit-file-upload-button,
+.admin-form input[type="file"]::-webkit-file-upload-button {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  padding: 5px 13px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-right: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* date & time picker icon */
+.admin-form input[type="date"]::-webkit-calendar-picker-indicator,
+.admin-form input[type="time"]::-webkit-calendar-picker-indicator {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* ── AM/PM Time Picker ── */
+.ae-time-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 48px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  width: 100%;
+}
+.ae-time-picker:focus-within {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3.5px rgba(79, 70, 229, 0.10);
+}
+.ae-time-picker:hover {
+  border-color: #c7d2fe;
+}
+
+.ae-time-sel {
+  border: none !important;
+  border-right: 1px solid #f0f0f5 !important;
+  border-radius: 0 !important;
+  padding: 0 8px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #1e1b4b !important;
+  background: transparent !important;
+  height: 100%;
+  flex: 1;
+  min-width: 50px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.15s;
+}
+.ae-time-sel:hover {
+  background: #f8f7ff !important;
+}
+.ae-time-sel:focus {
+  background: #eef2ff !important;
+}
+
+.ae-time-colon {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #c7d2fe;
+  padding: 0 2px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  flex-shrink: 0;
+  width: 20px;
+  border-right: 1px solid #f0f0f5;
+}
+
+.ae-time-ampm {
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 18px !important;
+  font-size: 0.78rem !important;
+  font-weight: 900 !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #4f46e5, #6366f1) !important;
+  cursor: pointer;
+  outline: none;
+  height: 100%;
+  min-width: 62px;
+  flex-shrink: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  transition: opacity 0.15s;
+}
+.ae-time-ampm:hover {
+  opacity: 0.9;
+}
+.ae-time-ampm option {
+  background: #fff !important;
+  color: #4f46e5 !important;
+  font-weight: 700;
+}
+
+/* ============================================================
+   SECTION BOXES (Why Attend / Benefits / FAQs)
+   ============================================================ */
+.section-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #f8f9ff;
+  border: 1.5px solid rgba(99, 102, 241, 0.14);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.section-box:hover {
+  border-color: rgba(79, 70, 229, 0.28);
+  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.08);
+}
+
+.section-box-num {
+  width: 28px; height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.section-box-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-box-fields input,
+.section-box-fields textarea {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 13px;
+  font-size: 0.88rem;
+  color: #1f2937;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.section-box-fields input:focus,
+.section-box-fields textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.10);
+}
+
+.section-box-fields textarea {
+  resize: vertical;
+  min-height: 75px;
+  line-height: 1.55;
+}
+
+.section-box-fields input::placeholder,
+.section-box-fields textarea::placeholder {
+  color: #b0b7c3;
+}
+
+/* ============================================================
+   SUBMIT FOOTER
+   ============================================================ */
+.form-footer {
+  padding-top: 24px;
+  border-top: 1px solid rgba(99, 102, 241, 0.12);
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 44px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 18px rgba(79, 70, 229, 0.35);
+  font-family: 'Inter', sans-serif;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(79, 70, 229, 0.48);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes ae-fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px) {
+  .admin-container { padding: 16px 16px 40px; }
+  .admin-hero { padding: 22px 18px; }
+  .admin-hero-title { font-size: 1.35rem; }
+  .admin-form-card { padding: 22px 18px; }
+  .form-row { grid-template-columns: 1fr; }
+  .submit-btn { width: 100%; text-align: center; }
+  .form-footer { justify-content: stretch; }
+}
+/* Hide spin buttons for amount */
+.no-spin-button::-webkit-outer-spin-button,
+.no-spin-button::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-spin-button {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,176 @@
+.header-container {
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-top: 43px;
+}
+
+/* Top section */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top p {
+  font-size: 20px;
+  color: #64748b;
+  margin: 0;
+}
+
+.header-top h2 {
+  font-size: px;
+  font-weight: 700;
+  margin-top: 2px;
+  color: #1e293b;
+  --font-title: 'Poppins', sans-serif;
+  font-family: var(--font-title) !important;
+
+}
+
+/* Bell icon */
+.bell-btn {
+  background: #ea580c;
+  width: 45px;
+  height: 45px;
+  border-radius: 30px;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Ensure svg renders nicely */
+.bell-btn svg {
+  display: block;
+}
+
+.notification-wrapper {
+  position: relative;
+}
+
+.bellIcon {
+  font-size: 26px;
+  color: white;
+}
+
+/* Search area */
+.search-area {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-area input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #f8fafc;
+}
+
+.search-area input:focus {
+  outline: none;
+}
+
+.filter-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background: #0f766e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-btn .settingIcon {
+  color: #fff;
+  height: 25px;
+  width: 25px;
+}
+
+/* -----------------------------------
+        RESPONSIVE BREAKPOINTS
+----------------------------------- */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 16px;
+  }
+
+  .header-top h2 {
+    font-size: 18px;
+  }
+
+  .bell-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bellIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .search-area input {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .filter-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header-container {
+    padding: 14px;
+  }
+
+  .header-top p {
+    font-size: 12px;
+  }
+
+  .header-top h2 {
+    font-size: 16px;
+  }
+
+  .bell-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+  }
+
+  .bellIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .search-area {
+    gap: 8px;
+  }
+
+  .search-area input {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .filter-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .settingIcon {
+    width: 20px;
+    height: 20px;
+  }
+}

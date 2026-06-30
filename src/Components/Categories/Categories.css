@@ -1,0 +1,460 @@
+/* ================================================================
+   GLACIER CATEGORIES SECTION
+   Premium frosted glass panel · continuous sliding icons · glow
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+/* ── Outer container ─────────────────────────────────────────── */
+.gc-wrapper {
+  position: relative;
+  margin: 24px 16px 10px;
+  padding: 22px 0 26px;
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* Layered glacier glass */
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(225, 242, 255, 0.76) 45%,
+      rgba(210, 235, 255, 0.72) 75%,
+      rgba(235, 250, 245, 0.78) 100%);
+  backdrop-filter: blur(26px) saturate(170%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+
+  /* Crystal border */
+  border: 1.5px solid rgba(200, 230, 255, 0.58);
+
+  /* Layered glow shadow */
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.52) inset,
+    0 4px 24px rgba(80, 160, 230, 0.14),
+    0 12px 40px rgba(50, 130, 200, 0.09);
+}
+
+/* Shimmer top edge */
+.gc-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(180, 225, 255, 0.80) 30%,
+      rgba(220, 245, 255, 1) 50%,
+      rgba(180, 225, 255, 0.80) 70%,
+      transparent);
+  pointer-events: none;
+  border-radius: 24px 24px 0 0;
+}
+
+/* ── Ambient glacier background blobs ─────────────────────────── */
+.gc-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+  opacity: 0.55;
+}
+
+.gc-blob--1 {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(180, 235, 255, 0.70), transparent 70%);
+  animation: blobDrift 9s ease-in-out infinite alternate;
+}
+
+.gc-blob--2 {
+  width: 180px;
+  height: 180px;
+  top: 10px;
+  right: -30px;
+  background: radial-gradient(circle, rgba(160, 230, 200, 0.60), transparent 70%);
+  animation: blobDrift 12s ease-in-out infinite alternate-reverse;
+}
+
+.gc-blob--3 {
+  width: 140px;
+  height: 140px;
+  bottom: -40px;
+  left: 40%;
+  background: radial-gradient(circle, rgba(200, 230, 255, 0.55), transparent 70%);
+  animation: blobDrift 7s ease-in-out infinite alternate;
+  animation-delay: 2s;
+}
+
+@keyframes blobDrift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(18px, 12px) scale(1.06);
+  }
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.gc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.gc-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.gc-view-all {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a7c3c;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  margin-left: 100px;
+  border-radius: 20px;
+  transition: background 0.22s ease, color 0.22s ease;
+  letter-spacing: 0.1px;
+}
+
+.gc-view-all:hover {
+  background: rgba(10, 124, 60, 0.09);
+  color: #086834;
+}
+
+/* ── Sliding track outer (clip + fades) ──────────────────────── */
+.gc-track-outer {
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Gradient fade masks on edges */
+.gc-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.gc-fade--left {
+  left: 0;
+  background: linear-gradient(to right,
+      rgba(238, 246, 255, 0.92) 0%,
+      transparent 100%);
+}
+
+.gc-fade--right {
+  right: 0;
+  background: linear-gradient(to left,
+      rgba(238, 246, 255, 0.92) 0%,
+      transparent 100%);
+}
+
+/* ── Marquee track ───────────────────────────────────────────── */
+.gc-track {
+  display: flex;
+  gap: 18px;
+  padding: 12px 30px 16px;
+  width: max-content;
+  animation: gcMarquee 22s linear infinite;
+  will-change: transform;
+}
+
+.gc-track--paused {
+  animation-play-state: paused;
+}
+
+@keyframes gcMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+  /* 50% = first set of 6 cards */
+}
+
+/* ── Category card ───────────────────────────────────────────── */
+.gc-card {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+
+  /* Glass card surface */
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(230, 245, 255, 0.68) 60%,
+      rgba(220, 250, 238, 0.72) 100%);
+  border: 1.5px solid rgba(200, 230, 255, 0.50);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.48) inset,
+    0 4px 16px rgba(80, 160, 220, 0.10);
+
+  transition:
+    transform 0.30s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.30s ease,
+    background 0.30s ease,
+    border-color 0.30s ease;
+
+  min-width: 96px;
+}
+
+.gc-card:hover {
+  transform: translateY(-6px) scale(1.06);
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.94) 0%,
+      rgba(220, 242, 255, 0.88) 50%,
+      rgba(210, 248, 232, 0.90) 100%);
+  border-color: rgba(160, 215, 255, 0.70);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+    0 8px 28px rgba(60, 150, 220, 0.22),
+    0 0 18px rgba(21, 128, 61, 0.10);
+}
+
+/* Active (selected) state */
+.gc-card--active {
+  border-color: rgba(21, 128, 61, 0.60) !important;
+  background: linear-gradient(145deg,
+      rgba(240, 255, 248, 0.92) 0%,
+      rgba(220, 248, 238, 0.86) 50%,
+      rgba(210, 245, 255, 0.88) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.60) inset,
+    0 0 0 2.5px rgba(21, 128, 61, 0.28),
+    0 6px 24px rgba(21, 128, 61, 0.18) !important;
+}
+
+/* ── Icon ring ───────────────────────────────────────────────── */
+.gc-icon-ring {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.90),
+      rgba(225, 242, 255, 0.80));
+  border: 1.5px solid rgba(200, 230, 255, 0.55);
+  box-shadow:
+    0 2px 10px rgba(80, 160, 220, 0.14),
+    0 0 0 3px rgba(255, 255, 255, 0.45) inset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.gc-card:hover .gc-icon-ring {
+  box-shadow:
+    0 4px 18px rgba(60, 150, 220, 0.28),
+    0 0 0 3px rgba(255, 255, 255, 0.55) inset,
+    0 0 14px rgba(21, 128, 61, 0.12);
+  transform: scale(1.08);
+}
+
+.gc-card--active .gc-icon-ring {
+  border-color: rgba(21, 128, 61, 0.50);
+  box-shadow:
+    0 0 0 3px rgba(21, 128, 61, 0.14),
+    0 4px 18px rgba(21, 128, 61, 0.18),
+    0 0 0 3px rgba(255, 255, 255, 0.50) inset;
+}
+
+/* Icon image */
+.gc-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.14));
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.gc-card:hover .gc-icon {
+  filter: drop-shadow(0 3px 9px rgba(21, 128, 61, 0.30)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.12));
+  transform: scale(1.06);
+}
+
+/* Glow halo behind icon */
+.gc-icon-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(160, 220, 255, 0.30), transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.gc-card:hover .gc-icon-glow,
+.gc-card--active .gc-icon-glow {
+  opacity: 1;
+}
+
+/* ── Label ───────────────────────────────────────────────────── */
+.gc-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #2d3a4a;
+  text-align: center;
+  margin: 0;
+  transition: color 0.22s ease;
+  white-space: nowrap;
+}
+
+.gc-card:hover .gc-label {
+  color: #0a7c3c;
+}
+
+.gc-card--active .gc-label {
+  color: #0a7c3c;
+  font-weight: 700;
+}
+
+/* ── Active dot ──────────────────────────────────────────────── */
+.gc-active-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #48c78e, #3ab5f0);
+  box-shadow: 0 0 8px rgba(72, 199, 142, 0.65);
+  display: block;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+
+/* Desktop: show more cards, wider wrapper */
+@media (min-width: 600px) {
+  .gc-wrapper {
+    margin: 32px 24px 10px;
+    padding: 28px 0 32px;
+    border-radius: 28px;
+  }
+
+  .gc-header {
+    padding: 0 30px;
+  }
+
+  .gc-title {
+    font-size: 20px;
+  }
+
+  .gc-track {
+    gap: 24px;
+    padding: 16px 40px 20px;
+  }
+
+  .gc-card {
+    min-width: 120px;
+    padding: 18px 20px 14px;
+    border-radius: 24px;
+  }
+
+  .gc-icon-ring {
+    width: 86px;
+    height: 86px;
+  }
+
+  .gc-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .gc-label {
+    font-size: 14px;
+  }
+
+  .gc-fade {
+    width: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gc-wrapper {
+    margin: 36px 32px 10px;
+  }
+
+  .gc-track {
+    /* Slightly slower on desktop — more cards visible */
+    animation-duration: 28s;
+  }
+
+  .gc-card {
+    min-width: 130px;
+  }
+
+  .gc-icon-ring {
+    width: 92px;
+    height: 92px;
+  }
+
+  .gc-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .gc-label {
+    font-size: 15px;
+  }
+}
+
+/* Reduce animation on low-end devices or user preference */
+@media (prefers-reduced-motion: reduce) {
+  .gc-track {
+    animation: none;
+  }
+}
+
+/* Mobile: native horizontal scrolling instead of marquee */
+@media (max-width: 599px) {
+  .gc-track-outer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .gc-track-outer::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+  }
+
+  .gc-track {
+    animation: none;
+    padding-bottom: 20px;
+  }
+}

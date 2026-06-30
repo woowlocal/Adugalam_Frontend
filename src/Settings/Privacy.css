@@ -1,0 +1,91 @@
+/* PAGE */
+.privacy-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 24px;
+  padding-bottom: 100px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* CARD */
+.privacy-card {
+  width: 100%;
+  background: #fbf6f6;
+  border-radius: 16px;
+  padding: 24px;
+  color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.privacy-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.privacy-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+/* BACK BUTTON */
+.back-btn {
+  background: #1f1f1f;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.privacy-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.privacy-content h3 {
+  font-size: 14px;
+  margin: 14px 0 6px;
+  font-weight: 600;
+}
+
+.privacy-content p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* SCROLLBAR */
+.privacy-content::-webkit-scrollbar {
+  width: 4px;
+}
+.privacy-content::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .privacy-page {
+    padding: 20px 16px;
+    padding-bottom: 100px;
+  }
+
+  .privacy-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-header h2 {
+    font-size: 16px;
+  }
+}

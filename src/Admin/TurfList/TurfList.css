@@ -1,0 +1,223 @@
+.page {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  color: #1f2937;
+}
+
+.table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  margin-top: 24px;
+}
+
+.turf-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.turf-table th {
+  background-color: #f9fafb;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.turf-table td {
+  padding: 16px 20px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  color: #374151;
+}
+
+.turf-table tr:last-child td {
+  border-bottom: none;
+}
+
+.turf-table tr:hover {
+  background-color: #f8fafc;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.action-buttons button {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.edit-btn:hover {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.delete-btn {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.delete-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.save-btn {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+.save-btn:hover {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.game-badge {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #4338ca;
+  font-weight: 500;
+  padding: 4px 10px;
+  margin: 4px;
+  border-radius: 9999px;
+  font-size: 12px;
+}
+
+/* Gallery */
+.gallery-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Price */
+.price {
+  font-weight: 700;
+  color: #10b981;
+  font-size: 15px;
+}
+
+/* Slots */
+.slots-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slot-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid #e2e8f0;
+}
+
+.slot-price {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.arrow {
+  margin: 0 8px;
+  color: #94a3b8;
+}
+
+.no-slot {
+  color: #9ca3af;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.img-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.banner-thumb,
+.gallery-thumb {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.banner-thumb:hover,
+.gallery-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Modern Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+input:checked + .toggle-slider {
+  background-color: #10b981;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+}

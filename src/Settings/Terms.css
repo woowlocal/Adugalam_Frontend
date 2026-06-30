@@ -1,0 +1,109 @@
+/* PAGE */
+.Terms-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 24px;
+  padding-bottom: 100px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* CARD */
+.Terms-card {
+  width: 100%;
+  background: #fbf6f6;
+  border-radius: 16px;
+  padding: 24px;
+  color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.Terms-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.Terms-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+
+/* BACK BUTTON */
+.back-btn {
+  background: #1f1f1f;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.Terms-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.Terms-content h3 {
+  font-size: 14px;
+  margin: 14px 0 6px;
+  font-weight: 600;
+}
+
+.Terms-content p {
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.Terms-content .bold {
+  font-weight: 700;
+}
+
+.Terms-content ol, .Terms-content ul {
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.Terms-content li {
+  margin-bottom: 6px;
+  text-align: justify;
+}
+
+/* SCROLLBAR */
+.Terms-content::-webkit-scrollbar {
+  width: 4px;
+}
+.Terms-content::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .Terms-page {
+    padding: 20px 16px;
+    padding-bottom: 100px;
+  }
+
+  .Terms-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Terms-header h2 {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,362 @@
+/* ============================================
+   GALLERY STRIP — Thumbnail grid
+   ============================================ */
+.gs-wrapper {
+  padding: 8px 16px 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.gp-section-title4 {
+  font-size: 15px;
+  font-weight: 630;
+  margin-bottom: 4px;
+  margin-top: 5px;
+}
+
+/* Header row */
+.gs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  margin-top: -80px;
+}
+
+.gs-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Images row */
+.gs-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.gs-row::-webkit-scrollbar {
+  height: 3px;
+}
+
+.gs-row::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 999px;
+}
+
+.gs-item {
+  flex: 0 0 auto;
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gs-item:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.gs-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* View All tile */
+.gs-view-all-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.06);
+  border: 2px dashed rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a365d;
+  backdrop-filter: blur(8px);
+}
+
+/* Desktop padding */
+@media (min-width: 768px) {
+  .gs-wrapper {
+    padding-inline: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gs-wrapper {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 8px 12px 16px;
+  }
+
+  .gs-row {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-x: unset;
+    padding-bottom: 0;
+  }
+
+  .gs-item {
+    width: 62px;
+    height: 62px;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .gs-item:active {
+    transform: scale(0.94);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .gs-img {
+    border-radius: 14px;
+  }
+
+  .gs-view-all-tile {
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 14px;
+  }
+}
+
+/* ============================================
+   GALLERY ZOOM POPUP — Compact Center Dialog Card
+   ============================================ */
+/* Overlay Backdrop (dimmed & blurred) */
+.gz-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  /* Slate-toned transparent overlay */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: gzFadeIn 0.25s ease-out;
+  box-sizing: border-box;
+  touch-action: pan-x;
+}
+
+/* Centered Popup Card */
+.gz-popup-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  width: 100%;
+  max-width: 420px;
+  /* Small, compact, beautiful size */
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow:
+    0 30px 60px -15px rgba(15, 23, 42, 0.3),
+    0 10px 20px -10px rgba(15, 23, 42, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: gzScaleIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Close button inside the card */
+.gz-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgb(213, 81, 81);
+  border: 1px solid rgba(15, 23, 42, 0.03);
+  color: black;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.gz-popup-close:hover {
+  background: rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  transform: scale(1.08) rotate(90deg);
+}
+
+.gz-popup-close:active {
+  transform: scale(0.95);
+}
+
+/* Image wrapper within card */
+.gz-popup-image-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #f8fafc;
+  aspect-ratio: 4 / 3;
+  /* Standard beautiful card photo ratio */
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) inset;
+}
+
+/* Image in card */
+.gz-popup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Cover zoom is very premium */
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Image transition slide animations */
+.gz-popup-img.gz-slide-left {
+
+  transform: translateX(-40px) scale(0.97);
+  opacity: 0;
+}
+
+.gz-popup-img.gz-slide-right {
+  transform: translateX(30px) scale(0.97);
+  opacity: 0;
+}
+
+/* Counter display text under image */
+.gz-popup-counter-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  background: rgba(15, 23, 42, 0.05);
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  margin-top: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.03);
+}
+
+/* Floating Navigation Arrows (Absolutely positioned on the sides of the viewport) */
+.gz-popup-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100003;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.gz-popup-arrow:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.gz-popup-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.gz-popup-arrow--prev {
+  left: 24px;
+}
+
+.gz-popup-arrow--next {
+  right: 24px;
+}
+
+/* Animations */
+@keyframes gzFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gzScaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .gz-overlay {
+    padding: 16px;
+  }
+
+  .gz-popup-card {
+    width: calc(100% - 110px);
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .gz-popup-image-wrapper {
+    margin-top: 10px;
+    border-radius: 16px;
+  }
+
+  .gz-popup-close {
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    right: 12px;
+  }
+
+  .gz-popup-counter-text {
+    margin-top: 12px;
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+
+  .gz-popup-arrow {
+    width: 38px;
+    height: 38px;
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+    font-size: 12px;
+  }
+
+  .gz-popup-arrow--prev {
+    left: 12px;
+  }
+
+  .gz-popup-arrow--next {
+    right: 12px;
+  }
+}

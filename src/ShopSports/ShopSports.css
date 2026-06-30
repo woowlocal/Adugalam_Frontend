@@ -1,0 +1,387 @@
+/* ================= ROOT ================= */
+.shop-page1 {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #f8f9;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+/* ================= HERO ================= */
+.shop-hero1 {
+  padding: 40px 20px;
+  text-align: center;
+  background: white;
+}
+
+.shop-hero-tag1 {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.shop-hero-text1 {
+  font-size: 18px;
+  color: #4b5563;
+  margin: 12px 0 24px;
+}
+
+.shop-btn-pr1 {
+  background: black;
+  color: white;
+  padding: 14px 34px;
+  border-radius: 15px;
+  border: none;
+  font-weight: 600;
+}
+
+.shop-btn-pr1:hover {
+  background: #ea530c;
+}
+
+/* ================= SHOP SPORTS WRAPPER ================= */
+.shop-sports {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #f8f9fb;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 40px 8%;
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.section-icon {
+  font-size: 28px;
+  color: #ea530c;
+}
+
+/* ================= CATEGORIES GRID ================= */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+}
+
+.category-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  border-color: #ea530c;
+  box-shadow: 0 8px 24px rgba(234, 83, 12, 0.18);
+}
+
+.category-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 10px 0 4px;
+}
+
+.category-card p {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ================= CATEGORY ICON ================= */
+.category-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 8px;
+  background: linear-gradient(135deg, #fff7ed, #fef3c7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.category-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.category-icon svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+  color: #ea530c;
+}
+
+
+/* ================= HERO ================= */
+.shop-hero1 {
+  padding: 40px 20px;
+  text-align: center;
+  background: white;
+}
+
+.shop-hero-tag1 {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.shop-hero-text1 {
+  font-size: 18px;
+  color: #4b5563;
+  margin: 12px 0 24px;
+}
+
+.shop-btn-pr1 {
+  background: black;
+  color: white;
+  padding: 14px 34px;
+  border-radius: 15px;
+  border: none;
+  font-weight: 600;
+}
+
+.shop-btn-pr1:hover {
+  background: #ea530c;
+}
+
+/* ================= CATEGORY ================= */
+.category-section1 {
+  padding: 50px 8%;
+}
+
+.shop-section-title1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.apples,
+.apples5 {
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 30px;
+}
+
+.shop-category-grid1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.shop-category-card1 {
+  background: white;
+  border: 2px solid black;
+  border-radius: 18px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.shop-category-card1:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 #15803d;
+}
+
+.shop-category-icon1 {
+  width: 90px;
+  height: 90px;
+}
+
+.shop-category-card1 p:first-of-type {
+  color: #ea530c;
+  font-weight: 600;
+}
+
+.shop-category-card1 p:last-of-type {
+  color: #15803d;
+  font-size: 14px;
+}
+
+/* ================= FEATURES ================= */
+.bowl {
+  padding-top: 60px;
+}
+
+.features-section1 {
+  background: white;
+  padding: 60px 8%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.feature-item1 {
+  background: #f9fafb;
+  border: 2px solid #ccc;
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
+}
+
+.feature-item1 h4 {
+  color: #ea530c;
+}
+
+.feature-item1 p {
+  color: #16a34a;
+  font-size: 14px;
+}
+
+/* ================= MARKETPLACE ================= */
+.marketplace-wrapper1 {
+  padding: 70px 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.marketplace-card1 {
+  max-width: 600px;
+  background: white;
+  padding: 45px 35px;
+  border-radius: 22px;
+  text-align: center;
+}
+
+.marketplace-btn1 {
+  margin-top: 20px;
+  background: black;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 15px;
+  border: none;
+}
+
+.marketplace-btn1:hover {
+  background: #ea530c;
+}
+
+/* ================= RETAILER ================= */
+.retailer-section1 {
+  background: #1f2937;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+
+}
+
+.retailer-section1 p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.retailer-btn1 {
+  background: white;
+  color: black;
+  padding: 14px 34px;
+  border-radius: 15px;
+  border: none;
+}
+
+.retailer-btn1:hover {
+  background: #ea530c;
+  color: white;
+}
+
+/* =================================================
+   MOBILE FIX + FEATURES AUTO SCROLL (FINAL)
+   ================================================= */
+
+@media (max-width: 768px) {
+  .shop-hero-tag1 {
+    font-size: 22px;
+  }
+
+  .shop-hero-text1 {
+    font-size: 15px;
+  }
+
+  .shop-btn-pr1,
+  .marketplace-btn1,
+  .retailer-btn1 {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+/* CATEGORY – MOBILE SCROLL */
+@media (max-width: 640px) {
+  .shop-category-grid1 {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .shop-category-card1 {
+    min-width: 80%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
+/* ================= FEATURES AUTO SCROLL ================= */
+@media (max-width: 640px) {
+  .features-section1 {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    gap: 16px;
+    padding: 40px 16px;
+    animation: featureAutoScroll 18s linear infinite;
+  }
+
+  .features-section1:hover {
+    animation-play-state: paused;
+  }
+
+  .feature-item1 {
+    min-width: 85%;
+    flex-shrink: 0;
+  }
+
+  @keyframes featureAutoScroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-60%);
+    }
+  }
+}
+
+/* ================= SAFETY ================= */
+.shop-sports img,
+.shop-sports svg {
+  max-width: 100%;
+}
+
+
+* {
+  box-sizing: border-box;
+}

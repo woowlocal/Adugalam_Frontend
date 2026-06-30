@@ -1,0 +1,103 @@
+.booking-page {
+  padding: 30px;
+  font-family: "spacegrotesk";
+}
+
+.booking-page h2 {
+  color: #0b7d43;
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #198754;
+  color: #fff;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: center;
+  font-size: 14px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* BADGES */
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.paid {
+  background: #198754;
+  color: #fff;
+}
+
+.badge.failed {
+  background: #dc3545;
+  color: #fff;
+}
+
+.badge.refunded {
+  background: #dc3545;
+  color: #fff;
+}
+
+.badge.status.pending {
+  background: #ffc107;
+}
+
+.badge.status.approved {
+  background: #198754;
+  color: #fff;
+}
+
+.badge.status.rejected {
+  background: #dc3545;
+  color: #fff;
+}
+
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn.approve {
+  background: #198754;
+}
+
+.btn.reject {
+  background: #dc3545;
+}
+
+.btn.cancel {
+  background: #6c757d;
+}

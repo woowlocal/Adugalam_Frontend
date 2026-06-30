@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+body {
+
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GLOBAL PAGE TRANSITIONS */
+.route-transition {
+  animation: fadeIn 0.35s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* PREMIUM ANIMATED BACK BUTTON                                               */
+/* -------------------------------------------------------------------------- */
+.animated-back-btn {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #0a7c3c, #19a35a) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0px 4px 12px rgba(10, 124, 60, 0.4) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 100 !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+}
+
+.animated-back-icon {
+  width: 24px !important;
+  height: 24px !important;
+  transition: all 0.3s ease !important;
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+.animated-back-btn:hover {
+  width: 140px !important;
+  border-radius: 50px !important;
+  background: linear-gradient(135deg, #19a35a, #0a7c3c) !important;
+  box-shadow: 0px 6px 16px rgba(10, 124, 60, 0.6) !important;
+}
+
+.animated-back-btn:hover .animated-back-icon {
+  transform: translateY(-200%) !important;
+}
+
+.animated-back-btn::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  content: "Back"; 
+  color: white;
+  font-size: 13px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.animated-back-btn[data-text]::before {
+  content: attr(data-text);
+}
+
+.animated-back-btn:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* -------------------------------------------------------------------------- */
+/* SHARED FIXED HEADER CONTAINER                                              */
+/* -------------------------------------------------------------------------- */
+.gp-headerr {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1440px;
+  z-index: 200000;
+  padding: 0 28px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.gp-headerr > * {
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .gp-headerr {
+    top: 75px;
+    padding: 0 15px;
+    width: 100%;
+    max-width: 100vw;
+  }
+}

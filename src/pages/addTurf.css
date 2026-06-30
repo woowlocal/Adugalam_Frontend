@@ -1,0 +1,78 @@
+.addturf-page {
+  padding: 40px;
+  background: #f4f6f8;
+  min-height: 100vh;
+  font-family: "spacegrotesk";
+}
+
+
+.addturf-page h2 {
+  color: #0f5132;
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+
+.addturf-form {
+  background: #ffffff;
+  max-width: 520px;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+.addturf-form div {
+  margin-bottom: 18px;
+}
+
+
+.addturf-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+
+.addturf-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.addturf-form input:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.15);
+}
+
+
+.addturf-form button {
+  background: #198754;
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.addturf-form button:hover {
+  background: #157347;
+  transform: translateY(-1px);
+}
+
+
+.addturf-form button:disabled {
+  background: #9fc9b3;
+  cursor: not-allowed;
+  transform: none;
+}

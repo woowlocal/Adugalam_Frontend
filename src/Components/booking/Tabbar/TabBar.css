@@ -1,0 +1,35 @@
+/* Relevant styles for TabBar component */
+
+.tab-bar {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  width: 100%; 
+}
+
+.tab-button {
+  flex: 1; 
+  padding: 10px 0;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #666;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab-button.active {
+  color: #008080; 
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #008080; 
+}

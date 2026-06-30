@@ -1,0 +1,228 @@
+/* EditProfile Page */
+.editprofile-page {
+  min-height: 100vh;
+  background: #f5f6fa;
+  padding: 20px 16px 100px;
+  /* bottom padding for fixed Save button */
+  font-family: "Inter", sans-serif;
+  color: #1a1a2e;
+}
+
+/* Header */
+.editprofile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editprofile-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.editprofile-header button {
+  background: #ffffff;
+  border: 1px solid #e8e8f0;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #1a1a2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.editprofile-header button:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Form — centered, max-width on desktop */
+.editprofile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Field wrapper */
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Label */
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7080;
+  margin-bottom: 6px;
+  margin-left: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Input — card/bar style */
+.field input {
+  width: 100%;
+  height: 52px;
+  background: #ffffff;
+  border: 1px solid #e8e8f0;
+  border-radius: 14px;
+  padding: 0 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus {
+  border-color: #4caf76;
+  box-shadow: 0 0 0 3px rgba(76, 175, 118, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Phone input wrapper — card/bar style */
+.phone-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  background: #ffffff;
+  border: 1px solid #e8e8f0;
+  border-radius: 14px;
+  padding: 0 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.phone-input:focus-within {
+  border-color: #4caf76;
+  box-shadow: 0 0 0 3px rgba(76, 175, 118, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.phone-input span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+  margin-right: 8px;
+  line-height: 1;
+}
+
+.phone-input input {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+  box-shadow: none;
+  line-height: 1;
+}
+
+/* Save button — fixed, respects max-width */
+.editprofile-page .save-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 600px;
+  background: #4caf76;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  margin-bottom: 250px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(76, 175, 118, 0.35);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.editprofile-page .save-btn:hover {
+  background: #3d9e65;
+  box-shadow: 0 6px 20px rgba(76, 175, 118, 0.45);
+  transform: translateX(-50%) translateY(-1px);
+}
+
+.editprofile-page .save-btn:active {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .editprofile-page {
+    padding: 16px 12px 90px;
+  }
+
+  .field input,
+  .phone-input {
+    height: 48px;
+    padding: 0 15px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+}
+
+/* ── Error message ── */
+.ep-error {
+  background: rgba(224, 82, 82, 0.08);
+  border: 1px solid rgba(224, 82, 82, 0.25);
+  color: #e05252;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin: 0 auto 14px;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Email change hint ── */
+.ep-hint {
+  font-size: 11.5px;
+  color: #f0a500;
+  margin-top: 5px;
+  margin-left: 4px;
+  display: block;
+}
+
+/* ── Loading state ── */
+.ep-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7080;
+  font-size: 14px;
+}
+
+/* ── Disabled save button ── */
+.editprofile-page .save-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: translateX(-50%);
+}

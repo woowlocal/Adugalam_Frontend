@@ -1,0 +1,176 @@
+.gf-wrapper {
+  padding: 8px 16px 16px;
+  margin-left: -20px;
+  margin-top: 135px;
+ 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+
+.gp-section-title1 {
+  font-size: 15px;
+  font-weight: 630;
+  margin-bottom: 4px;
+  margin-top: -140px;
+}
+
+.gp-section-title3{
+font-size: 15px;
+  font-weight: 630;
+  margin-bottom: 4px;
+  margin-top: -60px;
+}
+
+/* Section titles */
+.gf-section {
+  margin-bottom: 100px;
+}
+
+.gf-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  margin-top: -65px;
+  margin-left: 50px;
+}
+
+/* Ground cards row */
+.gf-card-row {
+  display: flex;
+  gap: 14px;
+  padding: 12px 30px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-top: 15px;
+}
+
+.gf-card-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ground card */
+.gf-ground-card {
+  min-width: 180px;
+  background:rgb(207, 206, 206);
+  border-radius: 14px;
+  padding: 10px ;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+ 
+}
+
+.gf-ground-img {
+  width: 30%;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.gf-ground-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: left;
+  padding-top: 4px;
+}
+
+.gf-ground-name {
+  font-size: 15px;
+  font-weight: 600;
+  
+}
+
+.gf-ground-min {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+
+.gp-section-title2
+{
+  font-size: 15px;
+  font-weight: 630;
+  margin-bottom: 4px;
+  margin-top: -75px;
+}
+
+
+
+/* Facilities */
+.gf-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.gf-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 24px;     /* balanced padding */
+  height: 38px;          /* fixed height */
+  
+  border-radius: 999px;
+  background-color: #16853a;
+  border: 1px solid #16853a;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+  font-size: 14px;       /* equal font size */
+  font-weight: 600;
+  color: white;
+}
+
+
+.gf-chip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #1fb451;
+  font-size: 20px;
+}
+
+.gf-chip-label {
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .gf-wrapper {
+    padding-inline: 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .gf-wrapper {
+    margin-top: 100px;
+    margin-left: 0;
+    padding: 12px;
+  }
+
+  .gf-card-row {
+    width: 100%;
+    padding: 10px;
+    gap: 16px;
+  }
+
+  .gf-ground-card {
+    min-width: 150px;
+  }
+
+}

@@ -1,0 +1,797 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ─── WRAPPER ──────────────────────────────────────────────────
+   Deep navy-teal backdrop — glacier floating above deep water
+   ──────────────────────────────────────────────────────────── */
+.admin-login-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Clean, professional 'Plain Sheet' background */
+  background: #f8fafc !important;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Animated bokeh orbs for depth ── */
+/* Background orbs removed for Plain Sheet look */
+.admin-login-wrapper::before,
+.admin-login-wrapper::after {
+  display: none !important;
+}
+
+@keyframes floatOrb {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(28px, 18px) scale(1.10);
+  }
+}
+
+/* ─── EXTRA BOKEH ORBS (inline with ::before / ::after via JS will be done
+       via a supplementary div class added below if needed; for now two orbs
+       are enough with the wrapper pseudo-elements) ─────────── */
+
+/* ─── CARD ─────────────────────────────────────────────────────
+   Frosted glacier glass floating popup
+   ──────────────────────────────────────────────────────────── */
+.admin-login {
+  position: relative;
+  z-index: 10;
+  width: 440px;
+  padding: 48px 42px 40px;
+  border-radius: 32px;
+
+  /* Layered translucent glacier glass — 2.0 */
+  /* Solid clean card background for Plain Sheet look */
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  /* Icy crystal border */
+  border: 1px solid rgba(255, 255, 255, 0.85);
+
+  /* Multi-layer depth shadows — CHASSIS GLOW */
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.65) inset,
+    0 0 0 4px rgba(180, 220, 255, 0.08) inset,
+    0 12px 36px rgba(50, 130, 220, 0.18),
+    0 24px 68px rgba(35, 100, 195, 0.14),
+    0 55px 120px rgba(15, 60, 150, 0.10);
+
+  /* Popup entry animation */
+  animation: adminCardIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.45s ease,
+    background 0.45s ease,
+    border-color 0.45s ease;
+
+  overflow: hidden;
+}
+
+/* ──── CHASING LIGHT BORDER ──── */
+/* Rotating border removed for Plain Sheet look */
+.admin-login::before {
+  display: none !important;
+}
+/* Inner content mask reset for plain appearance */
+.admin-login::after {
+  display: none !important;
+}
+@keyframes adminBorderRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Hover — elevated glacier glow ── */
+.admin-login:hover {
+  transform: translateY(-6px) scale(1.012);
+  border-color: rgba(135, 202, 255, 0.85);
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.80) inset,
+    0 0 0 4px rgba(160, 218, 255, 0.12) inset,
+    0 14px 44px rgba(45, 135, 225, 0.30),
+    0 34px 90px rgba(28, 108, 200, 0.24),
+    0 0 80px rgba(95, 186, 255, 0.16),
+    0 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+/* ── Popup entry animation — materialises from blur ── */
+@keyframes adminCardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(36px) scale(0.85);
+    filter: blur(12px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  80% {
+    transform: translateY(-5px) scale(1.012);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ─── BRAND ─────────────────────────────────────────────────── */
+.login-brand {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.login-brand .brand-name {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #0a7c3c 0%, #1eb85a 55%, #0a6aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 6px rgba(10, 124, 60, 0.22));
+}
+
+.login-brand .brand-tagline {
+  font-size: 0.78rem;
+  color: #6898b8;
+  letter-spacing: 0.5px;
+  margin-top: 3px;
+}
+
+.login-divider {
+  width: 54px;
+  height: 2px;
+  background: linear-gradient(90deg, #0a7c3c, rgba(100, 190, 255, 0.55), transparent);
+  margin: 16px auto 22px;
+  border-radius: 2px;
+}
+
+/* ─── HEADINGS ──────────────────────────────────────────────── */
+.admin-login h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a2e3e;
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+
+.admin-login-note {
+  text-align: center;
+  font-size: 0.80rem;
+  color: #6898b8;
+  margin-bottom: 26px;
+  line-height: 1.55;
+}
+
+/* ─── INPUTS ────────────────────────────────────────────────── */
+.input-group {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #4a7290;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 13px 18px;
+
+  /* Frosted glass input surface */
+  background: rgba(255, 255, 255, 0.60);
+  border: 1.5px solid rgba(175, 218, 255, 0.58);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 14px;
+  color: #1a2e3e;
+  font-size: 0.92rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  outline: none;
+  box-sizing: border-box;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.22s;
+}
+
+.input-group input::placeholder {
+  color: #8aaec8;
+  font-weight: 400;
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.80);
+  border-color: rgba(10, 124, 60, 0.52);
+  box-shadow:
+    0 0 0 3px rgba(10, 124, 60, 0.13),
+    0 2px 10px rgba(75, 155, 220, 0.14);
+  transform: translateY(-1px);
+}
+
+/* ─── PASSWORD WRAPPER ──────────────────────────────────────── */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 48px;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8aaec8;
+  border-radius: 8px;
+  transition: color 0.22s, background 0.22s;
+  outline: none;
+}
+
+.eye-toggle:hover {
+  color: #0a7c3c;
+  background: rgba(10, 124, 60, 0.10);
+}
+
+.eye-toggle svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ─── FORGOT PASSWORD ───────────────────────────────────────── */
+.forgot-password-link {
+  text-align: right;
+  margin-top: -4px;
+  margin-bottom: 22px;
+}
+
+.forgot-password-link a {
+  font-size: 0.80rem;
+  color: #0a7c3c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.22s;
+}
+
+.forgot-password-link a:hover {
+  color: #19a35a;
+  text-decoration: underline;
+}
+
+/* ─── LOGIN BUTTON ──────────────────────────────────────────── */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #0a7c3c, #19a35a);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(10, 124, 60, 0.32);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(10, 124, 60, 0.46);
+  background: linear-gradient(135deg, #0d9950, #1dbe65);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(10, 124, 60, 0.28);
+}
+
+/* ─── ERROR ─────────────────────────────────────────────────── */
+.error {
+  background: rgba(255, 240, 240, 0.72);
+  border: 1px solid rgba(220, 130, 130, 0.40);
+  color: #c0392b;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+/* ─── WELCOME POPUP OVERLAY ──────────────────────────────────── */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 14, 30, 0.55);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  animation: overlayFadeIn 0.35s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ─── WELCOME CARD — glacier glass popup ── */
+.welcome-card {
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.84) 0%,
+      rgba(228, 246, 255, 0.76) 40%,
+      rgba(210, 235, 255, 0.70) 75%,
+      rgba(232, 250, 255, 0.78) 100%);
+  backdrop-filter: blur(32px) saturate(185%);
+  -webkit-backdrop-filter: blur(32px) saturate(185%);
+  border: 1.5px solid rgba(185, 222, 255, 0.68);
+  border-radius: 26px;
+  padding: 38px 42px;
+  text-align: center;
+  width: 320px;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.65) inset,
+    0 10px 40px rgba(45, 130, 225, 0.24),
+    0 28px 80px rgba(25, 90, 190, 0.16),
+    0 2px 10px rgba(0, 0, 0, 0.18);
+  animation: popupScale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer top of welcome card */
+.welcome-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg,
+      transparent 5%,
+      rgba(155, 212, 255, 0.80) 25%,
+      rgba(220, 246, 255, 1.00) 50%,
+      rgba(155, 212, 255, 0.80) 75%,
+      transparent 95%);
+  border-radius: 26px 26px 0 0;
+}
+
+@keyframes popupScale {
+  from {
+    opacity: 0;
+    transform: scale(0.72) translateY(16px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.welcome-icon {
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  animation: iconBounce 0.65s ease-out 0.18s both;
+  display: block;
+}
+
+@keyframes iconBounce {
+  0% {
+    transform: scale(0) rotate(-20deg);
+  }
+
+  70% {
+    transform: scale(1.15) rotate(6deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.welcome-card h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #0a7c3c, #1eb858);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.welcome-card p {
+  color: #5a8aaa;
+  font-size: 0.88rem;
+  margin-bottom: 22px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+.welcome-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(180, 220, 255, 0.30);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.welcome-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0a7c3c, #19a35a, #0a6aff);
+  border-radius: 4px;
+  animation: progressShrink 2.5s linear forwards;
+}
+
+@keyframes progressShrink {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .admin-login {
+    width: 90%;
+    margin: 20px auto;
+    padding: 32px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .login-brand .brand-name {
+    font-size: 1.8rem;
+  }
+
+  .admin-login h2 {
+    font-size: 1.25rem;
+  }
+
+  .welcome-card {
+    width: 90%;
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .admin-login {
+    width: 95%;
+    padding: 24px 15px;
+  }
+  
+  .input-group input {
+    padding: 11px 14px;
+    font-size: 0.88rem;
+  }
+}
+
+/* ================================================================
+   CINEMATIC PORTAL TRANSITION OVERLAY
+   ================================================================ */
+
+.lt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #0a1828 0%, #020810 100%);
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.lt-video-wrapper {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  width: 85vw;
+  max-width: 520px;
+  aspect-ratio: 16/9;
+  transform-style: preserve-3d;
+  transform: perspective(1200px) rotateX(0deg) scale(1);
+  transition:
+    width 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    height 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 1.2s ease,
+    filter 1s ease;
+  box-shadow:
+    0 0 40px rgba(34, 197, 94, 0.35),
+    0 0 80px rgba(34, 197, 94, 0.12),
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  will-change: transform, width, height, border-radius;
+}
+
+.lt-video-wrapper--enter {
+  animation: lt-enter-pulse 0.6s ease forwards;
+}
+
+@keyframes lt-enter-pulse {
+  0% {
+    transform: perspective(1200px) scale(0.4) rotateX(8deg);
+    opacity: 0;
+  }
+
+  60% {
+    transform: perspective(1200px) scale(1.04) rotateX(-2deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: perspective(1200px) scale(1) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.lt-video-wrapper--expand {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  aspect-ratio: unset;
+  border-radius: 0 !important;
+  transform: perspective(1200px) scale(1.02) rotateX(0deg) !important;
+  box-shadow: 0 0 100px rgba(10, 124, 60, 0.3) inset !important;
+  filter: brightness(1.1) saturate(1.2) !important;
+}
+
+.lt-video-wrapper--fadeout {
+  width: 100vw !important;
+  height: 100vh !important;
+  aspect-ratio: unset;
+  border-radius: 0 !important;
+  transform: perspective(1200px) scale(1) !important;
+  opacity: 1;
+}
+
+.lt-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lt-video-glow {
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.35), transparent 70%);
+  z-index: -1;
+  animation: lt-glow-pulse 2s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes lt-glow-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+.lt-shadow-ring {
+  position: absolute;
+  bottom: -30px;
+  left: 10%;
+  width: 80%;
+  height: 60px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6), transparent 70%);
+  filter: blur(18px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.lt-glow-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  pointer-events: none;
+  animation: lt-ring-expand 3s ease-out infinite;
+}
+
+.lt-glow-ring--1 {
+  width: 300px;
+  height: 300px;
+  animation-delay: 0s;
+}
+
+.lt-glow-ring--2 {
+  width: 500px;
+  height: 500px;
+  animation-delay: 0.8s;
+}
+
+.lt-glow-ring--3 {
+  width: 720px;
+  height: 720px;
+  animation-delay: 1.6s;
+}
+
+@keyframes lt-ring-expand {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.lt-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.lt-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.8), transparent 70%);
+  animation: lt-float 4s ease-in-out infinite;
+  opacity: 0;
+}
+
+.lt-particle--0 {
+  width: 6px;
+  height: 6px;
+  top: 15%;
+  left: 10%;
+  animation-delay: 0.2s;
+  animation-duration: 3.8s;
+}
+
+.lt-particle--1 {
+  width: 4px;
+  height: 4px;
+  top: 70%;
+  left: 85%;
+  animation-delay: 0.9s;
+  animation-duration: 4.5s;
+}
+
+.lt-particle--2 {
+  width: 8px;
+  height: 8px;
+  top: 45%;
+  left: 5%;
+  animation-delay: 1.5s;
+  animation-duration: 3.2s;
+}
+
+.lt-particle--3 {
+  width: 5px;
+  height: 5px;
+  top: 25%;
+  left: 90%;
+  animation-delay: 0.5s;
+  animation-duration: 5.1s;
+}
+
+.lt-particle--4 {
+  width: 7px;
+  height: 7px;
+  top: 80%;
+  left: 30%;
+  animation-delay: 1.1s;
+  animation-duration: 4.2s;
+}
+
+.lt-particle--5 {
+  width: 3px;
+  height: 3px;
+  top: 60%;
+  left: 60%;
+  animation-delay: 0.7s;
+  animation-duration: 3.6s;
+}
+
+@keyframes lt-float {
+  0% {
+    transform: translateY(0px) scale(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.9;
+    transform: translateY(-10px) scale(1);
+  }
+
+  80% {
+    opacity: 0.6;
+    transform: translateY(-40px) scale(0.8);
+  }
+
+  100% {
+    transform: translateY(-70px) scale(0);
+    opacity: 0;
+  }
+}
+
+.lt-curtain {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1000;
+  transition: opacity 0.8s ease;
+}
+
+.lt-curtain--fadeout {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .lt-video-wrapper {
+    width: 88vw;
+    margin: 0 auto;
+  }
+}

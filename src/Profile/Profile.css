@@ -1,0 +1,102 @@
+/* Profile Page */
+body {
+  margin: 0;
+}
+
+.profile-page {
+  min-height: 100vh;
+  background: #f5f6fa;
+  padding: 24px 16px;
+  color: #1a1a2e;
+}
+
+/* Title */
+.profile-title {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* List container — centered, max-width on desktop */
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Individual row — card/bar style */
+.profile-item {
+  background: #ffffff;
+  border: 1px solid #e8e8f0;
+  border-radius: 14px;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+/* Hover lift effect */
+.profile-item:hover {
+  background: #f9fafb;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  transform: translateY(-2px);
+}
+
+/* Active press */
+.profile-item:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Label text */
+.profile-item span {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+/* Leading icons */
+.profile-item > svg:first-child {
+  font-size: 18px;
+  color: #4caf76;
+  flex-shrink: 0;
+}
+
+/* Chevron icon */
+.profile-item > svg:last-child {
+  font-size: 13px;
+  color: #b0b0c0;
+  flex-shrink: 0;
+}
+
+/* Logout special color */
+.profile-item.logout > svg:first-child,
+.profile-item.logout span {
+  color: #e05252;
+}
+
+/* Mobile: full container width naturally; tweak padding slightly */
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 20px 12px;
+  }
+
+  .profile-item {
+    padding: 14px 15px;
+    border-radius: 12px;
+  }
+
+  .profile-item span {
+    font-size: 14px;
+  }
+}
+

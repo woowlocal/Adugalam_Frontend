@@ -1,0 +1,142 @@
+
+.dashboard-page {
+  width: 100%;
+  background: #f5f7f6;
+  overflow-x: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+
+.dashboard-page .dashboard {
+  padding: 30px;
+}
+
+.dashboard-page .dashboard-header {
+  background: #ffffff;
+  padding: 22px 28px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.dashboard-page .dashboard-header h2 {
+  margin: 0;
+  color: #0b7d43;
+  font-size: 22px;
+}
+
+.dashboard-page .dashboard-header p {
+  margin-top: 6px;
+  color: #555;
+  font-size: 14px;
+}
+
+
+.dashboard-page .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.dashboard-page .stat-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-page .stat-icon {
+  font-size: 28px;
+  color: #0b7d43;
+}
+
+.dashboard-page .stat-card h3 {
+  margin: 12px 0 6px;
+  color: #0b7d43;
+  font-size: 26px;
+}
+
+.dashboard-page .stat-card p {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+.dashboard-page .bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.dashboard-page .info-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-page .card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0b7d43;
+  margin-bottom: 10px;
+}
+
+.dashboard-page .info-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard-page .info-card li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+
+.dashboard-page .status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dashboard-page .status-dot.online {
+  background: green;
+}
+
+.dashboard-page .status-dot.offline {
+  background: red;
+}
+
+
+@media (max-width: 768px) {
+  .dashboard-page .dashboard {
+    padding: 12px;
+  }
+
+  .dashboard-page .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .dashboard-page .bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-page .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.dashboard-loading {
+  padding: 40px;
+  font-size: 18px;
+}

@@ -1,0 +1,515 @@
+/* ============================================================
+   FEATURED EVENTS – Enhanced Design System
+   Matches Home page aesthetic: green accent, clean white,
+   premium cards, smooth animations, fully mobile responsive.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ─── Global Reset within scope ── */
+.featured-events-page,
+.featured-events-page * {
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* ─── Page Wrapper ─── */
+.featured-events-page {
+  font-family: 'Inter', sans-serif;
+  background: #f8fafb;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ─── Fade-In Animation ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.93);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================================
+   CATEGORY SECTION
+   ============================================================ */
+.category-section {
+  padding: 36px 48px 28px;
+  /* background: #ffffff; */
+  animation: fadeInUp 0.55s ease both;
+}
+
+.category-section h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  /* border: 1.5px solid #e5e7eb; */
+  border-radius: 16px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 32px;
+  cursor: pointer;
+  /* animation: fadeInScale 0.5s ease both; */
+}
+
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  /* background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  /* box-shadow: 0 4px 12px rgba(21, 128, 61, 0.12); */
+  /* border: 1px solid #bbf7d0; */
+}
+
+.category-icon {
+  font-size: 22px;
+  color: #15803d;
+}
+
+.category-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.category-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.category-card:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.category-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+
+/* ============================================================
+   FEATURED EVENTS SECTION
+   ============================================================ */
+.events-section {
+  padding: 36px 48px 44px;
+  /* background: #ffffff; */
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+/* ─── Top Row: Title + Actions ─── */
+.featured-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.featured-top h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.4px;
+  position: relative;
+}
+
+.featured-top h3::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 3px;
+  background: linear-gradient(90deg, #15803d, #22c55e);
+  border-radius: 4px;
+  margin-top: 6px;
+}
+
+.featured-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Filter Dropdown */
+.featured-filter {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 13px;
+  font-weight: 600;
+  /* background: #fff; */
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.featured-filter:focus {
+  outline: none;
+  border-color: #15803d;
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.10);
+}
+
+/* View All Button */
+.view-all-btn {
+  background: linear-gradient(135deg, #0a7c3c, #15803d);
+  color: #fff;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  letter-spacing: 0.2px;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 3px 12px rgba(21, 128, 61, 0.25);
+}
+
+.view-all-btn:hover {
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(21, 128, 61, 0.35);
+}
+
+/* ============================================================
+   POSTER GRID CARDS - FEATURED  (matches NewOnAdugalam size)
+   ============================================================ */
+
+/* Scrollable horizontal strip — default view */
+.poster-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  padding: 4px 4px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.poster-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* 4-column desktop grid when View All is active */
+.poster-grid.poster-grid--all {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow-x: hidden;
+  scroll-snap-type: none;
+}
+
+.featured-events-page .poster-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  min-width: 220px;
+  width: 220px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  cursor: pointer;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+
+  /* Glacier glass — matches NewOnAdugalam */
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(220, 252, 231, 0.80) 50%,
+      rgba(187, 247, 208, 0.72) 100%);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(187, 247, 208, 0.65);
+  box-shadow:
+    0 2px 12px rgba(21, 128, 61, 0.10),
+    0 1px 0 rgba(255, 255, 255, 0.70) inset,
+    0 -1px 0 rgba(134, 239, 172, 0.18) inset;
+  transition: transform 0.34s cubic-bezier(0.34, 1.46, 0.64, 1),
+    box-shadow 0.34s ease, border-color 0.28s ease;
+}
+
+.featured-events-page .poster-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(21, 128, 61, 0.35);
+  box-shadow:
+    0 16px 40px rgba(21, 128, 61, 0.20),
+    0 6px 18px rgba(21, 128, 61, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+}
+
+.featured-events-page .poster-image {
+  overflow: hidden;
+  position: relative;
+  border-radius: 14px 14px 0 0;
+  margin: 8px 8px 0;
+}
+
+.featured-events-page .poster-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.featured-events-page .poster-card:hover .poster-image img {
+  transform: scale(1.08);
+}
+
+.poster-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+.featured-events-page .poster-info {
+  padding: 8px 10px 4px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: transparent;
+}
+
+.featured-events-page .poster-info h4 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1a2a3a;
+  line-height: 1.35;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.25s ease;
+}
+
+.featured-events-page .poster-card:hover .poster-info h4 {
+  color: #15803d;
+}
+
+.featured-events-page .poster-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: #5a7080;
+  font-weight: 500;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.featured-events-page .poster-meta {
+  font-size: 11px;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.poster-price {
+  font-size: 13px;
+  font-weight: 800;
+  color: #15803d;
+  margin-top: 2px;
+  background: transparent;
+  padding: 0;
+}
+
+.featured-events-page .poster-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px 10px;
+  border-top: 1px solid rgba(187, 247, 208, 0.60);
+  background: transparent;
+  margin-top: auto;
+}
+
+.poster-map-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(240, 253, 244, 0.80);
+  color: #15803d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid rgba(187, 247, 208, 0.65);
+  font-size: 0.8rem;
+  transition: background 0.2s ease;
+}
+
+.poster-map-btn:hover {
+  background: #dcfce7;
+}
+
+.featured-events-page .poster-book {
+  background: linear-gradient(135deg, #15803d, #22c55e);
+  color: #fff;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  flex: unset;
+  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 3px 10px rgba(21, 128, 61, 0.28);
+}
+
+.featured-events-page .poster-card:hover .poster-book {
+  background: linear-gradient(135deg, #166534, #15803d);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(21, 128, 61, 0.38);
+}
+
+.fe-status-msg {
+  text-align: center;
+  color: #94a3b8;
+  padding: 48px 0;
+  font-size: 0.92rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .poster-grid.poster-grid--all {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-section,
+  .events-section {
+    padding: 28px 32px 36px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .category-section,
+  .events-section {
+    padding: 24px 20px 32px;
+  }
+
+  .poster-grid.poster-grid--all {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .categories {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .featured-top h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-events-page .poster-card {
+    min-width: 200px;
+    width: 200px;
+  }
+
+  .poster-grid.poster-grid--all {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  .categories {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-card {
+    flex-direction: row;
+    padding: 10px 20px;
+    border-radius: 999px;
+    min-width: max-content;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 12px rgba(21, 128, 61, 0.08);
+    /* background: linear-gradient(145deg, #ffffff 0%, #f4fdf8 100%); */
+    gap: 12px;
+  }
+
+  .icon-box {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0;
+  }
+
+  .category-icon {
+    font-size: 16px;
+  }
+
+  .category-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .featured-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .featured-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

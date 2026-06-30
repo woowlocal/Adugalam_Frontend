@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+/* @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"); */
+
+/* ================= DESKTOP ================= */
+/* ================= DESKTOP ================= */
+
+.hit-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    height: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Space Grotesk", sans-serif;
+    background: #ffffff;
+}
+
+/* LEFT */
+.hit-left {
+    max-width: 650px;
+}
+
+.hit-hashtag {
+    color: #b0b0b0;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.hit-play {
+    font-size: 96px;
+    font-weight: 700;
+    color: #18b95c;
+    margin: 0;
+}
+
+.hit-like {
+    font-size: 64px;
+    font-weight: 600;
+    color: #18b95c;
+    margin: 10px 0;
+}
+
+.hit-brand {
+    font-size: 120px;
+    font-weight: 800;
+    color: #18b95c;
+    margin: 0;
+}
+
+/* RIGHT */
+.hit-right {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Hit me! */
+.hit-text {
+    font-size: 56px;
+    font-weight: 300;
+    font-style: italic;
+    color: #b0b0b0;
+    margin-bottom: 40px;
+}
+
+/* THANK YOU */
+.hit-heart-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hit-you {
+    font-size: 88px;
+    font-family: "Times New Roman", serif;
+    font-weight: 500;
+    color: #000;
+}
+
+.hit-heart-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hit-heart {
+    width: 90px;
+    height: auto;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 3s infinite ease-in-out;
+}
+
+@keyframes pulse-slow {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hit-count-bottom {
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #18b95c;
+}
+
+/* made with love */
+.hit-made {
+    margin-top: 18px;
+    font-size: 18px;
+    font-style: italic;
+    color: #666;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+    .hit-wrapper {
+        height: auto;
+        padding: 24px 20px;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hit-left {
+        max-width: 60%;
+    }
+
+    .hit-hashtag {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .hit-play {
+        font-size: 32px;
+        margin-bottom: -5px;
+        margin-right: 400px;
+    }
+
+    .hit-like {
+        font-size: 38px;
+        margin: 10px 0;
+        line-height: 1.2;
+    }
+
+    .hit-brand {
+        font-size: 56px;
+        line-height: 1;
+        margin-top: 5px;
+    }
+
+    .hit-right {
+        margin-bottom: 70px;
+        width: 40%;
+        align-items: flex-end;
+    }
+
+    .hit-text {
+        font-size: 32px;
+        margin-bottom: 0px;
+    }
+
+    .hit-heart {
+        width: 40px;
+    }
+
+    .hit-you {
+        font-size: 25px;
+    }
+
+    .hit-made {
+        margin-top: 8px;
+        font-size: 20px;
+    }
+}

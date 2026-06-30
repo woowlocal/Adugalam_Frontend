@@ -1,0 +1,594 @@
+.heading-section11 {  
+  margin-top:-20px;
+  text-align: center;
+  padding-top: 70px;
+  font-family: 'Space Grotesk', sans-serif;
+  padding-bottom: 50px;
+  overflow-x: hidden;
+}
+
+.grade11 {
+  margin: 0;  
+  max-height: 50vh;
+  max-width: 100%;
+}
+
+.subtitle11 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #4b5563;
+  text-align: center;
+  max-width: 650px;
+  line-height: 1.6;
+  margin: 10px auto 0 auto;
+}
+.heading-section11 h1{
+  font-size: 34px;
+}
+.heading-section11 p{
+  font-size: 15px;
+}
+.button-row11 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  gap: 25px;
+}
+
+.venue-btn11:hover{
+  background: #ea530c;
+  color: #fff;
+  border-color: #ea530c;
+  transform: scale(1.08);
+}
+
+.start5{
+  margin-top: 35px;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  padding: 11px 28px;
+  border-radius: 10px;
+  border: 1.5px solid #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.start5:hover{
+  background: #ea530c;
+  color: #fff;
+  border-color: #ea530c;
+  transform: scale(1.08);
+}
+
+.venue-btn11 {
+  margin-top: 35px;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  padding: 11px 28px;
+  border-radius: 10px;
+  border: 1.5px solid #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popular-heading11 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #000;
+  margin-top: 100px;
+}
+
+.apple{
+  font-size: 18px;
+  color: #4b5563;
+}
+
+.sports-row11 {
+  display: flex;
+  padding-left: 60px;
+  padding-right: 60px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.sport-card11 {
+  width: 190px;
+  height: 210px;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 18px;
+  background: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  box-shadow: 5px 5px 0px #000;
+  margin-bottom: 40px;
+}
+
+.icon11 {
+  margin-top: -5px;
+  width: 110px;
+  height: 100px;
+}
+
+.sport-card11 h3 {
+  color: #ea530c;
+  margin-top: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.play11 {
+  font-size: 10px;
+  margin: 3px 0;
+  color: #15803d;
+}
+
+.venue11 {
+  font-size: 10px;
+  margin: 5px 0px;
+  color: #15803d;
+}
+
+.star11 {
+  color: #15803d;
+  margin-top: 3px;
+  width: 35px;
+  height: 25px;
+}
+
+.sport-card11:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #15803d;
+  transition: 0.2s ease-in-out;
+}
+
+.head11 {
+  color: black;
+}
+
+.how11 {
+  color: black;
+}
+
+.how-works-heading11 {
+  margin-top: 80px;
+  color: black;
+  font-size: 18px;
+  font-weight: 10px;
+}
+.how-works-heading11 h2{
+  font-size: 30px;
+  color: #000;
+}
+
+.how-row11 {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 65px;
+  padding-right: 65px;
+  margin-top: 50px;
+}
+
+.how-card11 {
+  width: 290px;
+  padding: 25px;
+  border: 1px solid #000;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 5px 5px 0px #000;
+  font-family: "Space Grotesk", sans-serif;
+  text-align: left;
+}
+
+.how-icon11 {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 12px;
+  color: #15803d;
+}
+
+.how-card11 h3 {
+  color: #ea530c;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.how-sub11 {
+  font-size: 10px;
+  color: #6b7280;
+  line-height: 1.45;
+  margin-top: 20px;
+}
+
+.how-card11:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #15803d;
+  transition: 0.2s ease-in-out;
+}
+
+.interest-card11 {
+  width: 56%;
+  margin: 120px auto 0 auto;
+  padding: 45px;
+  background: #f3f4f6;
+  border: 1px solid #000;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0px #000;
+  font-family: "Space Grotesk", sans-serif;
+  text-align: left;
+}
+.interest-header11 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.interest-sub11 {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 760px;
+  padding-left: 40px;
+}
+.interest-btn11 {
+  z-index: 2;
+  margin-top: 25px;
+  width: 190px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.interest-btn11:hover {
+  background: #ea530c;
+  color: #fff;
+  border-color: #ea530c;
+  transform: scale(1.08);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE STYLES ONLY
+   ========================= */
+
+/* -------- Below 1440px -------- */
+@media (max-width: 1439px) {
+  .heading-section11 {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .sports-row11,
+  .how-row11 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .button-row11 {
+    justify-content: center;
+    padding-left: 0;
+  }
+}
+
+/* -------- Large tablets & below -------- */
+@media (max-width: 1200px) {
+  .button-row11 {
+    padding-left: 0;
+    justify-content: center;
+  }
+
+  .sports-row11 {
+    justify-content: center;
+    gap: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .how-row11 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .how-card11 {
+    width: 45%;
+  }
+}
+
+/* -------- Tablets -------- */
+@media (max-width: 992px) {
+  .sports-row11 {
+    gap: 25px;
+  }
+
+  .sport-card11 {
+    width: 240px;
+  }
+
+  .how-card11 {
+    width: 90%;
+  }
+
+  .interest-card11 {
+    width: 80%;
+  }
+}
+
+/* -------- Mobile -------- */
+@media (max-width: 768px) {
+  .heading-section11 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .head11 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .subtitle11 {
+    font-size: 15px;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .apple {
+    font-size: 14px;
+    padding: 0 15px;
+    display: block;
+  }
+
+  .button-row11 {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    gap: 15px;
+  }
+
+  .start5,
+  .venue-btn11 {
+    margin-left: 0;
+    margin-top: 0;
+    width: 200px;
+  }
+
+  .popular-heading11 {
+    margin-top: 50px;
+    font-size: 22px;
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  .sports-row11 {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 20px 15px 30px 15px;
+    margin-left: 0;
+    margin-right: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+
+  .sport-card11 {
+    width: 160px;
+    min-width: 160px;
+    height: 180px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 15px;
+  }
+
+  .sport-card11 .icon11 {
+    width: 70px;
+    height: 60px;
+  }
+
+  .sport-card11 h3 {
+    font-size: 16px;
+  }
+
+  .sport-card11 p {
+    font-size: 11px;
+  }
+
+  .how-row11 {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 20px 15px 30px 15px;
+    margin-left: 0;
+    margin-right: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+
+  .how-card11 {
+    width: 240px;
+    min-width: 240px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 20px;
+  }
+
+  .how-works-heading11 {
+    margin-top: 50px;
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  .how-works-heading11 h2 {
+    font-size: 24px;
+  }
+
+  .interest-card11 {
+    width: 90%;
+    padding: 25px 20px;
+    margin: 60px auto 0 auto;
+  }
+
+  .interest-header11 {
+    font-size: 18px;
+    justify-content: center;
+  }
+
+  .interest-sub11 {
+    padding-left: 0;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .interest-btn11 {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+}
+
+/* -------- Small mobile -------- */
+@media (max-width: 480px) {
+  .heading-section11 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .head11 {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .subtitle11 {
+    font-size: 13px;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .apple {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .start5,
+  .venue-btn11 {
+    width: 180px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .popular-heading11 {
+    margin-top: 40px;
+    font-size: 20px;
+  }
+
+  .sports-row11 {
+    padding: 15px 10px 25px 10px;
+    gap: 12px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .sport-card11 {
+    width: 145px;
+    min-width: 145px;
+    height: 170px;
+    padding: 12px;
+  }
+
+  .sport-card11 .icon11 {
+    width: 60px;
+    height: 50px;
+  }
+
+  .sport-card11 h3 {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .sport-card11 p {
+    font-size: 10px;
+  }
+
+  .how-row11 {
+    padding: 15px 10px 25px 10px;
+    gap: 12px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .how-card11 {
+    width: 220px;
+    min-width: 220px;
+    padding: 15px;
+  }
+
+  .how-works-heading11 {
+    margin-top: 40px;
+  }
+
+  .how-works-heading11 h2 {
+    font-size: 20px;
+  }
+
+  .interest-card11 {
+    width: 92%;
+    padding: 20px 15px;
+    margin: 50px auto 0 auto;
+  }
+
+  .interest-header11 {
+    font-size: 16px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .interest-sub11 {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .interest-btn11 {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}

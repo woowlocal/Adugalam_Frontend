@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+/* DESKTOP */
+
+.tvl-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    height: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Space Grotesk", sans-serif;
+    background: #ffffff;
+}
+
+/* LEFT */
+.tvl-left {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hashtag {
+    color: #18b95c;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.Play1 {
+    font-size: 60px;
+    font-weight: 600;
+    color: #e5e5e5;
+    margin-bottom: 0;
+    line-height: 1.1;
+}
+
+.like-pro {
+    font-size: 80px;
+    font-weight: 800;
+    color: #e5e5e5;
+    margin-top: -5px;
+    line-height: 1.1;
+}
+
+.adugalam {
+    font-size: 120px;
+    font-weight: 700;
+    color: #e5e5e5;
+    margin-top: -10px;
+    line-height: 1.0;
+}
+
+/* RIGHT */
+.tvl-right {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.hit-me {
+    font-size: 64px;
+    font-weight: 300;
+    font-style: italic;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+.heart-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.heart-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 3s infinite ease-in-out;
+}
+
+@keyframes pulse-slow {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+}
+
+.heart-pressed {
+    transform: scale(0.85);
+}
+
+.hit-counter-badge {
+    margin-top: -30px;
+    background: #18b95c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .tvl-wrapper {
+        height: auto;
+        padding: 24px 20px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tvl-left {
+        max-width: 55%;
+        text-align: left;
+    }
+
+    .hashtag {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .Play1 {
+        font-size: 32px;
+        margin-bottom: 0;
+        line-height: 1.1;
+    }
+
+    .like-pro {
+        font-size: 38px;
+        margin-top: 2px;
+        line-height: 1.2;
+    }
+
+    .adugalam {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-top: 2px;
+    }
+
+    .tvl-right {
+        width: 40%;
+        align-items: flex-end;
+    }
+
+    .hit-me {
+        font-size: 30px;
+        margin-bottom: 10px;
+        text-align: right;
+    }
+
+    .heart-img {
+        max-width: 140px;
+    }
+}

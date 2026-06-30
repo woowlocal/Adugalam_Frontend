@@ -1,0 +1,17 @@
+/* src/styles/BookingList.css */
+
+.booking-list-container {
+  padding: 30px; /* Increased padding for desktop */
+  height: 100%; /* Take full height of its parent */
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 20px;
+  /* background-color: #222; */
+}
+
+.list-title {
+  font-size: 2.2em; /* Larger title for desktop */
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+}

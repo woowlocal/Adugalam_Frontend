@@ -1,0 +1,401 @@
+/* =========================================
+   EVENTS PAGE – FULL RESPONSIVE MERGED CSS
+   ========================================= */
+
+.heading-section1 {
+  margin-top: -25px;
+  text-align: center;
+  padding-top: 70px;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+.subtitle1,
+.subtitle2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #4b5563;
+  text-align: center;
+  max-width: 750px;
+  line-height: 1.6;
+  margin: 10px auto 0 auto;
+}
+
+.subtitle2 {
+  margin-top: -10px;
+}
+
+.button-row {
+  gap: 25px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.start1,
+.venue-btn1 {
+  padding: 14px 32px;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  margin-top: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.start1:hover,
+.venue-btn1:hover {
+  background-color: #ea580c;
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(234, 88, 12, 0.6);
+}
+
+.calender {
+  width: 15px;
+  height: 15px;
+  filter: brightness(0) invert(1);
+}
+
+.popular-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #000;
+  margin-top: 80px;
+}
+
+.new {
+  padding-top: 20px;
+  font-size: 17px;
+  color: #4b5563;
+}
+
+/* ======================
+   EVENTS ROWS
+   ====================== */
+
+.how-row16 {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.how-row2 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.how-row3 {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 100px;
+  flex-wrap: wrap;
+}
+
+/* ======================
+   EVENT CARDS
+   ====================== */
+
+.how-card11 {
+  width: 290px;
+  padding: 25px;
+  border: 1px solid #000;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 5px 5px 0px #000;
+  font-family: "Space Grotesk", sans-serif;
+  text-align: left;
+}
+
+.how-card11:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #000;
+  transition: 0.2s ease-in-out;
+}
+
+.how-card11 h4 {
+  color: #ea530c;
+}
+
+.how-card2 {
+  width: 300px;
+  height: 80px;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 5px 5px 0px #000;
+  font-family: "Space Grotesk", sans-serif;
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  transition: 0.2s ease-in-out;
+}
+
+.how-card2:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #15803d;
+}
+
+.how-card2 h4 {
+  font-size: 14px;
+}
+
+.how-sub2 {
+  font-size: 13px;
+}
+
+.how-card3 {
+  width: 300px;
+  padding: 25px;
+  border: 1px solid #000;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 5px 5px 0px #000;
+  text-align: center;
+}
+
+.how-card3 h4 {
+  font-size: 20px;
+  margin-top: 5px;
+  color: #ea530c;
+}
+
+.how-sub3 {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.calender2 {
+  width: 40px;
+  height: 40px;
+  color: #16a34a;
+}
+
+/* ======================
+   BUTTONS & TEXT
+   ====================== */
+
+.learnmore {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid;
+  height: 40px;
+  font-size: 13px;
+  background-color: #ea530c;
+  color: white;
+}
+
+.emoji {
+  font-size: 30px;
+}
+
+.location {
+  width: 15px;
+  height: 15px;
+}
+
+.how-sub1 {
+  color: #6d6c6c;
+  margin-top: 22px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ======================
+   FOOTER SECTION
+   ====================== */
+
+.last {
+  margin-top: 70px;
+  background-color: black;
+  padding: 40px 20px;
+}
+
+.head1 {
+  color: white;
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.venue-btn2 {
+  background: #fff;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.venue-btn2:hover {
+  background: #ea530c;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* =====================================================
+   TABLET RESPONSIVE
+   ===================================================== */
+
+@media screen and (max-width: 768px) {
+
+  .heading-section1 {
+    padding: 55px 16px 100px;
+  }
+
+  .popular-heading,
+  .head {
+    font-size: 26px;
+    text-align: left;
+  }
+
+  .subtitle1,
+  .subtitle2,
+  .new {
+    font-size: 15px;
+    text-align: left;
+    padding: 0 4px;
+  }
+
+  .button-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .start1,
+  .venue-btn1 {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .how-row16,
+  .how-row3 {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .how-row16::-webkit-scrollbar,
+  .how-row3::-webkit-scrollbar {
+    display: none;
+  }
+
+  .how-card11,
+  .how-card3 {
+    min-width: 85%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  /* CATEGORY GRID */
+  .how-row2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .how-card2 {
+    width: 100%;
+    height: 120px;
+    margin: 0;
+    padding: 12px;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    column-gap: 0;
+  }
+
+  .how-card2 h4 {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .how-sub2 {
+    text-align: center;
+    font-size: 11px;
+  }
+
+  .head1 {
+    font-size: 24px;
+  }
+
+  .venue-btn2 {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* =====================================================
+   MOBILE RESPONSIVE
+   ===================================================== */
+
+@media screen and (max-width: 480px) {
+
+  .heading-section1 {
+    padding: 50px 14px 110px;
+  }
+
+  .popular-heading,
+  .head {
+    font-size: 22px;
+  }
+
+  .subtitle1,
+  .subtitle2,
+  .new {
+    font-size: 14px;
+  }
+
+  .how-row2 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .how-card2 {
+    height: 110px;
+    padding: 10px;
+  }
+
+  .how-card2 h4 {
+    font-size: 14px;
+  }
+
+  .how-sub2 {
+    font-size: 10px;
+  }
+
+  .head1 {
+    font-size: 22px;
+  }
+
+  .last {
+    padding: 35px 16px 120px;
+  }
+}

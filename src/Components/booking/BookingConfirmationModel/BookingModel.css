@@ -1,0 +1,74 @@
+/* src/styles/Shared.css */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px; /* More padding */
+  border-radius: 12px; /* More rounded corners */
+  text-align: center;
+  width: 90%;
+  max-width: 450px; /* Wider modal */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+.modal-icon {
+  font-size: 4em; /* Larger icon */
+  margin-bottom: 20px;
+  color: #008080; /* Teal icon */
+}
+
+.modal-content p {
+  font-size: 1.2em; /* Larger message */
+  color: #444;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center; /* Center buttons */
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+.primary-button, .secondary-button {
+  padding: 12px 30px; /* Larger buttons */
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.primary-button {
+  background-color: #008080;
+  color: white;
+  border: none;
+}
+
+.primary-button:hover {
+  background-color: #006666;
+  transform: translateY(-1px);
+}
+
+.secondary-button {
+  background: none;
+  color: #008080;
+  border: 2px solid #008080; /* Thicker border */
+}
+
+.secondary-button:hover {
+  background-color: #e0f2f7; /* Light background on hover */
+}

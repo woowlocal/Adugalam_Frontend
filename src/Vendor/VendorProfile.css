@@ -1,0 +1,104 @@
+.vp-page-container {
+  padding: 40px;
+  min-height: 100vh;
+  background-color: #f4f6f9; /* Subtle background matching vendor dashboard */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.vp-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.vp-page-loading {
+  padding: 50px;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+}
+
+.vp-card-header {
+  padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Elegant blue gradient */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.vp-avatar-large {
+  width: 80px;
+  height: 80px;
+  background: #ffffff;
+  color: #1e3c72;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.vp-card-header h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.vp-role-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.vp-card-body {
+  padding: 30px;
+}
+
+.vp-info-group {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.vp-info-group:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.vp-info-group label {
+  display: block;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vp-info-group p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}

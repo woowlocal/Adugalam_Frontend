@@ -1,0 +1,21 @@
+.admin-layout {
+  display: flex;
+}
+
+/* Sidebar fixed */
+.admin-sidebar {
+  width: 240px;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/* Content shifted right */
+.admin-content {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  padding: 20px;
+  min-height: 100vh;
+  background: #f5f6fa;
+}
