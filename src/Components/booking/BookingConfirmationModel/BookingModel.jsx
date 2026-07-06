@@ -6,7 +6,7 @@ const BookingConfirmation = ({ onConfirm, onClose }) => {
   return (
     <div className="modal-backdrop">
       <div className="modal-content">
-        <div className="modal-icon">✅</div> {/* Placeholder icon */}
+        <div className="modal-icon">🎉</div> {/* Placeholder icon */}
         <p>Are you sure you want to **cancel this booking**?</p>
         <div className="modal-actions">
           <button className="secondary-button" onClick={onClose}>

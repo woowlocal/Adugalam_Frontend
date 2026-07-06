@@ -122,7 +122,7 @@ const SignUp = () => {
         confirm_password: confirmPassword,
       });
 
-      alert("Account created successfully ✅");
+      alert("Account created successfully");
       navigate("/login", { state: location.state });
     } catch {
       setErrors({ api: "Signup failed" });
@@ -134,7 +134,7 @@ const SignUp = () => {
     try {
       await API.post("api/user/restore-account/", { email: restoreEmail });
       setShowRestorePopup(false);
-      alert("✅ Your account has been restored! Please login with your existing password.");
+      alert("Your account has been restored! Please login with your existing password.");
       navigate("/login", { state: location.state });
     } catch (err) {
       const msg = err?.response?.data?.error || "Restore failed. Please try again.";
@@ -210,7 +210,7 @@ const SignUp = () => {
                 className={errors.password ? "error-input" : ""}
               />
               <span onClick={() => setShowPass(!showPass)}>
-                {showPass ? <FaEyeSlash /> : <FaEye />}
+                {showPass ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
 
@@ -240,7 +240,7 @@ const SignUp = () => {
                 className={errors.confirmPassword ? "error-input" : ""}
               />
               <span onClick={() => setShowConfirm(!showConfirm)}>
-                {showConfirm ? <FaEyeSlash /> : <FaEye />}
+                {showConfirm ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
 
@@ -291,7 +291,7 @@ const SignUp = () => {
                 onClick={handleRestoreAccount}
                 disabled={restoreLoading}
               >
-                {restoreLoading ? "Restoring..." : "✅ Yes, Restore Account"}
+                {restoreLoading ? "Restoring..." : "Yes, Restore Account"}
               </button>
             </div>
 

@@ -105,7 +105,7 @@ export default function UserManagement() {
       {/* ── Toast ── */}
       {toastMsg && (
         <div className={`um-toast um-toast--${toastType}`}>
-          {toastType === "success" ? "✅" : "🗑️"} {toastMsg}
+          {toastType === "success" ? "" : "🗑️"} {toastMsg}
         </div>
       )}
 
@@ -267,7 +267,7 @@ export default function UserManagement() {
 
           {!retireLoading && retireRequests.length === 0 && (
             <div className="um-empty-state">
-              <span className="um-empty-icon">✅</span>
+              <span className="um-empty-icon">📁</span>
               <p>No pending deletion requests.</p>
               <p className="um-empty-sub">All accounts are in good standing.</p>
             </div>
@@ -305,7 +305,7 @@ export default function UserManagement() {
                         </td>
                         <td>
                           <div className="um-actions">
-                            <button className="um-btn um-btn--delete" onClick={() => handleRetireAction(user.id, "approve")}>✅ Approve</button>
+                            <button className="um-btn um-btn--delete" onClick={() => handleRetireAction(user.id, "approve")}>Approve</button>
                             <button className="um-btn um-btn--edit"   onClick={() => handleRetireAction(user.id, "reject")}>❌ Reject</button>
                           </div>
                         </td>
@@ -337,7 +337,7 @@ export default function UserManagement() {
                       </div>
                     )}
                     <div className="um-actions um-actions--card">
-                      <button className="um-btn um-btn--delete" onClick={() => handleRetireAction(user.id, "approve")}>✅ Approve</button>
+                      <button className="um-btn um-btn--delete" onClick={() => handleRetireAction(user.id, "approve")}>Approve</button>
                       <button className="um-btn um-btn--edit"   onClick={() => handleRetireAction(user.id, "reject")}>❌ Reject</button>
                     </div>
                   </div>

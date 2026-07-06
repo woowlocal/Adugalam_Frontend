@@ -91,7 +91,7 @@ const EditProfile = () => {
         // Broadcast auth state change so Navbar / other components refresh
         window.dispatchEvent(new Event("authChange"));
 
-        alert("Profile updated successfully ✅");
+        alert("Profile updated successfully");
         navigate("/MyProfile");
       } else {
         setError(data.error || "Failed to update profile.");

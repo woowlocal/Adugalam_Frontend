@@ -211,7 +211,7 @@ export default function Eventbooking() {
       });
       const data = await res.json();
       if (res.ok) {
-        setBookingMsg("✅ " + data.message);
+        setBookingMsg(data.message);
         // Update local state
         setEventData(prev => ({
           ...prev,

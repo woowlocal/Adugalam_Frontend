@@ -53,7 +53,7 @@ const ForgotPassword = () => {
         otp,
       });
 
-      alert("Password reset successful ✅");
+      alert("Password reset successful");
       navigate("/login");
     } catch {
       setError("Password reset failed");

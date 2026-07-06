@@ -115,7 +115,7 @@ export default function UserDelete() {
       {/* ── EMPTY ── */}
       {!loading && requests.length === 0 && (
         <div className="ud-empty">
-          <div className="ud-empty-icon">✅</div>
+          <div className="ud-empty-icon">📁</div>
           <h3>No Pending Requests</h3>
           <p>No users have requested account deletion.</p>
         </div>
@@ -168,7 +168,7 @@ export default function UserDelete() {
                   onClick={() => handleAction(user.id, "approve")}
                   disabled={processingId === user.id}
                 >
-                  {processingId === user.id ? "…" : "✅ Approve & Delete"}
+                  {processingId === user.id ? "…" : "Approve & Delete"}
                 </button>
               </div>
 

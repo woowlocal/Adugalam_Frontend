@@ -69,7 +69,7 @@ const Login = () => {
             onChange={(e) => { setPassword(e.target.value); setError(""); }}
           />
           <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
         </div>
 

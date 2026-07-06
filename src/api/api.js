@@ -5,7 +5,7 @@ const API = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-/* 🔐 REQUEST INTERCEPTOR — attach access token */
+/* REQUEST INTERCEPTOR — attach access token */
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("access");
   if (token) {
@@ -14,7 +14,7 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-/* 🔄 RESPONSE INTERCEPTOR — auto-refresh expired access token */
+/*  RESPONSE INTERCEPTOR — auto-refresh expired access token */
 let isRefreshing = false;
 let failedQueue = [];
 
@@ -30,18 +30,17 @@ const processQueue = (error, token = null) => {
 };
 
 API.interceptors.response.use(
-  (response) => response, // ✅ pass through successful responses
+  (response) => response, // 
   async (error) => {
     const originalRequest = error.config;
 
-    // 🚫 Ignore 401 for login endpoints to prevent page reloads on wrong credentials
+    //  Ignore 401 for login endpoints to prevent page reloads on wrong credentials
     if (
-      originalRequest.url.includes("api/login/") || 
+      originalRequest.url.includes("api/login/") ||
       originalRequest.url.includes("api/vendor/login/")
     ) {
       return Promise.reject(error);
     }
-
     // 🚫 If 401 and not already retrying
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
