@@ -219,7 +219,7 @@ h1 {
 .pill {
   padding: 0.45rem 1rem;
   border-radius: 999px;
-  background: #e5e7eb;
+  background: #898a8c;
   font-size: 0.8rem;
   cursor: pointer;
   display: inline-flex;
@@ -248,7 +248,7 @@ h1 {
 
 .pill-muted:hover {
   transform: scale(1.06);
-  background: #000;
+  background: #898a8c;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
 }
 
@@ -361,44 +361,7 @@ h1 {
   }
 }
 
-/* ===== About stats responsiveness ===== */
 
-/* Tablet (2 columns) */
-/* @media (max-width: 900px) {
-  .about-stats1 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-} */
-
-/* Mobile (1 column) */
-/* @media (max-width: 480px) {
-  .about-stats1 {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  
-  }
-
-  .stat-card1 h2 {
-    font-size: 1.75rem;
-  }
-
-  .stat-card1 p {
-    font-size: 0.9rem;
-    margin-top: -12px;
-  }
-} */
-
-
-/* .error {
-  color: #d32f2f;
-  font-size: 12px;
-  margin-top: 4px;
-  display: block;
-} */
-
-
-/* ----------------------------------------------------- */
 
 @media (max-width: 480px) {
 

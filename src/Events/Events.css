@@ -3,11 +3,13 @@
    ========================================= */
 
 .heading-section1 {
-  margin-top: -25px;
+  margin: -25px auto 0 auto;
   text-align: center;
   padding-top: 70px;
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
+  width: 95%;
+  max-width: 1600px;
 }
 
 .subtitle1,

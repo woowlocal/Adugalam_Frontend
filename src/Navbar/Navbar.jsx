@@ -22,7 +22,7 @@ import {
 import "./Navbar.css";
 import Logout from "../Components/Profile/Logout";
 import { CiLocationOn } from "react-icons/ci";
-import adugalamLogo from "../assets/Adugalam_English Logo_14.01.jpg";
+import adugalamLogo from "../assets/Adugalam_English.jpg";
 
 const Navbar = () => {
   const location = useLocation();
@@ -211,8 +211,8 @@ const Navbar = () => {
             <NavLink to="/shop">Shop</NavLink>
             <NavLink to="/tournaments">Tournaments</NavLink>
             <NavLink to="/events">Events</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            {/* <NavLink to="/about">About</NavLink>
+            <NavLink to="/contact">Contact</NavLink> */}
             <NavLink to="/mybooking">My Booking</NavLink>
           </nav>
 

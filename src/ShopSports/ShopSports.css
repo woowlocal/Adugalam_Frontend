@@ -6,6 +6,12 @@
   overflow-x: hidden;
 }
 
+.shop-sports {
+  width: 95%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
 /* ================= HERO ================= */
 .shop-hero1 {
   padding: 40px 20px;

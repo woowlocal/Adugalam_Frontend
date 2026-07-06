@@ -195,7 +195,8 @@ const PaymentPage = () => {
           </div>
 
           <div style={{ color: "red", textAlign: "center" }}>
-            <span>Advance you Pay 30% on Booking.</span>
+            <span>Advance you Pay 30% on Booking</span>
+            <span style={{ color: "green" }}> Inclusive of 18% GST</span>
           </div>
           <div className="price-row grand">
             <span>Total Payable</span>

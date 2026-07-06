@@ -4,6 +4,13 @@
 
 }
 
+/* Unified container — all home sections share this alignment */
+.home-container {
+    width: 95%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
 
 
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./UpcomingSportsEvents.css";
+import "../Components/NearBy/Nearby.css";
 
 const BASE = import.meta.env.VITE_API_BASE_URL;
 
@@ -52,66 +53,65 @@ export default function UpcomingSportsEvents() {
 
 
   return (
-    <section className="upcoming-section">
+    <section className="upcoming-events-page">
       <div className="upcoming-header">
-        <h3>🚀 Upcoming Sports Events</h3>
+        <h3>Upcoming Sports Events</h3>
         {events.length > 3 && (
-          <button className="view-all-btn" style={{background:'linear-gradient(135deg,#7c3aed,#8b5cf6)',color:'#fff',border:'none',padding:'8px 18px',borderRadius:'999px',fontSize:'13px',fontWeight:700,cursor:'pointer',fontFamily:'Inter,sans-serif',boxShadow:'0 3px 10px rgba(124,58,237,0.28)'}} onClick={() => setShowAll(s => !s)}>
+          <button className="view-all-btn" style={{ background: 'linear-gradient(135deg,#7c3aed,#8b5cf6)', color: '#fff', border: 'none', padding: '8px 18px', borderRadius: '999px', fontSize: '13px', fontWeight: 700, cursor: 'pointer', fontFamily: 'Inter,sans-serif', boxShadow: '0 3px 10px rgba(124,58,237,0.28)' }} onClick={() => setShowAll(s => !s)}>
             {showAll ? 'Show Less' : 'View All'}
           </button>
         )}
       </div>
 
       {loading ? (
-        <p style={{textAlign: "center", color: "#666", padding: "20px"}}>Loading events...</p>
+        <p style={{ textAlign: "center", color: "#666", padding: "20px" }}>Loading events...</p>
       ) : events.length === 0 ? (
-        <p style={{textAlign: "center", color: "#666", padding: "20px"}}>No upcoming events scheduled. Check back later!</p>
+        <p style={{ textAlign: "center", color: "#666", padding: "20px" }}>No upcoming events scheduled. Check back later!</p>
       ) : (
         <div className={`upcoming-grid${showAll ? " upcoming-grid--all" : ""}`}>
           {(showAll ? events : events.slice(0, 4)).map((e) => (
-          <div className="upcoming-card" key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
-            {/* Image */}
-            <div className="upcoming-card-image">
-              {e.image ? (
-                <img src={e.image} alt={e.title} />
-              ) : (
-                <div className="upcoming-placeholder" style={{ background: e.bg_color || "#a5b4fc" }}>🏆</div>
-              )}
-              <span className="upcoming-badge">Soon</span>
-            </div>
-
-            {/* Body */}
-            <div className="upcoming-card-body">
-              <h4>{e.title}</h4>
-              <p className="upcoming-card-meta">📍 {e.location}</p>
-              <p className="upcoming-card-meta">
-                📅 {fmtDate(e.start_date)} - {fmtDate(e.end_date)}
-              </p>
-              <span className="upcoming-date-chip">
-                🕒 {fmtTime(e.start_time)} - {fmtTime(e.end_time)}
-              </span>
-            </div>
-
-            {/* Footer */}
-            <div className="upcoming-card-footer">
-              <span className="upcoming-price">{e.price}</span>
-              <div style={{ display: "flex", gap: "8px" }}>
-                {e.map_url && (
-                  <a
-                    href={e.map_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(ev) => ev.stopPropagation()}
-                    className="upcoming-map-btn"
-                  >
-                    📍
-                  </a>
+            <div className="upcoming-card" key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
+              {/* Image */}
+              <div className="upcoming-img-wrapper">
+                {e.image ? (
+                  <img src={e.image} className="upcoming-img" alt={e.title} />
+                ) : (
+                  <div className="upcoming-img upcoming-placeholder" style={{ background: e.bg_color || "#a5b4fc" }}>🏆</div>
                 )}
-                <button className="upcoming-btn">Register Now</button>
+                <span className="upcoming-badge-soon">Soon</span>
+              </div>
+
+              {/* Body */}
+              <div className="upcoming-body">
+                <h4 className="upcoming-title">{e.title}</h4>
+                <p className="upcoming-location">📍 {e.location}</p>
+                
+                <div className="upcoming-date-time">
+                  <span className="upcoming-tag">📅 {fmtDate(e.start_date)}</span>
+                  <span className="upcoming-tag">🕒 {fmtTime(e.start_time)}</span>
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="upcoming-footer">
+                <button className="upcoming-btn-register">REGISTER NOW</button>
+                <div className="upcoming-footer-right">
+                  <span className="upcoming-price">{e.price}</span>
+                  {e.map_url && (
+                    <a
+                      href={e.map_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(ev) => ev.stopPropagation()}
+                      className="upcoming-map-btn"
+                    >
+                      📍
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       )}
     </section>

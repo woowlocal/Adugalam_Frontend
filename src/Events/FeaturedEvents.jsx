@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaTrophy, FaCalendarAlt, FaEllipsisH } from "react-icons/fa";
 import "./FeaturedEvents.css";
+import "../Components/NearBy/Nearby.css";
 
 const BASE = import.meta.env.VITE_API_BASE_URL;
 
@@ -108,48 +109,37 @@ export default function FeaturedEvents() {
                 ) : (
                     <div className={`poster-grid${showAll ? " poster-grid--all" : ""}`}>
                         {displayedEvents.map((event) => (
-                            <div
-                                className="poster-card"
-                                key={event.id}
-                                onClick={() => navigate("/eventbooking", { state: { eventId: event.id } })}
-                                style={{ cursor: "pointer" }}
-                            >
+                            <div className="poster-card" key={event.id} onClick={() => navigate("/eventbooking", { state: { eventId: event.id } })}>
                                 {/* Image */}
-                                <div className="poster-image">
+                                <div className="poster-img-wrapper">
                                     {event.image ? (
-                                        <img src={event.image} alt={event.title} />
+                                        <img src={event.image} className="poster-img" alt={event.title} />
                                     ) : (
-                                        <div className="poster-placeholder" style={{ background: event.bg_color || "#a5b4fc" }}>
-                                            🎉
-                                        </div>
+                                        <div className="poster-img poster-placeholder" style={{ background: event.bg_color || "#a5b4fc" }}>🎉</div>
                                     )}
+                                    <span className="poster-badge-featured">Featured</span>
                                 </div>
 
-                                {/* Info */}
-                                <div className="poster-info" style={{ background: event.bg_color || "#a5b4fc" }}>
-                                    <h4>{event.title}</h4>
+                                {/* Body */}
+                                <div className="poster-body">
+                                    <h4 className="poster-title">{event.title}</h4>
                                     <p className="poster-location">📍 {event.location}</p>
-                                    <div className="poster-meta">
-                                        <span>📅 {fmtDate(event.start_date)} – {fmtDate(event.end_date)}</span>
-                                        <span>🕒 {fmtTime(event.start_time)} – {fmtTime(event.end_time)}</span>
+
+                                    <div className="poster-date-time">
+                                        <span className="poster-tag">📅 {fmtDate(event.start_date)}</span>
+                                        <span className="poster-tag">🕒 {fmtTime(event.start_time)}</span>
                                     </div>
-                                    <span className="poster-price">{event.price}</span>
                                 </div>
 
-                                {/* Map & Book */}
+                                {/* Footer */}
                                 <div className="poster-footer">
-                                    {event.map_url && (
-                                        <a
-                                            href={event.map_url}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            onClick={(e) => e.stopPropagation()}
-                                            className="poster-map-btn"
-                                        >
-                                            📍 Map
-                                        </a>
-                                    )}
-                                    <div className="poster-book">BOOK NOW</div>
+                                    <button className="poster-btn-book">BOOK NOW</button>
+                                    <div className="poster-footer-right">
+                                        <span className="poster-price">{event.price}</span>
+                                        {event.map_url && (
+                                            <a href={event.map_url} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()} className="poster-map-btn">📍</a>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}

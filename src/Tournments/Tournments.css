@@ -1,8 +1,10 @@
 .tournament-page {
-
   font-family: "Inter", sans-serif;
   background: #ffffff;
   color: #111;
+  width: 95%;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 /* ---------- HERO ---------- */

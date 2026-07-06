@@ -50,7 +50,7 @@
    CATEGORY SECTION
    ============================================================ */
 .category-section {
-  padding: 36px 48px 28px;
+  padding: 36px 0 28px;
   /* background: #ffffff; */
   animation: fadeInUp 0.55s ease both;
 }
@@ -125,7 +125,7 @@
    FEATURED EVENTS SECTION
    ============================================================ */
 .events-section {
-  padding: 36px 48px 44px;
+  padding: 0 0 48px;
   /* background: #ffffff; */
   animation: fadeInUp 0.6s ease 0.1s both;
 }
@@ -235,178 +235,212 @@
   scroll-snap-type: none;
 }
 
+.poster-grid.poster-grid--all .poster-card {
+  width: 100%;
+  min-width: 100%;
+}
+
 .featured-events-page .poster-card {
   display: flex;
   flex-direction: column;
-  min-height: 250px;
-  min-width: 220px;
-  width: 220px;
+  min-height: 280px;
+  min-width: 240px;
+  width: 240px;
   flex-shrink: 0;
   scroll-snap-align: start;
   cursor: pointer;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
   isolation: isolate;
 
-  /* Glacier glass — matches NewOnAdugalam */
-  background: linear-gradient(145deg,
-      rgba(255, 255, 255, 0.88) 0%,
-      rgba(220, 252, 231, 0.80) 50%,
-      rgba(187, 247, 208, 0.72) 100%);
-  backdrop-filter: blur(16px) saturate(170%);
-  -webkit-backdrop-filter: blur(16px) saturate(170%);
-  border: 1px solid rgba(187, 247, 208, 0.65);
+  /* Premium Emerald Glass */
+  background: linear-gradient(155deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(236, 253, 245, 0.85) 40%,
+      rgba(209, 250, 229, 0.75) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(167, 243, 208, 0.8);
   box-shadow:
-    0 2px 12px rgba(21, 128, 61, 0.10),
-    0 1px 0 rgba(255, 255, 255, 0.70) inset,
-    0 -1px 0 rgba(134, 239, 172, 0.18) inset;
-  transition: transform 0.34s cubic-bezier(0.34, 1.46, 0.64, 1),
-    box-shadow 0.34s ease, border-color 0.28s ease;
+    0 10px 30px rgba(16, 185, 129, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 -1px 0 rgba(110, 231, 183, 0.2) inset;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .featured-events-page .poster-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(21, 128, 61, 0.35);
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(16, 185, 129, 0.4);
   box-shadow:
-    0 16px 40px rgba(21, 128, 61, 0.20),
-    0 6px 18px rgba(21, 128, 61, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+    0 24px 50px rgba(16, 185, 129, 0.25),
+    0 10px 24px rgba(16, 185, 129, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
 }
 
-.featured-events-page .poster-image {
+.featured-events-page .poster-img-wrapper {
   overflow: hidden;
   position: relative;
-  border-radius: 14px 14px 0 0;
-  margin: 8px 8px 0;
+  border-radius: 16px 16px 0 0;
+  margin: 6px 6px 0;
 }
 
-.featured-events-page .poster-image img {
+.featured-events-page .poster-img {
   width: 100%;
   aspect-ratio: 16 / 9;
-  height: auto;
+  height: 150px;
   object-fit: cover;
   display: block;
   border-radius: 12px 12px 0 0;
-  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.featured-events-page .poster-card:hover .poster-image img {
-  transform: scale(1.08);
+.featured-events-page .poster-card:hover .poster-img {
+  transform: scale(1.1);
 }
 
 .poster-placeholder {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px 12px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.8rem;
+  font-size: 3rem;
   background: linear-gradient(135deg, #dcfce7, #bbf7d0);
 }
 
-.featured-events-page .poster-info {
-  padding: 8px 10px 4px;
+/* Featured Gold Badge */
+.poster-badge-featured {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.featured-events-page .poster-body {
+  padding: 14px 14px 4px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: transparent;
 }
 
-.featured-events-page .poster-info h4 {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #1a2a3a;
+.featured-events-page .poster-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #064e3b;
   line-height: 1.35;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: color 0.25s ease;
+  transition: color 0.3s ease;
 }
 
-.featured-events-page .poster-card:hover .poster-info h4 {
-  color: #15803d;
+.featured-events-page .poster-card:hover .poster-title {
+  color: #059669;
 }
 
 .featured-events-page .poster-location {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 11.5px;
-  color: #5a7080;
-  font-weight: 500;
-  margin-bottom: 4px;
+  font-size: 12px;
+  color: #34d399;
+  font-weight: 600;
+  margin-bottom: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.featured-events-page .poster-meta {
-  font-size: 11px;
-  color: #6b7280;
+.featured-events-page .poster-date-time {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: 4px;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-.poster-price {
-  font-size: 13px;
-  font-weight: 800;
-  color: #15803d;
-  margin-top: 2px;
-  background: transparent;
-  padding: 0;
+.poster-tag {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(167, 243, 208, 0.5);
+  color: #047857;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .featured-events-page .poster-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 10px 10px;
-  border-top: 1px solid rgba(187, 247, 208, 0.60);
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(167, 243, 208, 0.5);
   background: transparent;
   margin-top: auto;
 }
 
+.poster-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.poster-price {
+  font-size: 15px;
+  font-weight: 900;
+  color: #059669;
+  margin: 0;
+}
+
 .poster-map-btn {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: rgba(240, 253, 244, 0.80);
-  color: #15803d;
+  background: #ecfdf5;
+  color: #059669;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border: 1px solid rgba(187, 247, 208, 0.65);
-  font-size: 0.8rem;
-  transition: background 0.2s ease;
+  border: 1px solid rgba(167, 243, 208, 0.8);
+  font-size: 14px;
+  transition: all 0.2s ease;
 }
 
 .poster-map-btn:hover {
-  background: #dcfce7;
+  background: #d1fae5;
+  transform: scale(1.1);
 }
 
-.featured-events-page .poster-book {
-  background: linear-gradient(135deg, #15803d, #22c55e);
+.featured-events-page .poster-btn-book {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #fff;
-  border-radius: 999px;
-  padding: 7px 16px;
-  font-size: 11.5px;
-  font-weight: 700;
+  border-radius: 12px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 800;
   letter-spacing: 0.3px;
-  flex: unset;
-  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 3px 10px rgba(21, 128, 61, 0.28);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-.featured-events-page .poster-card:hover .poster-book {
-  background: linear-gradient(135deg, #166534, #15803d);
-  transform: translateY(-1px);
-  box-shadow: 0 5px 14px rgba(21, 128, 61, 0.38);
+.featured-events-page .poster-card:hover .poster-btn-book {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
 }
 
 .fe-status-msg {
@@ -426,7 +460,7 @@
 
   .category-section,
   .events-section {
-    padding: 28px 32px 36px;
+    padding: 20px 0 28px;
   }
 }
 
@@ -434,7 +468,7 @@
 
   .category-section,
   .events-section {
-    padding: 24px 20px 32px;
+    padding: 24px 0 32px;
   }
 
   .poster-grid.poster-grid--all {
@@ -453,12 +487,12 @@
 
 @media (max-width: 480px) {
   .featured-events-page .poster-card {
-    min-width: 200px;
-    width: 200px;
+    min-width: 100%;
+    width: 100%;
   }
 
   .poster-grid.poster-grid--all {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
 

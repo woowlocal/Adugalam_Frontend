@@ -1,10 +1,12 @@
 .heading-section11 {  
-  margin-top:-20px;
+  margin: -20px auto 0 auto;
   text-align: center;
   padding-top: 70px;
   font-family: 'Space Grotesk', sans-serif;
   padding-bottom: 50px;
   overflow-x: hidden;
+  width: 95%;
+  max-width: 1600px;
 }
 
 .grade11 {
@@ -102,12 +104,13 @@
   width: 190px;
   height: 210px;
   padding: 20px;
-  border: 1px solid #000;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 18px;
   background: #fff;
   font-family: 'Space Grotesk', sans-serif;
-  box-shadow: 5px 5px 0px #000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
   margin-bottom: 40px;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .icon11 {
@@ -143,9 +146,12 @@
 }
 
 .sport-card11:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px #15803d;
-  transition: 0.2s ease-in-out;
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(10, 124, 60, 0.12), 
+    0 8px 16px rgba(10, 124, 60, 0.08),
+    0 0 0 1px rgba(10, 124, 60, 0.3) inset;
+  border-color: rgba(10, 124, 60, 0.2);
 }
 
 .head11 {
@@ -178,12 +184,13 @@
 .how-card11 {
   width: 290px;
   padding: 25px;
-  border: 1px solid #000;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 18px;
   background: white;
-  box-shadow: 5px 5px 0px #000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
   font-family: "Space Grotesk", sans-serif;
   text-align: left;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .how-icon11 {
@@ -208,21 +215,25 @@
 }
 
 .how-card11:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px #15803d;
-  transition: 0.2s ease-in-out;
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(10, 124, 60, 0.12), 
+    0 8px 16px rgba(10, 124, 60, 0.08),
+    0 0 0 1px rgba(10, 124, 60, 0.3) inset;
+  border-color: rgba(10, 124, 60, 0.2);
 }
 
 .interest-card11 {
   width: 56%;
   margin: 120px auto 0 auto;
   padding: 45px;
-  background: #f3f4f6;
-  border: 1px solid #000;
+  background: #fcfcfc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 18px;
-  box-shadow: 6px 6px 0px #000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   font-family: "Space Grotesk", sans-serif;
   text-align: left;
+  transition: all 0.35s ease;
 }
 .interest-header11 {
   font-size: 22px;

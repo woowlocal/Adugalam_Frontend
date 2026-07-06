@@ -121,7 +121,7 @@ function Events() {
       <Banner />
 
       <FeaturedEvents />
-      <OngoingSportsEvents />
+      {/* <OngoingSportsEvents /> */}
       <UpcomingSportsEvents />
 
       {/* <h1 className="head">Sports Events in Tamil Nadu</h1>
