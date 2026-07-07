@@ -158,6 +158,29 @@
   animation: fadeInUp-ongoing 0.5s ease both;
 }
 
+/* ─── Featured Ongoing Card ─── */
+.ongoing-card--featured {
+  min-width: 280px;
+  width: 280px;
+  border: 1.5px solid rgba(220, 38, 38, 0.7);
+  box-shadow:
+    0 8px 24px rgba(220, 38, 38, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(254, 242, 242, 0.9) 50%,
+      rgba(254, 202, 202, 0.8) 100%);
+}
+
+.ongoing-card--featured .ongoing-card-image img,
+.ongoing-card--featured .ongoing-placeholder {
+  aspect-ratio: 16 / 10;
+}
+
+.ongoing-card--featured .ongoing-card-body h4 {
+  font-size: 16px;
+}
+
 .ongoing-card:nth-child(1) {
   animation-delay: 0.08s;
 }

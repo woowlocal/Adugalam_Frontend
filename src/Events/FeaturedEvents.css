@@ -16,8 +16,7 @@
 /* ─── Page Wrapper ─── */
 .featured-events-page {
   font-family: 'Inter', sans-serif;
-  background: #f8fafb;
-  min-height: 100vh;
+  background: transparent;
   width: 100%;
 }
 

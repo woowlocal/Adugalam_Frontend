@@ -36,33 +36,95 @@ export default function FeaturedEvents() {
                 return r.json();
             })
             .then(data => {
-                // Map backend fields to component-expected fields
-                const mapped = data.map(e => ({
-                    id: e.id,
-                    title: e.title,
-                    location: e.location || e.address || "TBA",
-                    start_date: e.start_date || "",
-                    end_date: e.end_date || "",
-                    start_time: e.start_time || "",
-                    end_time: e.end_time || "",
-                    price: e.price || (e.is_free ? "Free" : `₹${e.amount}`),
-                    image: e.image || null,
-                    bg_color: e.bg_color || "#a5b4fc",
-                    status: e.status,
-                }));
+                // Map backend fields to component-expected fields and filter out finished events
+                const mapped = data
+                    .filter(e => {
+                        const status = (e.status || "").toLowerCase();
+                        if (status === "completed" || status === "finished" || status === "past") return false;
+                        
+                        // Also check if the event has already ended
+                        if (e.end_date) {
+                            const end = new Date(e.end_date);
+                            const today = new Date();
+                            today.setHours(0, 0, 0, 0);
+                            // Only hide if the end date was STRICTLY before today 
+                            // (so we keep events ending today)
+                            if (end < today) return false;
+                        } else if (e.start_date) {
+                            // If there is no end date, check the start date
+                            const start = new Date(e.start_date);
+                            const today = new Date();
+                            today.setHours(0, 0, 0, 0);
+                            if (start < today) return false;
+                        }
+                        return true;
+                    })
+                    .map(e => ({
+                        id: e.id,
+                        title: e.title,
+                        location: e.location || e.address || "TBA",
+                        start_date: e.start_date || "",
+                        end_date: e.end_date || "",
+                        start_time: e.start_time || "",
+                        end_time: e.end_time || "",
+                        price: e.price || (e.is_free ? "Free" : `₹${e.amount}`),
+                        image: e.image || null,
+                        bg_color: e.bg_color || "#a5b4fc",
+                        status: e.status,
+                    }));
                 setEvents(mapped);
             })
             .catch(() => setEvents([]))
             .finally(() => setLoading(false));
     }, []);
 
+    const getFilteredEvents = () => {
+        let result = [...events];
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
 
-    const displayedEvents = showAll ? events : events.slice(0, 4);
+        if (filter === "Date") {
+            // Events starting today
+            result = result.filter(e => {
+                if (!e.start_date) return false;
+                const d = new Date(e.start_date);
+                d.setHours(0, 0, 0, 0);
+                return d.getTime() === now.getTime();
+            });
+        } else if (filter === "Week") {
+            // Events within the next 7 days
+            const nextWeek = new Date(now);
+            nextWeek.setDate(now.getDate() + 7);
+            result = result.filter(e => {
+                if (!e.start_date) return false;
+                const d = new Date(e.start_date);
+                return d >= now && d <= nextWeek;
+            });
+        } else if (filter === "Month") {
+            // Events in the current month
+            result = result.filter(e => {
+                if (!e.start_date) return false;
+                const d = new Date(e.start_date);
+                return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+            });
+        } else if (filter === "Price") {
+            // Sort by price (Free first, then ascending)
+            result.sort((a, b) => {
+                const pA = a.price === "Free" ? 0 : parseInt(String(a.price).replace(/\D/g, "")) || 0;
+                const pB = b.price === "Free" ? 0 : parseInt(String(b.price).replace(/\D/g, "")) || 0;
+                return pA - pB;
+            });
+        }
+        return result;
+    };
+
+    const processedEvents = getFilteredEvents();
+    const displayedEvents = showAll ? processedEvents : processedEvents.slice(0, 4);
 
     return (
         <div className="featured-events-page">
             {/* ── CATEGORIES ── */}
-            <section className="category-section">
+            {/* <section className="category-section">
                 <h3>Categories</h3>
                 <div className="categories">
                     <div className="category-card">
@@ -78,7 +140,7 @@ export default function FeaturedEvents() {
                         <h4>Others</h4>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* ── FEATURED EVENTS ── */}
             <section className="events-section">

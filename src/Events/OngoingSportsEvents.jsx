@@ -65,8 +65,8 @@ export default function OngoingSportsEvents() {
         <p style={{textAlign: "center", color: "#666", padding: "20px"}}>No ongoing events for today. Check back later!</p>
       ) : (
         <div className={`ongoing-grid${showAll ? " ongoing-grid--all" : ""}`}>
-          {(showAll ? events : events.slice(0, 4)).map((e) => (
-          <div className="ongoing-card" key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
+          {(showAll ? events : events.slice(0, 4)).map((e, index) => (
+          <div className={`ongoing-card ${index === 0 ? "ongoing-card--featured" : ""}`} key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
             {/* Image */}
             <div className="ongoing-card-image">
               {e.image ? (
@@ -74,7 +74,7 @@ export default function OngoingSportsEvents() {
               ) : (
                 <div className="ongoing-placeholder" style={{ background: e.bg_color || "#f59e0b" }}>🎉</div>
               )}
-              <span className="ongoing-live-badge">LIVE</span>
+              <span className="ongoing-live-badge">{index === 0 ? "★ FEATURED LIVE" : "LIVE"}</span>
             </div>
 
             {/* Body */}

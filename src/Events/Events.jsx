@@ -119,84 +119,9 @@ function Events() {
     <div className="heading-section1">
 
       <Banner />
-
       <FeaturedEvents />
       {/* <OngoingSportsEvents /> */}
       <UpcomingSportsEvents />
-
-      {/* <h1 className="head">Sports Events in Tamil Nadu</h1>
-      <br></br><p className="subtitle1">
-       Discover marathons, coaching camps, sports expos, and fitness events in Chennai, Coimbatore, Madurai, and across Tamil Nadu. Register online and stay updated-<br>
-        </br>sponsored events. Discover what's happening near you
-      </p>
-     <div className="button-row">
-  <button className="start1"  onClick={() => navigate("/ViewAllEvents")}>
-    <img src={calender} alt="" className="calender"/>
-    View All Events
-  </button>
-  <button className="venue-btn1" onClick={() => navigate("/submit-event")}>Submit an Event</button>
-</div>
-
-<h2 className="popular-heading">Upcoming Sports Events Near You</h2>
-<p className="new">Discover marathons, cricket camps, fitness workshops, and sports events across Tamil Nadu</p>
-
-
-<div className="how-row16">
-  {upcomingEvents.map((event, index) => (
-    <div className="how-card11" key={index}  onClick={() => navigate(`/${event.path}`)}
-  style={{ cursor: "pointer" }}>
-      <p className="emoji">{event.emoji}</p>
-      <button className="marathon">{event.type}</button>
-
-      <h4>{event.title}</h4>
-
-      <p className="how-sub1">
-        <img src={calender} className="calender1" /> {event.date}<br />
-        <CiLocationOn className="location" /> {event.location}<br />
-        <img src={players} className="location" /> {event.players}
-      </p>
-
-      <button className="learnmore"  onClick={() => navigate(`/${event.path}`)}>Learn More</button>
-    </div>
-  ))}
-</div>
-
-
-<h2 className="popular-heading">Event Categories</h2>
-<p className="new">Types of Events</p>
-
-
-<div className="how-row2">
-  {eventCategories.map((cat, index) => (
-    <div className="how-card2" key={index}  onClick={() => navigate(`/${cat.path}`)}
-  style={{ cursor: "pointer" }}>
-      <h4>{cat.title}</h4>
-      <p className="how-sub2">{cat.count}</p>
-    </div>
-  ))}
-</div>
-
-
-
-
-<div className="how-row3">
-  {eventFeatures.map((item, index) => (
-    <div className="how-card3" key={index}   onClick={() => navigate(item.path)}
-  style={{ cursor: "pointer" }}
->
-      {item.icon}
-      <h4>{item.title}</h4>
-      <p className="how-sub3">{item.desc}</p>
-    </div>
-  ))}
-</div>
-
-
-
-
-*/}
-
-
       <div className="last">
         <h2 className="head1">Host Your Sports Event with Us</h2>
         <br></br><p className="subtitle2">
