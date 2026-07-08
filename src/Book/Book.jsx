@@ -15,8 +15,7 @@ const GroundDetails = () => {
   const location = useLocation();
   const { turfSlug } = useParams();
 
-  // Extract turf ID from URL slug format: "turfname-game--42"
-  // Falls back to location.state for backward compat
+
   const turfIdFromSlug = turfSlug ? turfSlug.split("--").pop() : null;
   const turfId = turfIdFromSlug || location.state?.turf_id;
 
@@ -24,7 +23,7 @@ const GroundDetails = () => {
   const [agreePolicy, setAgreePolicy] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // ✅ NEW: slider state
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(null);
   const [transitioning, setTransitioning] = useState(false);
@@ -36,14 +35,14 @@ const GroundDetails = () => {
     return () => clearTimeout(transitionTimer.current);
   }, []);
 
-  // ✅ share modal state
+
   const [showShareModal, setShowShareModal] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
-  // ✅ gallery zoom state (lifted from Gallery.jsx)
+
   const [galleryZoomIndex, setGalleryZoomIndex] = useState(null);
 
-  // ✅ CHECK FAVORITE
+
   useEffect(() => {
     const checkFavorite = async () => {
       const token = localStorage.getItem("access");
@@ -62,14 +61,13 @@ const GroundDetails = () => {
     checkFavorite();
   }, [turfId]);
 
-  // ✅ SCROLL TO TOP when data finishes loading
   useEffect(() => {
     if (!loading) {
       window.scrollTo(0, 0);
     }
   }, [loading]);
 
-  // ✅ FETCH TURF
+
   useEffect(() => {
     if (!turfId) return;
 
@@ -95,17 +93,17 @@ const GroundDetails = () => {
       });
   }, [turfId]);
 
-  // ✅ SAFE IMAGE URL
+
   const getImageUrl = (img) => {
     if (!img) return "";
     if (img.startsWith("http")) return img;
     return `${API_BASE}${img}`;
   };
 
-  // ✅ IMAGE ARRAY
+
   const images = turf?.banner_images || [];
 
-  // ─── Transition helper ─────────────────────────────────────────────────────
+
   const goTo = (newIndex) => {
     if (transitioning || images.length <= 1) return;
     setPrevIndex(currentIndex);
@@ -135,7 +133,6 @@ const GroundDetails = () => {
     if (diff < -50) prevImage();
   };
 
-  // ⭐ GOOGLE MAP NAVIGATION
   const openMapNavigation = () => {
     if (!turf?.latitude || !turf?.longitude) return;
 
@@ -143,7 +140,7 @@ const GroundDetails = () => {
     window.open(url, "_blank");
   };
 
-  // ✅ SHARE HANDLERS
+
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     alert("Link copied to clipboard!");
@@ -186,7 +183,7 @@ const GroundDetails = () => {
     }
   };
 
-  // ✅ TOGGLE FAVORITE
+  //  TOGGLE FAVORITE
   const toggleFavorite = async (e) => {
     e.stopPropagation();
     const token = localStorage.getItem("access");
@@ -208,7 +205,7 @@ const GroundDetails = () => {
     }
   };
 
-  // ✅ LOADING
+  //  LOADING
   if (loading) return <p style={{ padding: 20 }}>Loading...</p>;
   if (!turf) return <p style={{ padding: 20 }}>Ground not found</p>;
 

@@ -11,11 +11,6 @@
     margin: 0 auto;
 }
 
-
-
-
-
-
 .hero1 {
     width: 100%;
     min-height: 100vh;
@@ -23,21 +18,15 @@
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-
     padding: 40px;
     box-sizing: border-box;
-    /* IMPORTANT */
-
 }
-
 
 .overlay1 {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-
-
 }
 
 .hero-content1 {
@@ -142,7 +131,8 @@
 /* Mobile view */
 @media (max-width: 768px) {
     .hero1 {
-        padding: 40px 15px; /* Add top padding to clear navbar */
+        padding: 40px 15px;
+        /* Add top padding to clear navbar */
     }
 
     .overlay1 {
@@ -170,7 +160,8 @@
         align-items: center;
     }
 
-    .primary-btn1, .secondary-btn1 {
+    .primary-btn1,
+    .secondary-btn1 {
         width: 100%;
         max-width: 290px;
         font-size: 15px;
@@ -206,7 +197,6 @@
     overflow: hidden;
 }
 
-/* Shimmer highlight bar at top */
 .ecosystem1::before {
     content: '';
     position: absolute;
@@ -268,7 +258,6 @@
     }
 }
 
-/* ================= FEATURES SECTION ================= */
 
 .features1 {
     padding: 30px 30px;
@@ -291,18 +280,6 @@
     margin-bottom: 40px;
 }
 
-/* GRID */
-/* .features-grid {
- 
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 500px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 200px;
-   max-width: 1200px;
-  margin: 0 auto;
-   
-} */
 
 .features-flex1 {
     display: grid;
@@ -319,7 +296,6 @@
     border: 1px solid black;
     border-radius: 12px;
     padding: 18px;
-    /* SMALLER CARD */
     text-align: left;
     width: 100%;
     min-height: 300px;
@@ -340,7 +316,6 @@
             rgba(240, 255, 248, 0.98) 100%);
 }
 
-/* TAG (PLAY / BOOK etc) */
 .feature-tag1 {
     font-size: 20px;
     font-weight: 700;
@@ -350,7 +325,6 @@
     text-align: left;
 }
 
-/* CARD TITLE */
 .feature-card51 h3 {
     font-size: 18px;
     font-weight: 700;
@@ -359,7 +333,6 @@
     text-align: left;
 }
 
-/* CARD DESC */
 .feature-card51 p {
     font-size: 15px;
     color: #555;
@@ -368,7 +341,6 @@
     text-align: left;
 }
 
-/* LIST */
 .feature-card51 ul {
     list-style: none;
     padding: 0;
@@ -398,12 +370,10 @@
 
 .feature-card51 svg {
     color: #15803d;
-    /* green icon */
     font-size: 16px;
 }
 
 
-/* CHECK ICON */
 .feature-card51 ul li::before {
 
     color: #15803d;
@@ -416,7 +386,6 @@
 
 
 
-/* ================= RESPONSIVE ================= */
 
 @media (max-width: 1024px) {
     .features-grid1 {
@@ -449,8 +418,6 @@
         grid-template-columns: 1fr;
     }
 }
-
-/* ================= BUILT FOR EVERY SPORTS LOVER ================= */
 
 .built-section1 {
     padding: 50px 40px;
@@ -535,7 +502,6 @@
     text-align: left;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
     .built-grid1 {
         grid-template-columns: repeat(2, 1fr);
@@ -548,14 +514,12 @@
     }
 }
 
-/* ================= TECH STACK ================= */
 
 .tech-section1 {
     padding: 50px 40px;
     background: #ffffff;
     text-align: center;
 }
-
 
 .tech-title1 {
     font-size: 34px;
@@ -590,9 +554,7 @@
     gap: 18px;
 }
 
-/* ── Glacier Hero Card ── */
 .glass1 {
-    /* Layered icy glass — same family as .premium-glacier-card */
     background: linear-gradient(145deg,
             rgba(255, 255, 255, 0.80) 0%,
             rgba(225, 242, 255, 0.74) 45%,
@@ -602,11 +564,7 @@
     -webkit-backdrop-filter: blur(28px) saturate(180%);
     border-radius: 24px;
     padding: 40px;
-
-    /* Crystal border */
     border: 1.5px solid rgba(200, 230, 255, 0.60);
-
-    /* Layered glow shadows */
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.55) inset,
         0 8px 32px rgba(80, 160, 230, 0.16),
@@ -618,7 +576,6 @@
     transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-/* Top shimmer edge */
 .glass1::before {
     content: '';
     position: absolute;
@@ -636,7 +593,6 @@
     pointer-events: none;
 }
 
-/* Soft corner glow */
 .glass1::after {
     content: '';
     position: absolute;
@@ -663,7 +619,6 @@
 .tech-icon1 {
     font-size: 20px;
     color: #15803d;
-    /* image green */
 }
 
 .tech-item1 {
@@ -682,7 +637,6 @@
     font-size: 16px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
     .tech-grid1 {
         grid-template-columns: repeat(2, 1fr);
@@ -699,7 +653,6 @@
     }
 }
 
-/* ================= GREEN STATS BAR ================= */
 .stats-green1 h2 {
     font-size: 34px;
 }
@@ -722,25 +675,13 @@
     flex-wrap: wrap;
 }
 
-/* 
-.partner-btn1
-{
-  
-  width: 200px;
-  height: 50px;
-  border-radius: 50px;
-  border: none;
-} */
-
 .partner-btn1 {
-
     background: white;
     color: #000;
     border: none;
     width: 200px;
     padding: 14px 38px;
     border-radius: 40px;
-    /* font-size: 18px; */
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
@@ -752,21 +693,6 @@
     transform: scale(1.08);
 }
 
-/* .primary1
-{
-
-width: 180px;
-height: 40px;
-font-size: 13px; 
-
-}
-.secondary1
-{
-   font-size: 15px; 
-  width: 180px;
-  height: 40px;
-} */
-
 .stats-green1 {
     padding: 70px 40px;
     background: linear-gradient(135deg, #0f6a33 0%, #15803d 50%, #128c40 100%);
@@ -775,7 +701,6 @@ font-size: 13px;
     overflow: hidden;
 }
 
-/* Icy shimmer at top of stats sections */
 .stats-green1::before {
     content: '';
     position: absolute;
@@ -862,14 +787,9 @@ font-size: 13px;
 }
 
 
-/* ================= INFO PARAGRAPH (UPDATED) ================= */
-
 .info-section1 {
-
     background-color: #ffffff;
-    /* FULL WHITE SECTION */
     padding: 80px 20px;
-
 }
 
 .info-section1 p {
@@ -878,17 +798,13 @@ font-size: 13px;
     margin: 0 auto;
     font-size: 15px;
     color: #000000;
-    /* TEXT BLACK */
     line-height: 1.8;
 }
-
-/* ================= TESTIMONIALS ================= */
 
 .testimonials1 {
     padding: 10px 20px 80px;
     text-align: center;
     background: #ffffff;
-
 }
 
 .testimonials-title1 {
@@ -973,7 +889,6 @@ font-size: 13px;
     color: #64748b;
 }
 
-/* Prevent horizontal overflow everywhere */
 * {
     max-width: 100%;
 }
@@ -982,19 +897,6 @@ font-size: 13px;
     padding-left: 50px;
 }
 
-
-/* last buttons */
-
-
-
-
-
-
-/* =========================================================
-   FINAL RESPONSIVE OVERRIDES (DO NOT TOUCH ABOVE CODE)
-   ========================================================= */
-
-/* ---------- SMALL MOBILES (≤ 480px) ---------- */
 @media (max-width: 480px) {
 
     .hero1 {

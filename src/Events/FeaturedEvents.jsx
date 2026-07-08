@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaTrophy, FaCalendarAlt, FaEllipsisH } from "react-icons/fa";
+import { FaTrophy, FaCalendarAlt, FaEllipsisH, FaMapMarkerAlt, FaClock, FaStar } from "react-icons/fa";
 import "./FeaturedEvents.css";
 import "../Components/NearBy/Nearby.css";
 
@@ -36,22 +36,21 @@ export default function FeaturedEvents() {
                 return r.json();
             })
             .then(data => {
-                // Map backend fields to component-expected fields and filter out finished events
+
                 const mapped = data
                     .filter(e => {
                         const status = (e.status || "").toLowerCase();
                         if (status === "completed" || status === "finished" || status === "past") return false;
-                        
-                        // Also check if the event has already ended
+
+
                         if (e.end_date) {
                             const end = new Date(e.end_date);
                             const today = new Date();
                             today.setHours(0, 0, 0, 0);
-                            // Only hide if the end date was STRICTLY before today 
-                            // (so we keep events ending today)
+
                             if (end < today) return false;
                         } else if (e.start_date) {
-                            // If there is no end date, check the start date
+
                             const start = new Date(e.start_date);
                             const today = new Date();
                             today.setHours(0, 0, 0, 0);
@@ -84,7 +83,6 @@ export default function FeaturedEvents() {
         now.setHours(0, 0, 0, 0);
 
         if (filter === "Date") {
-            // Events starting today
             result = result.filter(e => {
                 if (!e.start_date) return false;
                 const d = new Date(e.start_date);
@@ -92,7 +90,6 @@ export default function FeaturedEvents() {
                 return d.getTime() === now.getTime();
             });
         } else if (filter === "Week") {
-            // Events within the next 7 days
             const nextWeek = new Date(now);
             nextWeek.setDate(now.getDate() + 7);
             result = result.filter(e => {
@@ -101,14 +98,13 @@ export default function FeaturedEvents() {
                 return d >= now && d <= nextWeek;
             });
         } else if (filter === "Month") {
-            // Events in the current month
             result = result.filter(e => {
                 if (!e.start_date) return false;
                 const d = new Date(e.start_date);
                 return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
             });
         } else if (filter === "Price") {
-            // Sort by price (Free first, then ascending)
+
             result.sort((a, b) => {
                 const pA = a.price === "Free" ? 0 : parseInt(String(a.price).replace(/\D/g, "")) || 0;
                 const pB = b.price === "Free" ? 0 : parseInt(String(b.price).replace(/\D/g, "")) || 0;
@@ -123,24 +119,7 @@ export default function FeaturedEvents() {
 
     return (
         <div className="featured-events-page">
-            {/* ── CATEGORIES ── */}
-            {/* <section className="category-section">
-                <h3>Categories</h3>
-                <div className="categories">
-                    <div className="category-card">
-                        <div className="icon-box"><FaTrophy className="category-icon" /></div>
-                        <h4>Sports</h4>
-                    </div>
-                    <div className="category-card">
-                        <div className="icon-box"><FaCalendarAlt className="category-icon" /></div>
-                        <h4>Events</h4>
-                    </div>
-                    <div className="category-card">
-                        <div className="icon-box"><FaEllipsisH className="category-icon" /></div>
-                        <h4>Others</h4>
-                    </div>
-                </div>
-            </section> */}
+
 
             {/* ── FEATURED EVENTS ── */}
             <section className="events-section">
@@ -177,7 +156,7 @@ export default function FeaturedEvents() {
                                     {event.image ? (
                                         <img src={event.image} className="poster-img" alt={event.title} />
                                     ) : (
-                                        <div className="poster-img poster-placeholder" style={{ background: event.bg_color || "#a5b4fc" }}>🎉</div>
+                                        <div className="poster-img poster-placeholder" style={{ background: event.bg_color || "#a5b4fc", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FaStar size={32} color="#fff" /></div>
                                     )}
                                     <span className="poster-badge-featured">Featured</span>
                                 </div>
@@ -185,11 +164,11 @@ export default function FeaturedEvents() {
                                 {/* Body */}
                                 <div className="poster-body">
                                     <h4 className="poster-title">{event.title}</h4>
-                                    <p className="poster-location">📍 {event.location}</p>
+                                    <p className="poster-location"><FaMapMarkerAlt style={{ marginRight: '4px' }} /> {event.location}</p>
 
                                     <div className="poster-date-time">
-                                        <span className="poster-tag">📅 {fmtDate(event.start_date)}</span>
-                                        <span className="poster-tag">🕒 {fmtTime(event.start_time)}</span>
+                                        <span className="poster-tag"><FaCalendarAlt style={{ marginRight: '4px' }} /> {fmtDate(event.start_date)}</span>
+                                        <span className="poster-tag"><FaClock style={{ marginRight: '4px' }} /> {fmtTime(event.start_time)}</span>
                                     </div>
                                 </div>
 
@@ -199,7 +178,7 @@ export default function FeaturedEvents() {
                                     <div className="poster-footer-right">
                                         <span className="poster-price">{event.price}</span>
                                         {event.map_url && (
-                                            <a href={event.map_url} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()} className="poster-map-btn">📍</a>
+                                            <a href={event.map_url} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()} className="poster-map-btn"><FaMapMarkerAlt /></a>
                                         )}
                                     </div>
                                 </div>

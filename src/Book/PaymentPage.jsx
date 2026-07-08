@@ -12,7 +12,7 @@ const PaymentPage = () => {
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ SAFE BOOKING ID
+
   const bookingId =
     location.state?.booking_id ||
     location.state?.booking?.id;
@@ -88,17 +88,17 @@ const PaymentPage = () => {
         return;
       }
 
-      // ✅ RAZORPAY OPTIONS
+
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: order.amount,
         currency: "INR",
         name: "Adugalam",
         description: "Ground Booking Payment",
-        order_id: order.order_id, // ✅ FIXED
+        order_id: order.order_id,
 
         handler: async function (response) {
-          await verifyPayment(response.razorpay_payment_id);
+          await verifyPayment(response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature);
         },
 
         theme: { color: "#16a34a" },
@@ -114,7 +114,7 @@ const PaymentPage = () => {
   };
 
   /* ================= VERIFY PAYMENT ================= */
-  const verifyPayment = async (paymentId) => {
+  const verifyPayment = async (paymentId, orderId, signature) => {
     try {
       const token = localStorage.getItem("access");
 
@@ -129,6 +129,8 @@ const PaymentPage = () => {
           body: JSON.stringify({
             booking_id: bookingId,
             payment_id: paymentId,
+            order_id: orderId,
+            signature: signature,
           }),
         }
       );
@@ -172,7 +174,7 @@ const PaymentPage = () => {
           <div className="slot-list">
             {booking.slots?.map((s, i) => (
               <p key={i} className="slot-item">
-                🕒 {s.time_display}
+                {s.time_display}
               </p>
             ))}
           </div>

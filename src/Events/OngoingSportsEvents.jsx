@@ -53,62 +53,62 @@ export default function OngoingSportsEvents() {
       <div className="ongoing-header">
         <h3>🔥 Ongoing Sports Events</h3>
         {events.length > 3 && (
-          <button className="view-all-btn" style={{background:'linear-gradient(135deg,#dc2626,#ef4444)',color:'#fff',border:'none',padding:'8px 18px',borderRadius:'999px',fontSize:'13px',fontWeight:700,cursor:'pointer',fontFamily:'Inter,sans-serif',boxShadow:'0 3px 10px rgba(220,38,38,0.28)'}} onClick={() => setShowAll(s => !s)}>
+          <button className="view-all-btn" style={{ background: 'linear-gradient(135deg,#dc2626,#ef4444)', color: '#fff', border: 'none', padding: '8px 18px', borderRadius: '999px', fontSize: '13px', fontWeight: 700, cursor: 'pointer', fontFamily: 'Inter,sans-serif', boxShadow: '0 3px 10px rgba(220,38,38,0.28)' }} onClick={() => setShowAll(s => !s)}>
             {showAll ? 'Show Less' : 'View All'}
           </button>
         )}
       </div>
 
       {loading ? (
-        <p style={{textAlign: "center", color: "#666", padding: "20px"}}>Loading events...</p>
+        <p style={{ textAlign: "center", color: "#666", padding: "20px" }}>Loading events...</p>
       ) : events.length === 0 ? (
-        <p style={{textAlign: "center", color: "#666", padding: "20px"}}>No ongoing events for today. Check back later!</p>
+        <p style={{ textAlign: "center", color: "#666", padding: "20px" }}>No ongoing events for today. Check back later!</p>
       ) : (
         <div className={`ongoing-grid${showAll ? " ongoing-grid--all" : ""}`}>
           {(showAll ? events : events.slice(0, 4)).map((e, index) => (
-          <div className={`ongoing-card ${index === 0 ? "ongoing-card--featured" : ""}`} key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
-            {/* Image */}
-            <div className="ongoing-card-image">
-              {e.image ? (
-                <img src={e.image} alt={e.title} />
-              ) : (
-                <div className="ongoing-placeholder" style={{ background: e.bg_color || "#f59e0b" }}>🎉</div>
-              )}
-              <span className="ongoing-live-badge">{index === 0 ? "★ FEATURED LIVE" : "LIVE"}</span>
-            </div>
-
-            {/* Body */}
-            <div className="ongoing-card-body">
-              <h4>{e.title}</h4>
-              <p className="ongoing-card-meta">📍 {e.location}</p>
-              <p className="ongoing-card-meta">
-                📅 {fmtDate(e.start_date)} – {fmtDate(e.end_date)}
-              </p>
-              <p className="ongoing-card-meta">
-                🕒 {fmtTime(e.start_time)} – {fmtTime(e.end_time)}
-              </p>
-            </div>
-
-            {/* Footer */}
-            <div className="ongoing-card-footer">
-              <span className="ongoing-price">{e.price}</span>
-              <div style={{ display: "flex", gap: "8px" }}>
-                {e.map_url && (
-                  <a
-                    href={e.map_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(ev) => ev.stopPropagation()}
-                    className="ongoing-map-btn"
-                  >
-                    📍
-                  </a>
+            <div className={`ongoing-card ${index === 0 ? "ongoing-card--featured" : ""}`} key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
+              {/* Image */}
+              <div className="ongoing-card-image">
+                {e.image ? (
+                  <img src={e.image} alt={e.title} />
+                ) : (
+                  <div className="ongoing-placeholder" style={{ background: e.bg_color || "#f59e0b" }}>🎉</div>
                 )}
-                <button className="ongoing-btn">Join Now</button>
+                <span className="ongoing-live-badge">{index === 0 ? "★ FEATURED LIVE" : "LIVE"}</span>
+              </div>
+
+              {/* Body */}
+              <div className="ongoing-card-body">
+                <h4>{e.title}</h4>
+                <p className="ongoing-card-meta">📍 {e.location}</p>
+                <p className="ongoing-card-meta">
+                  📅 {fmtDate(e.start_date)} – {fmtDate(e.end_date)}
+                </p>
+                <p className="ongoing-card-meta">
+                  🕒 {fmtTime(e.start_time)} – {fmtTime(e.end_time)}
+                </p>
+              </div>
+
+              {/* Footer */}
+              <div className="ongoing-card-footer">
+                <span className="ongoing-price">{e.price}</span>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  {e.map_url && (
+                    <a
+                      href={e.map_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(ev) => ev.stopPropagation()}
+                      className="ongoing-map-btn"
+                    >
+                      📍
+                    </a>
+                  )}
+                  <button className="ongoing-btn">Join Now</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       )}
     </section>

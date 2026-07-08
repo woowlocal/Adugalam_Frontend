@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaTrophy, FaMapMarkerAlt, FaCalendarAlt, FaClock } from "react-icons/fa";
 import "./UpcomingSportsEvents.css";
 import "../Components/NearBy/Nearby.css";
 
@@ -15,6 +16,19 @@ const fmtTime = (t) => {
   const [h, m] = t.split(":");
   const hr = parseInt(h);
   return `${((hr % 12) || 12).toString().padStart(2, "0")}:${m} ${hr >= 12 ? "PM" : "AM"}`;
+};
+
+const getDaysLeft = (dateStr) => {
+  if (!dateStr) return "Soon";
+  const target = new Date(dateStr);
+  const now = new Date();
+  target.setHours(0, 0, 0, 0);
+  now.setHours(0, 0, 0, 0);
+  const diffTime = target - now;
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  if (diffDays === 0) return "Today";
+  if (diffDays > 0) return `${diffDays}d`;
+  return "Soon";
 };
 
 export default function UpcomingSportsEvents() {
@@ -76,19 +90,19 @@ export default function UpcomingSportsEvents() {
                 {e.image ? (
                   <img src={e.image} className="upcoming-img" alt={e.title} />
                 ) : (
-                  <div className="upcoming-img upcoming-placeholder" style={{ background: e.bg_color || "#a5b4fc" }}>🏆</div>
+                  <div className="upcoming-img upcoming-placeholder" style={{ background: e.bg_color || "#a5b4fc", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FaTrophy size={32} color="#fff" /></div>
                 )}
-                <span className="upcoming-badge-soon">Soon</span>
+                <span className="upcoming-badge-soon">{getDaysLeft(e.start_date)}</span>
               </div>
 
               {/* Body */}
               <div className="upcoming-body">
                 <h4 className="upcoming-title">{e.title}</h4>
-                <p className="upcoming-location">📍 {e.location}</p>
-                
+                <p className="upcoming-location"><FaMapMarkerAlt style={{ marginRight: '4px' }} /> {e.location}</p>
+
                 <div className="upcoming-date-time">
-                  <span className="upcoming-tag">📅 {fmtDate(e.start_date)}</span>
-                  <span className="upcoming-tag">🕒 {fmtTime(e.start_time)}</span>
+                  <span className="upcoming-tag"><FaCalendarAlt style={{ marginRight: '4px' }} /> {fmtDate(e.start_date)}</span>
+                  <span className="upcoming-tag"><FaClock style={{ marginRight: '4px' }} /> {fmtTime(e.start_time)}</span>
                 </div>
               </div>
 
@@ -105,7 +119,7 @@ export default function UpcomingSportsEvents() {
                       onClick={(ev) => ev.stopPropagation()}
                       className="upcoming-map-btn"
                     >
-                      📍
+                      <FaMapMarkerAlt />
                     </a>
                   )}
                 </div>

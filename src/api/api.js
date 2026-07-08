@@ -41,10 +41,10 @@ API.interceptors.response.use(
     ) {
       return Promise.reject(error);
     }
-    // 🚫 If 401 and not already retrying
+
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
-        // ⏳ Queue requests while refreshing
+
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
         })
@@ -61,14 +61,14 @@ API.interceptors.response.use(
       const refreshToken = localStorage.getItem("refresh");
 
       if (!refreshToken) {
-        // No refresh token — force logout
+
         localStorage.clear();
         window.location.href = "/login";
         return Promise.reject(error);
       }
 
       try {
-        // 🔄 Request new access token
+
         const res = await axios.post(
           `${import.meta.env.VITE_API_BASE_URL}api/token/refresh/`,
           { refresh: refreshToken }
@@ -76,15 +76,13 @@ API.interceptors.response.use(
 
         const newAccess = res.data.access;
         localStorage.setItem("access", newAccess);
-
-        // ✅ Update auth header and retry queued requests
         API.defaults.headers.common["Authorization"] = `Bearer ${newAccess}`;
         processQueue(null, newAccess);
 
         originalRequest.headers.Authorization = `Bearer ${newAccess}`;
         return API(originalRequest);
       } catch (refreshError) {
-        // ❌ Refresh token also expired — force logout
+
         processQueue(refreshError, null);
         localStorage.clear();
         window.location.href = "/admin-login";

@@ -6,10 +6,10 @@ const CartPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ SAFE ACCESS
+  //  SAFE ACCESS
   const booking = location.state?.booking;
 
-  // ✅ PREVENT CRASH
+  //  PREVENT CRASH
   if (!booking) {
     return (
       <div style={{ padding: "40px", textAlign: "center" }}>

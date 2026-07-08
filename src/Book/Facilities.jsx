@@ -21,16 +21,15 @@ const cleanArray = (data) => {
       .flatMap(item =>
         String(item)
           .replace(/["\[\]]/g, "")
-          .split(",") // ✅ split comma values
+          .split(",")
           .map(v => v.trim())
       )
       .filter(Boolean);
   }
 
-  // If single string
   return String(value)
     .replace(/["\[\]]/g, "")
-    .split(",") // ✅ split comma values
+    .split(",")
     .map(v => v.trim())
     .filter(Boolean);
 };

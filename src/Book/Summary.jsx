@@ -16,7 +16,6 @@ const Summary = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState(null);
 
-  /* ================= FETCH FROM BACKEND ================= */
   useEffect(() => {
     const fetchSummary = async () => {
       try {
@@ -57,10 +56,8 @@ const Summary = () => {
     fetchSummary();
   }, []);
 
-  /* ================= LOADING ================= */
   if (loading) return <h3 style={{ textAlign: "center" }}>Loading summary...</h3>;
 
-  /* ================= ERROR ================= */
   if (error)
     return (
       <div style={{ textAlign: "center", marginTop: "40px" }}>

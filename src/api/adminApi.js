@@ -4,25 +4,21 @@ const BASE_URL = (
   import.meta.env.VITE_API_BASE_URL || "https://api.adugalam.com"
 ).replace(/\/$/, "");
 
-/* ─────────────────────────────────────────
-   Admin Axios instance  (separate from user API)
-   Keys: admin_access  /  admin_refresh
-───────────────────────────────────────── */
+
 const AdminAPI = axios.create({
   baseURL: BASE_URL + "/",
 });
 
-/* ── Helpers ── */
-const getAdminAccess  = () => localStorage.getItem("admin_access");
+const getAdminAccess = () => localStorage.getItem("admin_access");
 const getAdminRefresh = () => localStorage.getItem("admin_refresh");
-const setAdminAccess  = (t) => {
+const setAdminAccess = (t) => {
   localStorage.setItem("admin_access", t);
-  localStorage.setItem("access", t); // sync shared key for all admin components
+  localStorage.setItem("access", t);
 };
 const clearAdminTokens = () => {
   localStorage.removeItem("admin_access");
   localStorage.removeItem("admin_refresh");
-  localStorage.removeItem("access");   // clear shared keys too
+  localStorage.removeItem("access");
   localStorage.removeItem("refresh");
   localStorage.removeItem("vendor_name");
 };
@@ -38,7 +34,7 @@ AdminAPI.interceptors.request.use((config) => {
 
 /* ── RESPONSE — auto-refresh on 401 ── */
 let isRefreshing = false;
-let failedQueue  = [];
+let failedQueue = [];
 
 const processQueue = (error, token = null) => {
   failedQueue.forEach((p) => (error ? p.reject(error) : p.resolve(token)));
@@ -72,14 +68,14 @@ AdminAPI.interceptors.response.use(
       const refreshToken = getAdminRefresh();
 
       if (!refreshToken) {
-        /* No refresh token → force admin re-login */
+
         clearAdminTokens();
         window.location.href = "/admin-login";
         return Promise.reject(error);
       }
 
       try {
-        /* 🔄 Get new access token using refresh token */
+
         const res = await axios.post(
           `${BASE_URL}/api/token/refresh/`,
           { refresh: refreshToken }
@@ -102,7 +98,7 @@ AdminAPI.interceptors.response.use(
         return AdminAPI(originalRequest);
 
       } catch (refreshError) {
-        /* ❌ Refresh token also expired → force admin re-login */
+
         processQueue(refreshError, null);
         clearAdminTokens();
         window.location.href = "/admin-login";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Galarypage.css";
 
-// Import images from assets
+
 import img1 from "../assets/image1.webp";
 import img2 from "../assets/image2.jpg";
 import img3 from "../assets/image3.jpg";
@@ -40,7 +40,7 @@ function Galarypage() {
   const handleTouchEnd = (e) => {
     const diffY = touchStart.y - e.changedTouches[0].clientY;
     const diffX = touchStart.x - e.changedTouches[0].clientX;
-    // If vertical swipe is dominant and exceeds 80px, close
+
     if (Math.abs(diffY) > 80 && Math.abs(diffY) > Math.abs(diffX)) {
       closeImage();
     }
@@ -63,18 +63,18 @@ function Galarypage() {
 
       {/* Modal */}
       {selectedImage && (
-        <div 
-          className="modal" 
+        <div
+          className="modal"
           onClick={closeImage}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           <span className="close" onClick={closeImage}>&times;</span>
-          <img 
-            className="modal-content1" 
-            src={selectedImage} 
-            alt="full-view" 
-            onClick={(e) => e.stopPropagation()} 
+          <img
+            className="modal-content1"
+            src={selectedImage}
+            alt="full-view"
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}

@@ -35,9 +35,6 @@ const Cartpage = () => {
     ?.map(slot => slot.time_display)
     .join(", ");
 
-  // ===================================================
-  // ✅ CHECKOUT → SAVE BOOKING IN DATABASE
-  // ===================================================
   const handleCheckout = async () => {
 
     try {
@@ -46,16 +43,15 @@ const Cartpage = () => {
 
       if (!token) {
         alert("Login required to complete checkout.");
-        navigate("/login", { 
-          state: { 
-            from: location.pathname, 
-            booking 
-          } 
+        navigate("/login", {
+          state: {
+            from: location.pathname,
+            booking
+          }
         });
         return;
       }
 
-      // ⭐ SAFETY CHECK
       if (!booking.turf_id || !booking.slot_ids?.length || !booking.date) {
         alert("Booking data missing");
         return;
@@ -87,12 +83,12 @@ const Cartpage = () => {
 
       // ================= ERROR HANDLE =================
       if (!response.ok) {
-        console.error("❌ Booking Error:", data);
+        console.error(" Booking Error:", data);
         alert(data.error || "Booking failed");
         return;
       }
 
-      console.log("✅ Booking saved:", data);
+      console.log(" Booking saved:", data);
 
       // ================= NAVIGATE AFTER SAVE =================
       navigate("/payment", {

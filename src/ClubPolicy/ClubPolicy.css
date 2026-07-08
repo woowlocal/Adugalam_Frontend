@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.policy-headerr > * {
+.policy-headerr>* {
   pointer-events: auto;
 }
 
@@ -58,9 +58,7 @@
   top: 0;
 }
 
-/* ========================= */
-/* 📱 Mobile Devices */
-/* ========================= */
+
 @media (max-width: 768px) {
   .club-policy-container {
     margin: 24px auto;
@@ -80,9 +78,7 @@
   }
 }
 
-/* ========================= */
-/* 📱 Small Mobile (≤480px) */
-/* ========================= */
+
 @media (max-width: 480px) {
   .club-policy-container {
     margin: 20px auto;

@@ -1,26 +1,17 @@
-/* ============================================================
-   FEATURED EVENTS – Enhanced Design System
-   Matches Home page aesthetic: green accent, clean white,
-   premium cards, smooth animations, fully mobile responsive.
-   ============================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* ─── Global Reset within scope ── */
 .featured-events-page,
 .featured-events-page * {
   text-align: left;
   box-sizing: border-box;
 }
 
-/* ─── Page Wrapper ─── */
 .featured-events-page {
   font-family: 'Inter', sans-serif;
   background: transparent;
   width: 100%;
 }
 
-/* ─── Fade-In Animation ─── */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -45,12 +36,8 @@
   }
 }
 
-/* ============================================================
-   CATEGORY SECTION
-   ============================================================ */
 .category-section {
   padding: 36px 0 28px;
-  /* background: #ffffff; */
   animation: fadeInUp 0.55s ease both;
 }
 
@@ -120,16 +107,13 @@
 }
 
 
-/* ============================================================
-   FEATURED EVENTS SECTION
-   ============================================================ */
+
 .events-section {
   padding: 0 0 48px;
-  /* background: #ffffff; */
   animation: fadeInUp 0.6s ease 0.1s both;
 }
 
-/* ─── Top Row: Title + Actions ─── */
+
 .featured-top {
   display: flex;
   justify-content: space-between;
@@ -164,14 +148,13 @@
   flex-wrap: wrap;
 }
 
-/* Filter Dropdown */
+
 .featured-filter {
   padding: 9px 16px;
   border-radius: 999px;
   border: 1.5px solid #e5e7eb;
   font-size: 13px;
   font-weight: 600;
-  /* background: #fff; */
   color: #374151;
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -184,7 +167,7 @@
   box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.10);
 }
 
-/* View All Button */
+
 .view-all-btn {
   background: linear-gradient(135deg, #0a7c3c, #15803d);
   color: #fff;
@@ -206,11 +189,6 @@
   box-shadow: 0 6px 20px rgba(21, 128, 61, 0.35);
 }
 
-/* ============================================================
-   POSTER GRID CARDS - FEATURED  (matches NewOnAdugalam size)
-   ============================================================ */
-
-/* Scrollable horizontal strip — default view */
 .poster-grid {
   display: flex;
   flex-wrap: nowrap;
@@ -226,7 +204,6 @@
   display: none;
 }
 
-/* 4-column desktop grid when View All is active */
 .poster-grid.poster-grid--all {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -253,7 +230,6 @@
   position: relative;
   isolation: isolate;
 
-  /* Premium Emerald Glass */
   background: linear-gradient(155deg,
       rgba(255, 255, 255, 0.95) 0%,
       rgba(236, 253, 245, 0.85) 40%,
@@ -307,7 +283,7 @@
   background: linear-gradient(135deg, #dcfce7, #bbf7d0);
 }
 
-/* Featured Gold Badge */
+
 .poster-badge-featured {
   position: absolute;
   top: 12px;
@@ -449,9 +425,7 @@
   font-size: 0.92rem;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+
 @media (max-width: 1024px) {
   .poster-grid.poster-grid--all {
     grid-template-columns: repeat(3, 1fr);
@@ -516,7 +490,6 @@
     min-width: max-content;
     scroll-snap-align: start;
     box-shadow: 0 4px 12px rgba(21, 128, 61, 0.08);
-    /* background: linear-gradient(145deg, #ffffff 0%, #f4fdf8 100%); */
     gap: 12px;
   }
 

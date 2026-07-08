@@ -5,7 +5,6 @@ import {
   useSearchParams,
   useParams,
 } from "react-router-dom";
-import { VscChevronLeft } from "react-icons/vsc";
 import "./BookingGround.css";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "https://api.adugalam.com").replace(/\/$/, "");
@@ -104,12 +103,12 @@ const BookingGround = () => {
         return;
       }
 
-      // 🔥 Sort by start_time (ensures 24hrs order)
+
       const sorted = data.sort((a, b) =>
         a.start_time.localeCompare(b.start_time)
       );
 
-      // 🔥 Filter out past slots when today's date is selected
+
       const now = new Date();
       const yyyy = now.getFullYear();
       const mm = String(now.getMonth() + 1).padStart(2, "0");
@@ -121,11 +120,11 @@ const BookingGround = () => {
 
       const filtered = isToday
         ? sorted.filter(slot => {
-            // start_time is in "HH:MM:SS" or "HH:MM" format
-            const [h, m] = slot.start_time.split(":").map(Number);
-            const slotMinutes = h * 60 + m;
-            return slotMinutes > currentMinutes;
-          })
+          // start_time is in "HH:MM:SS" or "HH:MM" format
+          const [h, m] = slot.start_time.split(":").map(Number);
+          const slotMinutes = h * 60 + m;
+          return slotMinutes > currentMinutes;
+        })
         : sorted;
 
       const formattedSlots = filtered.map(slot => ({
@@ -192,8 +191,7 @@ const BookingGround = () => {
 
   // ================= BOOKING OBJECT =================
   const calculateTotalPrice = () => {
-    // 🔥 FIX: Sum actual slot prices from the selected slots instead of multiplying count by base price
-    // This accounts for individual slot pricing (like peak hours)
+
     const selectedSlots = selectedTimes.map(s => s.id);
     const selectedSlotObjects = timeSlots.filter(s => selectedSlots.includes(s.id));
     const total = selectedSlotObjects.reduce((sum, s) => sum + (parseFloat(s.price) || 0), 0);
@@ -233,11 +231,11 @@ const BookingGround = () => {
 
   if (loading) return <div>Loading...</div>;
 
-  // ================= UI =================
+
   return (
     <div className="booking-wrapper">
 
-      {/* HEADER IS NOW HANDLED GLOBALLY IN App.jsx */}
+
 
       <div className="header">
         <h2>Booking a ground</h2>
@@ -252,7 +250,7 @@ const BookingGround = () => {
             className={`calendar-card ${selectedDate === d.full ? "active" : ""}`}
             onClick={() => {
               setSelectedDate(d.full);
-              setSelectedTimes([]); // 🔥 Clear previously selected slots on date change
+              setSelectedTimes([]);
             }}
           >
             <div className="date-number">{d.day}</div>

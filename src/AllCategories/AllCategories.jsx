@@ -19,7 +19,7 @@ const AllCategories = () => {
     { id: 10, name: "Kabaddi", icon: "/image copy.png" }
   ];
 
-  // 🔥 Navigate with filter data
+
   const handleCategoryClick = (categoryName) => {
     navigate(`/?sport=${encodeURIComponent(categoryName)}`);
   };

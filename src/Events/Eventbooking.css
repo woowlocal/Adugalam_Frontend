@@ -9,9 +9,6 @@
   background: #f9fafb;
 }
 
-/* ============================================================
-   BANNER SECTION
-   ============================================================ */
 .banner-card {
   width: 100%;
   border-radius: 24px;
@@ -33,9 +30,7 @@
   transform: scale(1.03);
 }
 
-/* ============================================================
-   TOP INFO (Title & Meta)
-   ============================================================ */
+
 .top-info {
   margin-bottom: 40px;
   animation: fadeInUp 0.5s ease-out 0.1s both;
@@ -90,9 +85,7 @@
   text-decoration: underline;
 }
 
-/* ============================================================
-   MAIN GRID
-   ============================================================ */
+
 .content-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -100,9 +93,6 @@
   align-items: start;
 }
 
-/* ============================================================
-   LEFT COLUMN BLOCKS
-   ============================================================ */
 .block {
   background: #ffffff;
   border-radius: 20px;
@@ -269,9 +259,7 @@
   margin-top: 4px;
 }
 
-/* ============================================================
-   RIGHT COLUMN (STICKY)
-   ============================================================ */
+
 .sticky-card {
   position: sticky;
   top: 24px;
@@ -414,9 +402,7 @@
   background: #f3f4f6;
 }
 
-/* ============================================================
-   REVIEWS
-   ============================================================ */
+
 .review-summary {
   display: flex;
   align-items: center;
@@ -545,33 +531,50 @@
   color: #9ca3af;
 }
 
-/* ============================================================
-   ANIMATIONS & RESPONSIVE
-   ============================================================ */
+
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 1024px) {
   .content-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .sticky-card {
     position: static;
   }
-  
+
   .banner-img img {
     height: 300px;
   }
@@ -581,7 +584,7 @@
   .title {
     font-size: 32px;
   }
-  
+
   .block {
     padding: 24px;
   }
@@ -591,15 +594,15 @@
   .container {
     padding: 16px;
   }
-  
+
   .banner-img img {
     height: 200px;
   }
-  
+
   .title {
     font-size: 28px;
   }
-  
+
   .location-text {
     flex-direction: column;
     align-items: flex-start;
@@ -607,9 +610,6 @@
   }
 }
 
-/* ============================================================
-   SEAT BOOKING UI
-   ============================================================ */
 .seat-info-box {
   margin: 16px 0;
   padding: 16px;
@@ -633,7 +633,7 @@
   padding: 8px 4px;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .seat-stat-num {
@@ -685,7 +685,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   animation: shimmer 2s infinite;
 }
 
@@ -748,11 +748,23 @@
 
 /* Animations */
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes pulse-red {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
 }

@@ -15,6 +15,16 @@ import {
   FaInstagram,
   FaFacebook,
   FaTelegramPlane,
+  FaHandshake,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaMap,
+  FaTicketAlt,
+  FaHourglassHalf,
+  FaBan,
+  FaFire,
+  FaStar,
+  FaRegStar
 } from "react-icons/fa";
 
 const fmtDate = (d) => {
@@ -32,7 +42,7 @@ const fmtTime = (t) => {
 export default function Eventbooking() {
   const location = useLocation();
   const id = location.state?.eventId;
-  
+
   const [eventData, setEventData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
@@ -42,7 +52,7 @@ export default function Eventbooking() {
       try {
         const userObj = JSON.parse(userObjStr);
         return userObj.name || "";
-      } catch (e) {}
+      } catch (e) { }
     }
     return "";
   });
@@ -95,7 +105,7 @@ export default function Eventbooking() {
       return;
     }
     const API_BASE = (import.meta.env.VITE_API_BASE_URL || "https://api.adugalam.com").replace(/\/$/, "");
-    
+
     fetch(`${API_BASE}/api/admin/events/${id}/`)
       .then(res => {
         if (!res.ok) throw new Error("Failed to load event");
@@ -128,8 +138,8 @@ export default function Eventbooking() {
     reviews.length === 0
       ? 0
       : (+
-          reviews.reduce((a, r) => a + r.rating, 0) / reviews.length
-        ).toFixed(1);
+        reviews.reduce((a, r) => a + r.rating, 0) / reviews.length
+      ).toFixed(1);
 
   const submitReview = async () => {
     const userObjStr = localStorage.getItem("user");
@@ -138,7 +148,7 @@ export default function Eventbooking() {
       try {
         const userObj = JSON.parse(userObjStr);
         userId = userObj.id;
-      } catch (e) {}
+      } catch (e) { }
     }
 
     if (!userId) {
@@ -174,14 +184,20 @@ export default function Eventbooking() {
     }
   };
 
-  const stars = (val) => "★".repeat(val) + "☆".repeat(5 - val);
+  const stars = (val) => (
+    <span style={{ display: 'inline-flex', gap: '2px', alignItems: 'center' }}>
+      {[...Array(5)].map((_, i) => (
+        i < val ? <FaStar key={i} color="#ffc107" /> : <FaRegStar key={i} color="#e4e5e9" />
+      ))}
+    </span>
+  );
 
   if (loading) {
-    return <main className="container"><p style={{padding:"40px", textAlign:"center"}}>Loading event details...</p></main>;
+    return <main className="container"><p style={{ padding: "40px", textAlign: "center" }}>Loading event details...</p></main>;
   }
 
   if (!eventData) {
-    return <main className="container"><p style={{padding:"40px", textAlign:"center"}}>Event not found!</p></main>;
+    return <main className="container"><p style={{ padding: "40px", textAlign: "center" }}>Event not found!</p></main>;
   }
 
   // Derived values from eventData
@@ -218,11 +234,11 @@ export default function Eventbooking() {
           booked_seats: data.booked_seats,
         }));
       } else {
-        setBookingMsg("❌ " + (data.error || "Booking failed"));
+        setBookingMsg(+ (data.error || "Booking failed"));
       }
     } catch (err) {
       console.error(err);
-      setBookingMsg("❌ Error connecting to server.");
+      setBookingMsg("Error connecting to server.");
     } finally {
       setBookingLoading(false);
     }
@@ -240,13 +256,13 @@ export default function Eventbooking() {
 
         {/* TOP INFO */}
         <section className="top-info">
-          <div className="pill">🤝 {eventData.category || "Events"}</div>
+          <div className="pill"><FaHandshake style={{ marginRight: '6px' }} /> {eventData.category || "Events"}</div>
           <h1 className="title">{displayTitle}</h1>
 
           <div className="meta">
-            <div className="meta-item">📅 {displayStartDate} {displayStartTime && `at ${displayStartTime}`} {displayEndDate && `to ${displayEndDate}`}</div>
+            <div className="meta-item"><FaCalendarAlt style={{ marginRight: '6px' }} /> {displayStartDate} {displayStartTime && `at ${displayStartTime}`} {displayEndDate && `to ${displayEndDate}`}</div>
             <div className="meta-item">
-              📍 <a className="meta-link" href={eventData.map_url || "#"}>{displayLocation}</a>
+              <FaMapMarkerAlt style={{ marginRight: '4px' }} /> <a className="meta-link" href={eventData.map_url || "#"}>{displayLocation}</a>
             </div>
           </div>
         </section>
@@ -262,13 +278,13 @@ export default function Eventbooking() {
                   {eventData.address || displayLocation}
                 </div>
                 {eventData.map_url && (
-                  <a className="view-map" href={eventData.map_url} target="_blank" rel="noreferrer">📍 View on map</a>
+                  <a className="view-map" href={eventData.map_url} target="_blank" rel="noreferrer"><FaMapMarkerAlt style={{ marginRight: '4px' }} /> View on map</a>
                 )}
               </div>
               <div className="map-wrap">
                 {eventData.map_url ? (
-                  <a href={eventData.map_url} target="_blank" rel="noreferrer" style={{display:'block', width:'100%', height:'100%', background:'#eee', textAlign:'center', paddingTop:'100px', borderRadius:'12px', color:'#111', textDecoration:'none'}}>
-                    <div style={{fontSize:'32px', marginBottom:'10px'}}>🗺️</div>
+                  <a href={eventData.map_url} target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', height: '100%', background: '#eee', textAlign: 'center', paddingTop: '100px', borderRadius: '12px', color: '#111', textDecoration: 'none' }}>
+                    <div style={{ fontSize: '32px', marginBottom: '10px' }}><FaMap /></div>
                     <strong>Click to Open Google Maps</strong>
                   </a>
                 ) : (
@@ -289,228 +305,233 @@ export default function Eventbooking() {
               </div>
             </div>
 
-{/* Dynamic Event Description could go here if added to backend */}
+            {/* Dynamic Event Description could go here if added to backend */}
 
-{eventData.agenda && (
-<div className="block">
-  <h2 className="block-title">Agenda</h2>
-  <div className="agenda">
-    <p style={{whiteSpace: "pre-wrap", color: "#4b5563"}}>{eventData.agenda}</p>
-  </div>
-</div>
-)}
-{eventData.vips && (
-<div className="block">
-  <h2 className="block-title">Speakers & VIPs</h2>
-  <div className="people">
-    <p style={{whiteSpace: "pre-wrap", color: "#4b5563"}}>{eventData.vips}</p>
-  </div>
-</div>
-)}
+            {eventData.agenda && (
+              <div className="block">
+                <h2 className="block-title">Agenda</h2>
+                <div className="agenda">
+                  <p style={{ whiteSpace: "pre-wrap", color: "#4b5563" }}>{eventData.agenda}</p>
+                </div>
+              </div>
+            )}
+            {eventData.vips && (
+              <div className="block">
+                <h2 className="block-title">Speakers & VIPs</h2>
+                <div className="people">
+                  <p style={{ whiteSpace: "pre-wrap", color: "#4b5563" }}>{eventData.vips}</p>
+                </div>
+              </div>
+            )}
 
-{/* Dynamic Business Benefits / FAQ could go here if added to backend */}
-</div>
-<aside className="right-col">
-
-  {/* TICKET / PRICE CARD */}
-  <div className="card sticky-card">
-    <h3 className="card-title" style={{marginBottom: '8px'}}>🎟️ Book Your Ticket</h3>
-    
-    <div className="price-amount">{displayPrice}</div>
-
-    {/* Seat Info */}
-    {totalSeats > 0 && (
-      <div className="seat-info-box">
-        <div className="seat-stats">
-          <div className="seat-stat">
-            <span className="seat-stat-num">{totalSeats}</span>
-            <span className="seat-stat-label">Total Seats</span>
+            {/* Dynamic Business Benefits / FAQ could go here if added to backend */}
           </div>
-          <div className="seat-stat">
-            <span className="seat-stat-num">{bookedSeats}</span>
-            <span className="seat-stat-label">Booked</span>
-          </div>
-          <div className="seat-stat">
-            <span className={`seat-stat-num ${seatsLeft <= 5 ? 'low' : ''}`}>{seatsLeft}</span>
-            <span className="seat-stat-label">Available</span>
-          </div>
-        </div>
+          <aside className="right-col">
 
-        <div className="seat-progress-wrap">
-          <div className="seat-progress-bar">
-            <div
-              className={`seat-progress-fill ${seatPercent >= 90 ? 'critical' : seatPercent >= 70 ? 'warning' : ''}`}
-              style={{ width: `${seatPercent}%` }}
-            />
-          </div>
-          <div className="seat-progress-text">{seatPercent}% Filled</div>
-        </div>
+            {/* TICKET / PRICE CARD */}
+            <div className="card sticky-card">
+              <h3 className="card-title" style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
+                <FaTicketAlt style={{ marginRight: '8px' }} /> Book Your Ticket
+              </h3>
 
-        {seatsLeft <= 10 && seatsLeft > 0 && (
-          <div className="seat-urgency">🔥 Only {seatsLeft} seat{seatsLeft > 1 ? 's' : ''} left! Book now!</div>
-        )}
-      </div>
-    )}
+              <div className="price-amount">{displayPrice}</div>
 
-    <button
-      className={`btn btn-book ${isFull ? 'btn-disabled' : ''}`}
-      onClick={handleBookNow}
-      disabled={isFull || bookingLoading}
-    >
-      {bookingLoading ? '⏳ Booking...' : isFull ? '🚫 Slot Full' : '🎟️ Book Now'}
-    </button>
+              {/* Seat Info */}
+              {totalSeats > 0 && (
+                <div className="seat-info-box">
+                  <div className="seat-stats">
+                    <div className="seat-stat">
+                      <span className="seat-stat-num">{totalSeats}</span>
+                      <span className="seat-stat-label">Total Seats</span>
+                    </div>
+                    <div className="seat-stat">
+                      <span className="seat-stat-num">{bookedSeats}</span>
+                      <span className="seat-stat-label">Booked</span>
+                    </div>
+                    <div className="seat-stat">
+                      <span className={`seat-stat-num ${seatsLeft <= 5 ? 'low' : ''}`}>{seatsLeft}</span>
+                      <span className="seat-stat-label">Available</span>
+                    </div>
+                  </div>
 
-    {bookingMsg && <div className="booking-msg">{bookingMsg}</div>}
-  </div>
+                  <div className="seat-progress-wrap">
+                    <div className="seat-progress-bar">
+                      <div
+                        className={`seat-progress-fill ${seatPercent >= 90 ? 'critical' : seatPercent >= 70 ? 'warning' : ''}`}
+                        style={{ width: `${seatPercent}%` }}
+                      />
+                    </div>
+                    <div className="seat-progress-text">{seatPercent}% Filled</div>
+                  </div>
 
-  {/* ORGANIZER CARD */}
-  <div className="card">
-    <h3 className="card-title">Organized By</h3>
+                  {seatsLeft <= 10 && seatsLeft > 0 && (
+                    <div className="seat-urgency">
+                      <FaFire style={{ color: 'orange', marginRight: '6px' }} /> Only {seatsLeft} seat{seatsLeft > 1 ? 's' : ''} left! Book now!
+                    </div>
+                  )}
+                </div>
+              )}
 
-    <div className="org-row">
-      <div className="org-logo">
-        <img src={orgLogo} alt="Organizer Logo" />
-      </div>
+              <button
+                className={`btn btn-book ${isFull ? 'btn-disabled' : ''}`}
+                onClick={handleBookNow}
+                disabled={isFull || bookingLoading}
+              >
+                {bookingLoading ? <><FaHourglassHalf style={{ marginRight: '6px' }} /> Booking...</> : isFull ? <><FaBan style={{ marginRight: '6px' }} /> Slot Full</> : <><FaTicketAlt style={{ marginRight: '6px' }} /> Book Now</>}
+              </button>
 
-      <div>
-        <div className="org-name">{eventData.organized_by || "ADUGALAM"}</div>
-        <div className="org-sub">
-          For any event-related inquiries, contact at
-          <br />
-          <a href="mailto:adugalaminfo@gmail.com">
-            adugalaminfo@gmail.com
-          </a>
-        </div>
-      </div>
-    </div>
+              {bookingMsg && <div className="booking-msg">{bookingMsg}</div>}
+            </div>
 
-    <div className="card-divider"></div>
+            {/* ORGANIZER CARD */}
+            <div className="card">
+              <h3 className="card-title">Organized By</h3>
 
-    <button className="link-btn">🚩 Report this event</button>
-    
+              <div className="org-row">
+                <div className="org-logo">
+                  <img src={orgLogo} alt="Organizer Logo" />
+                </div>
 
-  </div>
+                <div>
+                  <div className="org-name">{eventData.organized_by || "ADUGALAM"}</div>
+                  <div className="org-sub">
+                    For any event-related inquiries, contact at
+                    <br />
+                    <a href="mailto:adugalaminfo@gmail.com">
+                      adugalaminfo@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="card-divider"></div>
+
+              <button className="link-btn">Contact this event</button>
+
+
+            </div>
 
 
 
-<button
-  className="link-btn"
-  onClick={() => setShowShare(!showShare)}
->
-  🔗 Share this event
-</button>
+            <button
+              className="link-btn"
+              onClick={() => setShowShare(!showShare)}
+            >
+              <FaLink style={{ marginRight: '6px' }} /> Share this event
+            </button>
 
-{showShare && (
-  <div className="share-box">
-    {shareLinks.map((item, i) => (
-      item.action ? (
-        <button
-          key={i}
-          className="share-item"
-          onClick={item.action}
-        >
-          <span>{item.icon}</span>
-          {item.name}
-        </button>
-      ) : (
-        <a
-          key={i}
-          className="share-item"
-          href={item.url}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span>{item.icon}</span>
-          {item.name}
-        </a>
-      )
-    ))}
-  </div>
-)}
+            {showShare && (
+              <div className="share-box">
+                {shareLinks.map((item, i) => (
+                  item.action ? (
+                    <button
+                      key={i}
+                      className="share-item"
+                      onClick={item.action}
+                    >
+                      <span>{item.icon}</span>
+                      {item.name}
+                    </button>
+                  ) : (
+                    <a
+                      key={i}
+                      className="share-item"
+                      href={item.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>{item.icon}</span>
+                      {item.name}
+                    </a>
+                  )
+                ))}
+              </div>
+            )}
 
-{/* ✅ REVIEWS CARD (BELOW SHARE) */}
-<div className="card review-card">
-  <h3 className="card-title">Reviews</h3>
 
-  {/* SUMMARY */}
-  <div className="review-summary">
-    <div className="avg">{avg}</div>
-    <div className="stars">{stars(Math.round(avg))}</div>
-    <div className="count">{reviews.length} reviews</div>
-  </div>
+            <div className="card review-card">
+              <h3 className="card-title">Reviews</h3>
 
-  {/* FORM */}
-  <div className="review-form">
+              {/* SUMMARY */}
+              <div className="review-summary">
+                <div className="avg">{avg}</div>
+                <div className="stars">{stars(Math.round(avg))}</div>
+                <div className="count">{reviews.length} reviews</div>
+              </div>
 
-    <label className="field">
-      <span>Your Name</span>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter your name"
-      />
-    </label>
+              {/* FORM */}
+              <div className="review-form">
 
-    <div className="field">
-      <span>Your Rating</span>
-      <div className="star-picker">
-        {[1, 2, 3, 4, 5].map((val) => (
-          <button
-            key={val}
-            type="button"
-            className={`star-btn ${rating >= val ? "active" : ""}`}
-            onClick={() => setRating(val)}
-          >
-            ★
-          </button>
-        ))}
-      </div>
-    </div>
+                <label className="field">
+                  <span>Your Name</span>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your name"
+                  />
+                </label>
 
-    <label className="field">
-      <span>Your Review</span>
-      <textarea
-        rows="3"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Write your review..."
-      />
-    </label>
+                <div className="field">
+                  <span>Your Rating</span>
+                  <div className="star-picker" style={{ display: 'flex', gap: '4px' }}>
+                    {[1, 2, 3, 4, 5].map((val) => (
+                      <button
+                        key={val}
+                        type="button"
+                        className={`star-btn ${rating >= val ? "active" : ""}`}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                        onClick={() => setRating(val)}
+                      >
+                        {rating >= val ? <FaStar color="#ffc107" size={24} /> : <FaRegStar color="#e4e5e9" size={24} />}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-    <button
-      className="btn btn-book"
-      type="button"
-      onClick={submitReview}
-    >
-      Submit Review
-    </button>
+                <label className="field">
+                  <span>Your Review</span>
+                  <textarea
+                    rows="3"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder="Write your review..."
+                  />
+                </label>
 
-    {msg && <div className="review-msg">{msg}</div>}
-  </div>
+                <button
+                  className="btn btn-book"
+                  type="button"
+                  onClick={submitReview}
+                >
+                  Submit Review
+                </button>
 
-  <div className="card-divider"></div>
+                {msg && <div className="review-msg">{msg}</div>}
+              </div>
 
-  {/* REVIEW LIST */}
-  <div className="review-list">
-    {reviews.length === 0 && (
-      <p className="muted">No reviews yet. Be the first!</p>
-    )}
-    {reviews.map((r) => (
-      <div key={r.id || r.created_at || Math.random()} className="review-item">
-        <div className="review-head">
-          <strong>{r.name}</strong>
-          <div className="stars">{"★".repeat(r.rating)}</div>
-        </div>
-        <p>{r.text}</p>
-        <small>
-          {r.created_at ? new Date(r.created_at).toLocaleDateString("en-IN") : "Just now"}
-        </small>
-      </div>
-    ))}
-  </div>
-</div>
-</aside>      
+              <div className="card-divider"></div>
+
+              {/* REVIEW LIST */}
+              <div className="review-list">
+                {reviews.length === 0 && (
+                  <p className="muted">No reviews yet. Be the first!</p>
+                )}
+                {reviews.map((r) => (
+                  <div key={r.id || r.created_at || Math.random()} className="review-item">
+                    <div className="review-head">
+                      <strong>{r.name}</strong>
+                      <div className="stars">{stars(r.rating)}</div>
+                    </div>
+                    <p>{r.text}</p>
+                    <small>
+                      {r.created_at ? new Date(r.created_at).toLocaleDateString("en-IN") : "Just now"}
+                    </small>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
         </section>
       </main>
     </>

@@ -32,12 +32,10 @@ const Gallery = ({
   const [animating, setAnimating] = useState(false);
   const [slideDirection, setSlideDirection] = useState(null);
 
-  /* ================= SWIPE REFS ================= */
 
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
 
-  /* ================= IMAGE URL ================= */
 
   const getImageUrl = (img) => {
     if (!img) return "";
@@ -51,7 +49,6 @@ const Gallery = ({
       }${img}`;
   };
 
-  /* ================= LOCK BODY SCROLL ================= */
 
   useEffect(() => {
     if (zoomIndex !== null) {
@@ -65,7 +62,6 @@ const Gallery = ({
     };
   }, [zoomIndex]);
 
-  /* ================= IMAGE NAVIGATION ================= */
 
   const animatedGo = useCallback(
     (direction) => {
@@ -100,7 +96,6 @@ const Gallery = ({
     [animatedGo]
   );
 
-  /* ================= KEYBOARD SUPPORT ================= */
 
   useEffect(() => {
     if (zoomIndex === null) return;
@@ -122,7 +117,6 @@ const Gallery = ({
     };
   }, [zoomIndex, goNext, goPrev]);
 
-  /* ================= SWIPE SUPPORT ================= */
 
   const handlePopupTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -159,7 +153,6 @@ const Gallery = ({
 
   return (
     <div className="gs-wrapper">
-      {/* ================= HEADER ================= */}
 
       <div className="gs-header">
         <h3 className="gp-section-title4">
@@ -167,7 +160,6 @@ const Gallery = ({
         </h3>
       </div>
 
-      {/* ================= THUMBNAILS ================= */}
 
       <div className="gs-row">
         {images.slice(0, 6).map((src, idx) => (
@@ -193,7 +185,6 @@ const Gallery = ({
         )}
       </div>
 
-      {/* ================= POPUP ================= */}
 
       {zoomIndex !== null &&
         createPortal(
@@ -203,7 +194,6 @@ const Gallery = ({
             onTouchStart={handlePopupTouchStart}
             onTouchEnd={handlePopupTouchEnd}
           >
-            {/* ================= LEFT ARROW ================= */}
 
             {images.length > 1 && (
               <button
@@ -219,7 +209,6 @@ const Gallery = ({
               </button>
             )}
 
-            {/* ================= POPUP CARD ================= */}
 
             <div
               className="gz-popup-card"
@@ -227,7 +216,6 @@ const Gallery = ({
                 e.stopPropagation()
               }
             >
-              {/* ================= CLOSE BUTTON ================= */}
 
               <button
                 type="button"
@@ -236,11 +224,9 @@ const Gallery = ({
                   setZoomIndex(null)
                 }
                 aria-label="Close popup"
-              >
-                {/* <IoClose /> */} X
+              >  X
               </button>
 
-              {/* ================= IMAGE ================= */}
 
               <div className="gz-popup-image-wrapper">
                 <img
@@ -259,7 +245,6 @@ const Gallery = ({
                 />
               </div>
 
-              {/* ================= COUNTER ================= */}
 
               <span className="gz-popup-counter-text">
                 {zoomIndex + 1} /{" "}
@@ -267,7 +252,6 @@ const Gallery = ({
               </span>
             </div>
 
-            {/* ================= RIGHT ARROW ================= */}
 
             {images.length > 1 && (
               <button
