@@ -159,6 +159,30 @@ const BookingGround = () => {
       : `${API_BASE}${img}`;
   };
 
+  // ================= FORMAT TIME DISPLAY =================
+  const formatTimeDisplay = (timeStr) => {
+    if (!timeStr) return "";
+    const parts = timeStr.split("-");
+    if (parts.length === 2) {
+      const start = parts[0].trim();
+      const end = parts[1].trim();
+      
+      const startIsAM = start.toLowerCase().includes("am");
+      const startIsPM = start.toLowerCase().includes("pm");
+      const endIsAM = end.toLowerCase().includes("am");
+      const endIsPM = end.toLowerCase().includes("pm");
+
+      if (startIsAM && endIsAM) {
+        return `${start.replace(/am/i, "").trim()} - ${end}`;
+      } else if (startIsPM && endIsPM) {
+        return `${start.replace(/pm/i, "").trim()} - ${end}`;
+      } else {
+        return `${start} - ${end}`;
+      }
+    }
+    return timeStr;
+  };
+
   // ================= SELECT GROUND =================
   const handleGroundSelect = (ground) => {
     setSelectedGround(ground);
@@ -293,7 +317,7 @@ const BookingGround = () => {
               `}
               onClick={() => toggleSlot(slot)}
             >
-              <div>{slot.time_display}</div>
+              <div>{formatTimeDisplay(slot.time_display)}</div>
 
               {slot.is_booked && (
                 <small className="status-text">Booked</small>
