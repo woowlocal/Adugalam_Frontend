@@ -82,7 +82,21 @@ const AdminForgotPassword = () => {
 
   return (
     <div className="admin-login-wrapper">
-      <div className="admin-login" style={{ minHeight: "auto", paddingBottom: "30px" }}>
+      <div 
+        className="admin-login" 
+        style={{ minHeight: "auto", paddingBottom: "30px" }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            if (step === 1) {
+              handleSendOtp();
+            } else if (step === 2) {
+              handleVerifyOtp();
+            } else if (step === 3) {
+              handleResetPassword();
+            }
+          }
+        }}
+      >
         <h2>Reset Password</h2>
         <p className="admin-login-note" style={{ fontSize: '0.9rem', color: '#555', marginBottom: '15px' }}>
           {step === 1 && "Enter your email address to receive an OTP."}

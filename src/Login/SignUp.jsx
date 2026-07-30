@@ -152,7 +152,20 @@ const SignUp = () => {
       </video>
       <div className="video-overlay"></div>
 
-      <div className="premium-glacier-card">
+      <div 
+        className="premium-glacier-card"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            if (step === 1) {
+              sendOtp();
+            } else if (step === 2) {
+              verifyOtp();
+            } else if (step === 3) {
+              createAccount();
+            }
+          }
+        }}
+      >
         <h2>{step === 2 ? "OTP has been sent to your email" : "Create Account"}</h2>
 
         {errors.api && <p className="error-text">{errors.api}</p>}

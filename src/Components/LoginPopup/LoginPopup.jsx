@@ -79,7 +79,14 @@ const LoginPopup = ({ isOpen, onClose }) => {
 
         {error && <div className="login-popup-error">{error}</div>}
 
-        <div className="login-popup-form">
+        <div 
+          className="login-popup-form"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleLogin();
+            }
+          }}
+        >
           <input
             type="email"
             placeholder="Email"

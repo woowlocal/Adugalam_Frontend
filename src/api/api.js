@@ -85,7 +85,7 @@ API.interceptors.response.use(
 
         processQueue(refreshError, null);
         localStorage.clear();
-        window.location.href = "/admin-login";
+        window.location.href = "/login";
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

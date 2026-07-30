@@ -68,7 +68,20 @@ const ForgotPassword = () => {
       </video>
       <div className="video-overlay"></div>
 
-      <div className="premium-glacier-card">
+      <div 
+        className="premium-glacier-card"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            if (step === 1) {
+              sendOtp();
+            } else if (step === 2) {
+              verifyOtp();
+            } else if (step === 3) {
+              resetPassword();
+            }
+          }
+        }}
+      >
         <h2>Forgot Password</h2>
         {error && <p className="error-text">{error}</p>}
 

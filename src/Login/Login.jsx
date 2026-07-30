@@ -49,7 +49,14 @@ const Login = () => {
       <div className="video-overlay"></div>
 
       {/* ── Login Card ── */}
-      <div className="premium-glacier-card">
+      <div 
+        className="premium-glacier-card"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && agreed) {
+            handleLogin();
+          }
+        }}
+      >
         <h2>Login</h2>
         {error && <p className="error-text">{error}</p>}
 

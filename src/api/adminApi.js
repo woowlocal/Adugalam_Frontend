@@ -70,7 +70,7 @@ AdminAPI.interceptors.response.use(
       if (!refreshToken) {
 
         clearAdminTokens();
-        window.location.href = "/admin-login";
+        window.location.href = "/AdminLogin";
         return Promise.reject(error);
       }
 
@@ -101,7 +101,7 @@ AdminAPI.interceptors.response.use(
 
         processQueue(refreshError, null);
         clearAdminTokens();
-        window.location.href = "/admin-login";
+        window.location.href = "/AdminLogin";
         return Promise.reject(refreshError);
 
       } finally {
