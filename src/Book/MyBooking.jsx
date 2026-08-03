@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./MyBooking.css";
+import html2canvas from "html2canvas";
 
 import {
   FaCalendarAlt,
@@ -11,6 +12,8 @@ import {
   FaTimes,
   FaHashtag,
   FaRunning,
+  FaUser,
+  FaDownload
 } from "react-icons/fa";
 import { VscChevronLeft } from "react-icons/vsc";
 import { RiCloseCircleFill } from "react-icons/ri";
@@ -22,9 +25,13 @@ const API_BASE =
 const MyBooking = () => {
   const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
+  const [eventBookings, setEventBookings] = useState([]);
+  const [activeTab, setActiveTab] = useState("turfs");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedCard, setSelectedCard] = useState(null); // click to open modal
+  const [selectedEventCard, setSelectedEventCard] = useState(null);
+  const eventReceiptRef = useRef(null);
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -40,14 +47,23 @@ const MyBooking = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
+        const eventRes = await fetch(`${API_BASE}/api/events/my-bookings/`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
         const data = await res.json();
-        console.log("Booking API response:", data);
+        const eventData = await eventRes.json();
 
         if (!res.ok) {
-          setError(data.error || "Failed to fetch bookings");
+          setError(data.error || "Failed to fetch turf bookings");
         } else {
           setBookings(data.filter((b) => b.payment_status === "SUCCESS"));
         }
+
+        if (eventRes.ok) {
+          setEventBookings(eventData);
+        }
+
       } catch (err) {
         console.error("Booking fetch error:", err);
         setError("Something went wrong");
@@ -61,6 +77,22 @@ const MyBooking = () => {
 
   const openModal = (item) => setSelectedCard(item);
   const closeModal = () => setSelectedCard(null);
+  const openEventModal = (item) => setSelectedEventCard(item);
+  const closeEventModal = () => setSelectedEventCard(null);
+
+  const handleDownloadEventTicket = async () => {
+    if (!eventReceiptRef.current) return;
+    try {
+      const canvas = await html2canvas(eventReceiptRef.current, { scale: 2, useCORS: true });
+      const imgData = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.href = imgData;
+      link.download = `Adugalam-EventTicket-${selectedEventCard?.booking_ref || "ticket"}.png`;
+      link.click();
+    } catch (err) {
+      console.error("Failed to generate ticket image:", err);
+    }
+  };
 
   const getStatusConfig = (status) => {
     if (status === "SUCCESS")
@@ -122,13 +154,28 @@ const MyBooking = () => {
           <h2 className="page-title">My Bookings</h2>
         </div>
 
+        {/* Tabs */}
+        <div style={{ display: "flex", gap: "10px", margin: "0 20px 20px", borderBottom: "1px solid #e5e7eb" }}>
+          <button
+            onClick={() => setActiveTab("turfs")}
+            style={{ padding: "10px 16px", background: "none", border: "none", borderBottom: activeTab === "turfs" ? "3px solid #16a34a" : "3px solid transparent", color: activeTab === "turfs" ? "#16a34a" : "#64748b", fontWeight: 600, fontSize: "16px", cursor: "pointer" }}
+          >
+            Turfs
+          </button>
+          <button
+            onClick={() => setActiveTab("events")}
+            style={{ padding: "10px 16px", background: "none", border: "none", borderBottom: activeTab === "events" ? "3px solid #7c3aed" : "3px solid transparent", color: activeTab === "events" ? "#7c3aed" : "#64748b", fontWeight: 600, fontSize: "16px", cursor: "pointer" }}
+          >
+            Events
+          </button>
+        </div>
+
         {/* Booking List */}
-        {bookings.length === 0 ? (
-          <p style={{ textAlign: "center", color: "#888", marginTop: "40px" }}>
-            No bookings found
-          </p>
-        ) : (
-          <div className="booking-list">
+        {activeTab === "turfs" ? (
+          bookings.length === 0 ? (
+            <p style={{ textAlign: "center", color: "#888", marginTop: "40px" }}>No turf bookings found</p>
+          ) : (
+            <div className="booking-list">
             {bookings.map((item) => {
               const status = getStatusConfig(item.payment_status);
               return (
@@ -171,11 +218,85 @@ const MyBooking = () => {
                 </div>
               );
             })}
-          </div>
+            </div>
+          )
+        ) : (
+          eventBookings.length === 0 ? (
+            <p style={{ textAlign: "center", color: "#888", marginTop: "40px" }}>No event bookings found</p>
+          ) : (
+            <div className="booking-list">
+              {eventBookings.map((item) => (
+                <div className="booking-card" key={item.id} onClick={() => openEventModal(item)} style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                  <div className="booking-info">
+                    <h3 style={{ color: "#7c3aed" }}>{item.event_title}</h3>
+                    <p className="booking-game" style={{ fontSize: "13px", color: "#475569", marginBottom: "4px", fontWeight: "600" }}>{item.event_location}</p>
+                    <p className="booking-date">{item.event_date || "Date TBA"}</p>
+                    <span className="booking-status-badge" style={{ color: "#059669", background: "#dcfce7" }}>
+                      ✅ Confirmed
+                    </span>
+                  </div>
+                  <div className="booking-right" style={{ textAlign: "right" }}>
+                    <div className="booking-price">{item.is_free ? "FREE" : `₹${item.total_amount}`}</div>
+                    <div style={{ fontSize: "12px", color: "#64748b", marginTop: "4px" }}>{item.qty} {item.ticket_type} ticket(s)</div>
+                    <div className="tap-hint" style={{ marginTop: "8px" }}>Tap for details</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
         )}
       </div>
 
-      {/* ===== DETAIL MODAL ===== */}
+      {/* ===== EVENT DETAIL MODAL ===== */}
+      {selectedEventCard && (
+        <div className="modal-backdrop" onClick={closeEventModal}>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={closeEventModal}>X</button>
+            <div ref={eventReceiptRef} style={{ background: "#fff", padding: "16px", borderRadius: "12px", width: "100%", boxSizing: "border-box" }}>
+              <div style={{ background: `linear-gradient(135deg, ${!selectedEventCard.is_free ? "#7c3aed, #a78bfa" : "#059669, #10b981"})`, borderRadius: "12px", padding: "20px", textAlign: "center", marginBottom: "16px" }}>
+                <div style={{ fontSize: "36px", marginBottom: "4px" }}>🎟️</div>
+                <h3 style={{ margin: 0, color: "#fff", fontSize: "18px", fontWeight: 700 }}>{selectedEventCard.is_free ? "Booking Confirmed!" : "Payment Successful!"}</h3>
+                <p style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.85)", fontSize: "13px" }}>Event Ticket</p>
+              </div>
+
+              {selectedEventCard.booking_ref && (
+                <div style={{ background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: "10px", padding: "12px", textAlign: "center", marginBottom: "12px" }}>
+                  <div style={{ fontSize: "11px", color: "#6b7280", textTransform: "uppercase", letterSpacing: "1px" }}>Booking Reference</div>
+                  <div style={{ fontSize: "20px", fontWeight: 800, color: "#059669", letterSpacing: "3px", fontFamily: "monospace", marginTop: "4px" }}>{selectedEventCard.booking_ref}</div>
+                </div>
+              )}
+
+              <div style={{ background: "#f9fafb", borderRadius: "10px", padding: "12px 14px", fontSize: "13px", marginBottom: "14px" }}>
+                {[
+                  ["Event", selectedEventCard.event_title],
+                  ["Date", selectedEventCard.event_date || "TBA"],
+                  ["Venue", selectedEventCard.event_location],
+                  ["Attendee", selectedEventCard.attendee_name],
+                  ["Ticket", selectedEventCard.ticket_type],
+                  ["Quantity", selectedEventCard.qty],
+                  ["Amount", selectedEventCard.is_free ? "FREE" : `₹${selectedEventCard.total_amount}`],
+                ].map(([label, val], idx) => (
+                  <div key={idx} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: idx < 6 ? "1px dashed #e5e7eb" : "none" }}>
+                    <span style={{ color: "#6b7280" }}>{label}</span>
+                    <span style={{ fontWeight: 600, color: "#1f2937", textAlign: "right" }}>{val}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Download Button */}
+            <div style={{ padding: "0 20px 20px" }}>
+              <button
+                onClick={handleDownloadEventTicket}
+                style={{ width: "100%", padding: "12px", background: "#3b82f6", border: "none", borderRadius: "8px", fontWeight: 600, cursor: "pointer", fontSize: "14px", color: "#fff", display: "flex", justifyContent: "center", alignItems: "center", gap: "8px" }}
+              >
+                <FaDownload /> Download Ticket
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ===== TURF DETAIL MODAL ===== */}
       {selectedCard && (() => {
         const status = getStatusConfig(selectedCard.payment_status);
         return (

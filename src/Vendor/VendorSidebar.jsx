@@ -45,6 +45,7 @@ export const VENDOR_SIDEBAR_LINKS = [
   { path: "/VendorAddTurf",           label: "Add Turf",           icon: <IconAddTurf /> },
   { path: "/VendorTurfList",          label: "Turf List",          icon: <IconTurfList /> },
   { path: "/VendorPeakHours",         label: "Peak Hours",         icon: <IconPeakHours /> },
+  { path: "/VendorSlotBooking",       label: "Slot Booking",       icon: <IconBooking /> },
   { path: "/VendorBookingManagement", label: "Booking Management", icon: <IconBooking /> },
   { path: "/VendorLogout",            label: "Logout",             icon: <IconLogout /> },
 ];

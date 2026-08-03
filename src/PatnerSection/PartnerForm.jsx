@@ -275,9 +275,9 @@ const AddVendor = () => {
       {successId && (
         <div className="success-overlay">
           <div className="success-box">
-            <h2>🎉 Request Submitted!</h2>
+            <h2> Request Submitted!</h2>
 
-            <p>Vendor ID: <b>{successId}</b></p>
+            {/* <p>Vendor ID: <b>{successId}</b></p> */}
 
             <p className="pending-msg">
               Your request is sent to Admin for approval.

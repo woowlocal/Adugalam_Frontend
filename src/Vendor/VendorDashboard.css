@@ -1236,3 +1236,215 @@
     flex: 1;
   }
 }
+
+/* =====================================================
+   SLOT MANAGER WIDGET
+   ===================================================== */
+.slot-manager-card {
+  grid-column: 1 / -1; /* spans full width if needed, or normal grid slot */
+}
+
+.slot-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.slot-turf-select,
+.slot-date-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 14px;
+  background: white;
+  outline: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.slot-turf-select:focus,
+.slot-date-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.slot-grid-container {
+  margin-top: 20px;
+}
+
+.slot-loading {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.dash-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.dash-slot-item {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: white;
+}
+
+.slot-time {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.slot-status-text {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Available */
+.dash-slot-avail {
+  border-color: #e5e7eb;
+}
+.dash-slot-avail .slot-status-text {
+  color: #22c55e;
+}
+.dash-slot-avail:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Selected */
+.dash-slot-selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+.dash-slot-selected .slot-time {
+  color: #1d4ed8;
+}
+.dash-slot-selected .slot-status-text {
+  color: #2563eb;
+}
+
+/* Booked */
+.dash-slot-booked {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.dash-slot-booked .slot-status-text {
+  color: #dc2626;
+}
+
+.slot-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.slot-action-row span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+
+
+/* Modal and Button Overrides */
+.ae-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+}
+.ae-btn-green {
+  background-color: #10b981;
+  color: white;
+}
+.ae-btn-green:hover {
+  background-color: #059669;
+}
+.ae-btn-outline {
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+.ae-btn-outline:hover {
+  background-color: #f3f4f6;
+}
+
+.ae-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+.ae-modal-content {
+  background: white;
+  border-radius: var(--radius-xl);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  animation: eb-fadeUp 0.3s ease;
+}
+.ae-modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ae-modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #111827;
+}
+.ae-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+.ae-modal-body {
+  padding: 20px;
+}
+.field-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 5px;
+}
+.ae-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-md);
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+

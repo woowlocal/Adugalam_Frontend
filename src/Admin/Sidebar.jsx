@@ -27,6 +27,14 @@ function sidebar()
     <li>
       <NavLink to="/BookingManagement">Booking Management</NavLink>
     </li>
+    
+    <li>
+      <NavLink to="/Eventlist">Events</NavLink>
+    </li>
+
+    <li>
+      <NavLink to="/EventBookings">Event Bookings</NavLink>
+    </li>
 
     <li>
       <NavLink to="/PaymentsReport">Payments & Reports</NavLink>

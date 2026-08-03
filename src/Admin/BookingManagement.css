@@ -211,6 +211,10 @@
 .bm-kpi--amber  .bm-kpi-label { color: #fcd34d; }
 .bm-kpi--purple .bm-kpi-value { color: #7c3aed; }
 .bm-kpi--purple .bm-kpi-label { color: #c4b5fd; }
+.bm-kpi--orange .bm-kpi-value { color: #ea580c; }
+.bm-kpi--orange .bm-kpi-label { color: #fb923c; }
+.bm-pill--manual { border-color: #f97316 !important; color: #ea580c !important; }
+.bm-pill--manual.bm-pill--active { background: linear-gradient(135deg, #f97316, #ea580c) !important; color: white !important; }
 
 @keyframes bm-fadeUp {
   from { opacity:0; transform:translateY(14px); }

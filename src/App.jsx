@@ -35,6 +35,7 @@ import PeakHourPage from "./Admin/Peakhours/PeakHourPage.jsx";
 import AdminEvent from "./Admin/AdminEvent.jsx";
 import Eventlist from "./Admin/Eventlist.jsx";
 import EventReviews from "./Admin/EventReviews.jsx";
+import EventBookingsAdmin from "./Admin/EventBookingsAdmin.jsx";
 
 
 import Dashboard from "./Admin/Dashboard.jsx";
@@ -68,6 +69,7 @@ import VendorPeakHours from "./Vendor/VendorPeakHours.jsx";
 import Discount from "./Vendor/DiscountPage.jsx";
 import VendorBookingManagement from "./Vendor/BookingManagement.jsx";
 import VendorDashboard from "./Vendor/VendorDashboard.jsx";
+import VendorSlotBooking from "./Vendor/VendorSlotBooking.jsx";
 import VendorLogout from "./Vendor/Logout.jsx";
 import Scheduletime from "./Vendor/ScheduleTime.jsx";
 import VendorLayout from "./Vendor/layouts/VendorLayout.jsx";
@@ -161,6 +163,7 @@ const NavbarWrapper = () => {
     "/EditVendor",
     "/TurfList",
     "/VendorDashboard",
+    "/VendorSlotBooking",
     "/addturf",
     "/discount",
     "/BannerManagement",
@@ -222,6 +225,7 @@ const FooterWrapper = () => {
     "/EditVendor",
     "/TurfList",
     "/VendorDashboard",
+    "/VendorSlotBooking",
     "/addturf",
     "/discount",
     "/BannerManagement",
@@ -291,6 +295,7 @@ const BottomNavbarWrapper = () => {
     "/EditVendor",
     "/TurfList",
     "/VendorDashboard",
+    "/VendorSlotBooking",
     "/addturf",
     "/discount",
     "/VendorBookingManagement",
@@ -330,7 +335,7 @@ const adminVendorPaths = [
   "/UserDelete", "/Vendor", "/AdminLogout", "/AddTurf", "/VendorRequest",
   "/VendorList", "/TurfList", "/vendorlist", "/peak-hour",
   "/contact-messages", "/BannerManagement",
-  "/VendorDashboard", "/VendorAddTurf", "/VendorTurfList",
+  "/VendorDashboard", "/VendorSlotBooking", "/VendorAddTurf", "/VendorTurfList",
   "/VendorPeakHours", "/discount", "/VendorBookingManagement",
   "/VendorLogout", "/Scheduletime", "/VendorProfile",
   "/AdminEvent",
@@ -443,12 +448,14 @@ const App = () => {
             <Route path="/AdminEvent" element={<AdminEvent />} />
             <Route path="/Eventlist" element={<Eventlist />} />
             <Route path="/EventReviews" element={<EventReviews />} />
+            <Route path="/EventBookings" element={<EventBookingsAdmin />} />
           </Route>
 
 
           {/* VENDOR */}
           <Route element={<VendorLayout />}>
             <Route path="/VendorDashboard" element={<VendorDashboard />} />
+            <Route path="/VendorSlotBooking" element={<VendorSlotBooking />} />
             <Route path="/VendorAddTurf" element={<VendorAddTurf />} />
             <Route path="/VendorEditTurf/:id" element={<VendorEditTurf />} />
             <Route path="/VendorTurfList" element={<VendorTurfList />} />

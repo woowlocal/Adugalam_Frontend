@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
 
+
+<!-- Offline.js stub: prevents 'Offline is not defined' errors from GTM, HubSpot & injected scripts -->
+<script>
+  window.Offline = window.Offline || {
+    on: function() {},
+    off: function() {},
+    check: function() {},
+    state: 'up',
+    options: {}
+  };
+</script>
+
 <!-- Google Tag Manager -->
 <script>
 (function(w,d,s,l,i){

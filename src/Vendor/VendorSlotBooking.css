@@ -1,0 +1,262 @@
+/* =====================================================
+   VENDOR SLOT BOOKING WIDGET
+   ===================================================== */
+.slot-booking-page {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: eb-fadeUp 0.6s ease-out;
+}
+
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 5px 0;
+}
+
+.page-sub {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.slot-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.slot-turf-select,
+.slot-date-select {
+  padding: 10px 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md, 8px);
+  font-family: inherit;
+  font-size: 14px;
+  background: white;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  min-width: 180px;
+}
+
+.slot-turf-select:focus,
+.slot-date-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.slot-manager-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-xl, 16px);
+  padding: 24px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  min-height: 400px;
+}
+
+.slot-grid-container {
+  margin-top: 20px;
+}
+
+.slot-loading {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.dash-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.dash-slot-item {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md, 8px);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: white;
+}
+
+.slot-time {
+  font-weight: 600;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.slot-status-text {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Available */
+.dash-slot-avail {
+  border-color: #e5e7eb;
+}
+.dash-slot-avail .slot-status-text {
+  color: #10b981; /* Green */
+}
+.dash-slot-avail:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+/* Selected */
+.dash-slot-selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 0 0 2px #2563eb;
+}
+.dash-slot-selected .slot-time {
+  color: #1d4ed8;
+}
+.dash-slot-selected .slot-status-text {
+  color: #2563eb;
+}
+
+/* Booked */
+.dash-slot-booked {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.dash-slot-booked .slot-status-text {
+  color: #ef4444; /* Red */
+}
+
+.slot-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  animation: eb-fadeUp 0.3s ease-out;
+}
+
+.slot-action-row span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Modal Overrides */
+.sb-btn {
+  padding: 10px 24px;
+  border-radius: var(--radius-md, 8px);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+.sb-btn-primary {
+  background-color: #10b981;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+}
+.sb-btn-primary:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+.sb-btn-outline {
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+.sb-btn-outline:hover {
+  background-color: #f3f4f6;
+}
+
+.sb-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: eb-fadeUp 0.2s ease-out;
+}
+.sb-modal-content {
+  background: white;
+  border-radius: var(--radius-xl, 16px);
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.sb-modal-header {
+  padding: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sb-modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #111827;
+}
+.sb-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+.sb-modal-close:hover {
+  color: #111827;
+}
+.sb-modal-body {
+  padding: 24px;
+}
+.sb-field-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+.sb-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-md, 8px);
+  margin-bottom: 20px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.sb-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+.sb-form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}

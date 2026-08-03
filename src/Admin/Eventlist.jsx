@@ -1,25 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Eventlist.css";
 import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import AdminAPI from "../api/adminApi";
 
 export default function Eventlist() {
-  const [events, setEvents] = useState(
-    JSON.parse(localStorage.getItem("events")) || []
-  );
+  const navigate = useNavigate();
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+
+  const fetchEvents = async () => {
+    try {
+      setLoading(true);
+      const res = await AdminAPI.get("api/admin/events/");
+      setEvents(res.data);
+    } catch (err) {
+      console.error("Error fetching events:", err);
+      setError("Failed to load events from backend.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   const totalTransactions = events.length;
   const totalWithdraw = events.length * 100;
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (!window.confirm("Delete this event?")) return;
-    const updated = events.filter((event) => event.id !== id);
-    setEvents(updated);
-    localStorage.setItem("events", JSON.stringify(updated));
+    try {
+      await AdminAPI.delete(`api/admin/events/${id}/`);
+      setEvents(events.filter((event) => event.id !== id));
+    } catch (err) {
+      console.error("Error deleting event:", err);
+      alert("Failed to delete event. Please try again.");
+    }
   };
 
   const filtered = events.filter((e) =>
-    (e.eventName || e.name || "").toLowerCase().includes(search.toLowerCase())
+    (e.title || e.eventName || e.name || "").toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -76,12 +100,12 @@ export default function Eventlist() {
                   ["Sl", "Event Name", "Category", "Location", "Start Date", "Amount", "Organized By"],
                   ...events.map((ev, i) => [
                     i + 1,
-                    ev.eventName || ev.name || "-",
-                    ev.eventCategory || "-",
+                    ev.title || ev.eventName || ev.name || "-",
+                    ev.category || ev.eventCategory || "-",
                     ev.location || "-",
-                    ev.startDate || "-",
+                    ev.start_date || ev.startDate || "-",
                     ev.amount || "-",
-                    ev.organizedBy || "-",
+                    ev.organized_by || ev.organizedBy || "-",
                   ]),
                 ]
                   .map((r) => r.join(","))
@@ -100,72 +124,90 @@ export default function Eventlist() {
         </div>
 
         <div className="el-table-scroll">
-          <table className="el-table">
-            <thead>
-              <tr>
-                <th>Sl</th>
-                <th>Event Name</th>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Organized By</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.length === 0 ? (
+          {loading ? (
+            <div style={{ textAlign: "center", padding: "40px", color: "var(--text-muted)" }}>
+              ⏳ Loading events from backend...
+            </div>
+          ) : error ? (
+            <div style={{ textAlign: "center", padding: "40px", color: "var(--rose)", fontWeight: "600" }}>
+              ❌ {error}
+            </div>
+          ) : (
+            <table className="el-table">
+              <thead>
                 <tr>
-                  <td colSpan={8} className="el-empty">
-                    <span className="el-empty-icon">📭</span>
-                    <p>No events found. Add events from the Add Events page.</p>
-                  </td>
+                  <th>Sl</th>
+                  <th>Event Name</th>
+                  <th>Category</th>
+                  <th>Location</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Organized By</th>
+                  <th>Actions</th>
                 </tr>
-              ) : (
-                filtered.map((event, index) => (
-                  <tr key={event.id}>
-                    <td className="el-td-num">{index + 1}</td>
-                    <td>
-                      <strong className="el-event-name">
-                        {event.eventName || event.name || "—"}
-                      </strong>
-                      <p className="el-event-id">ID: {event.id}</p>
-                    </td>
-                    <td>
-                      <span className="el-category-badge">
-                        {event.eventCategory || "—"}
-                      </span>
-                    </td>
-                    <td className="el-td-location">{event.location || "—"}</td>
-                    <td className="el-td-date">{event.startDate || "—"}</td>
-                    <td>
-                      <span className="el-price-chip">
-                        {event.amount ? `₹${event.amount}` : "Free"}
-                      </span>
-                    </td>
-                    <td>{event.organizedBy || "—"}</td>
-                    <td>
-                      <div className="el-actions">
-                        <button className="el-btn el-btn--view" title="View">
-                          <FaEye />
-                        </button>
-                        <button className="el-btn el-btn--edit" title="Edit">
-                          <FaEdit />
-                        </button>
-                        <button
-                          className="el-btn el-btn--delete"
-                          title="Delete"
-                          onClick={() => handleDelete(event.id)}
-                        >
-                          <FaTrash />
-                        </button>
-                      </div>
+              </thead>
+              <tbody>
+                {filtered.length === 0 ? (
+                  <tr>
+                    <td colSpan={8} className="el-empty">
+                      <span className="el-empty-icon">📭</span>
+                      <p>No events found. Add events from the Add Events page.</p>
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                ) : (
+                  filtered.map((event, index) => (
+                    <tr key={event.id}>
+                      <td className="el-td-num">{index + 1}</td>
+                      <td>
+                        <strong className="el-event-name">
+                          {event.title || event.eventName || event.name || "—"}
+                        </strong>
+                        <p className="el-event-id">ID: {event.id}</p>
+                      </td>
+                      <td>
+                        <span className="el-category-badge">
+                          {event.category || event.eventCategory || "—"}
+                        </span>
+                      </td>
+                      <td className="el-td-location">{event.location || "—"}</td>
+                      <td className="el-td-date">{event.start_date || event.startDate || "—"}</td>
+                      <td>
+                        <span className="el-price-chip">
+                          {event.is_free || parseFloat(event.amount) === 0 ? "Free" : `₹${event.amount}`}
+                        </span>
+                      </td>
+                      <td>{event.organized_by || event.organizedBy || "—"}</td>
+                      <td>
+                        <div className="el-actions">
+                          <button
+                            className="el-btn el-btn--view"
+                            title="View"
+                            onClick={() => navigate("/eventbooking", { state: { eventId: event.id } })}
+                          >
+                            <FaEye />
+                          </button>
+                          <button
+                            className="el-btn el-btn--edit"
+                            title="Edit"
+                            onClick={() => navigate("/AdminEvent", { state: { editEvent: event } })}
+                          >
+                            <FaEdit />
+                          </button>
+                          <button
+                            className="el-btn el-btn--delete"
+                            title="Delete"
+                            onClick={() => handleDelete(event.id)}
+                          >
+                            <FaTrash />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

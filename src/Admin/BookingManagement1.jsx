@@ -79,11 +79,17 @@ export default function BookingManagement() {
   };
 
   /* ── derived data ── */
+  const manualCount = bookings.filter(b => b.booking_type === "MANUAL").length;
+
   const filtered = bookings.filter(b => {
     const matchSearch =
       (b.player_name || "").toLowerCase().includes(search.toLowerCase()) ||
       (b.turf?.name  || "").toLowerCase().includes(search.toLowerCase());
-    const matchStatus = statusFilter === "ALL" || b.status === statusFilter;
+    const matchStatus = statusFilter === "ALL"
+      ? true
+      : statusFilter === "MANUAL"
+        ? b.booking_type === "MANUAL"
+        : b.status === statusFilter;
     return matchSearch && matchStatus;
   });
 
@@ -138,6 +144,7 @@ export default function BookingManagement() {
           { label: "Confirmed", value: counts.CONFIRMED || 0, color: "green"  },
           { label: "Cancelled", value: counts.CANCELLED || 0, color: "red"    },
           { label: "Refunded",  value: counts.REFUNDED  || 0, color: "amber"  },
+          { label: "Manual",    value: manualCount,            color: "orange" },
           { label: "Revenue",   value: `₹${totalRevenue.toLocaleString()}`, color: "purple" },
         ].map((k, i) => (
           <div key={i} className={`bm-kpi bm-kpi--${k.color}`} style={{ animationDelay: `${i * 0.06}s` }}>
@@ -159,13 +166,13 @@ export default function BookingManagement() {
           />
         </div>
         <div className="bm-status-pills">
-          {["ALL", "CONFIRMED", "PENDING", "CANCELLED", "REFUNDED"].map(s => (
+          {["ALL", "CONFIRMED", "PENDING", "CANCELLED", "REFUNDED", "MANUAL"].map(s => (
             <button
               key={s}
-              className={`bm-pill ${statusFilter === s ? "bm-pill--active" : ""}`}
+              className={`bm-pill ${statusFilter === s ? "bm-pill--active" : ""} ${s === "MANUAL" ? "bm-pill--manual" : ""}`}
               onClick={() => setStatusFilter(s)}
             >
-              {s}
+              {s === "MANUAL" ? "🏢 Manual" : s}
             </button>
           ))}
         </div>
@@ -206,8 +213,13 @@ export default function BookingManagement() {
                     <td className="bm-td-num">{idx + 1}</td>
                     <td>
                       <div className="bm-td-user">
-                        <div className="bm-avatar">{(b.player_name || "?")[0].toUpperCase()}</div>
-                        <span>{b.player_name}</span>
+                        <div className="bm-avatar" style={b.booking_type === "MANUAL" ? {background: "linear-gradient(135deg, #f97316, #ea580c)"} : {}}>{(b.player_name || "?")[0].toUpperCase()}</div>
+                        <div>
+                          <span>{b.player_name}</span>
+                          {b.booking_type === "MANUAL" && (
+                            <span style={{display:"block",fontSize:"10px",color:"#f97316",fontWeight:600,marginTop:2}}>🏢 Vendor Manual</span>
+                          )}
+                        </div>
                       </div>
                     </td>
                     <td className="bm-td-turf">{b.turf?.name || "—"}</td>

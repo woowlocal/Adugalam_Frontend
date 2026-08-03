@@ -3,38 +3,38 @@ import { useNavigate } from "react-router-dom";
 import "./VendorDashboard.css";
 
 /* ── Icon components ── */
-const IconBookings  = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>;
-const IconEarnings  = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="1" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>;
-const IconTurfs     = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>;
-const IconUpcoming  = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>;
-const IconPending   = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>;
-const IconPlus      = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>;
-const IconList      = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>;
-const IconClock     = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>;
-const IconDiscount  = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>;
-const IconTrendUp   = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>;
-const IconTrendDown = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>;
+const IconBookings = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>;
+const IconEarnings = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="1" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>;
+const IconTurfs = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>;
+const IconUpcoming = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" /></svg>;
+const IconPending = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>;
+const IconPlus = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>;
+const IconList = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" x2="22" y1="10" y2="10" /></svg>;
+const IconClock = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>;
+const IconDiscount = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><line x1="7" y1="7" x2="7.01" y2="7" /></svg>;
+const IconTrendUp = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>;
+const IconTrendDown = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6" /><polyline points="17 18 23 18 23 12" /></svg>;
 
 const QUICK_ACTIONS = [
-  { label: "Add Turf",  icon: <IconPlus />,     path: "/VendorAddTurf",          color: "green"  },
-  { label: "Turf List", icon: <IconList />,     path: "/VendorTurfList",          color: "blue"   },
-  { label: "Peak Hours",icon: <IconClock />,    path: "/VendorPeakHours",         color: "amber"  },
-  { label: "Discounts", icon: <IconDiscount />, path: "/VendorDiscountPage",      color: "purple" },
-  { label: "Bookings",  icon: <IconBookings />, path: "/VendorBookingManagement", color: "teal"   },
+  { label: "Add Turf", icon: <IconPlus />, path: "/VendorAddTurf", color: "green" },
+  { label: "Turf List", icon: <IconList />, path: "/VendorTurfList", color: "blue" },
+  { label: "Peak Hours", icon: <IconClock />, path: "/VendorPeakHours", color: "amber" },
+  { label: "Discounts", icon: <IconDiscount />, path: "/VendorDiscountPage", color: "purple" },
+  { label: "Bookings", icon: <IconBookings />, path: "/VendorBookingManagement", color: "teal" },
 ];
 
-const DAYS      = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const DAY_INDEX = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4, Sat: 5, Sun: 6 };
 
 /* Map backend stat icons → React SVG components */
 const ICON_MAP = {
-  "🏠":  <IconTurfs />,
+  "🏠": <IconTurfs />,
   "🏟️": <IconTurfs />,
-  "📅":  <IconBookings />,
+  "📅": <IconBookings />,
   "🗓️": <IconUpcoming />,
-  "💲":  <IconEarnings />,
-  "💰":  <IconEarnings />,
-  "⏳":  <IconPending />,
+  "💲": <IconEarnings />,
+  "💰": <IconEarnings />,
+  "⏳": <IconPending />,
 };
 
 const CARD_COLORS = ["green", "amber", "blue", "purple", "teal"];
@@ -46,20 +46,20 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   // Raw API state
-  const [stats,        setStats]        = useState([]);
-  const [bookings,     setBookings]     = useState([]);   // ALL vendor bookings
-  const [coaches,      setCoaches]      = useState([]);
-  const [reviews,      setReviews]      = useState([]);
-  const [loading,      setLoading]      = useState(true);
-  const [error,        setError]        = useState(null);
+  const [stats, setStats] = useState([]);
+  const [bookings, setBookings] = useState([]);   // ALL vendor bookings
+  const [coaches, setCoaches] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const vendorName = localStorage.getItem("vendor_name") || "Vendor";
-  const firstName  = vendorName.trim().split(/\s+/)[0];
+  const firstName = vendorName.trim().split(/\s+/)[0];
 
-  const now    = new Date();
+  const now = new Date();
   const greeting =
     now.getHours() < 12 ? "Good Morning" :
-    now.getHours() < 17 ? "Good Afternoon" : "Good Evening";
+      now.getHours() < 17 ? "Good Afternoon" : "Good Evening";
 
   /* ── Fetch both APIs in parallel ── */
   useEffect(() => {
@@ -70,10 +70,10 @@ const Dashboard = () => {
 
     Promise.all([
       fetch(`${API}/vendor/dashboard/`, { headers }).then(r => r.json()),
-      fetch(`${API}/vendor/bookings/`,  { headers }).then(r => r.json()),
+      fetch(`${API}/vendor/bookings/`, { headers }).then(r => r.json()),
     ])
       .then(([dashData, bookData]) => {
-        setStats(dashData?.stats   || []);
+        setStats(dashData?.stats || []);
         setCoaches(dashData?.coaches || []);
         setReviews(dashData?.reviews || []);
         // bookData may be an array directly or { results: [] }
@@ -91,8 +91,8 @@ const Dashboard = () => {
 
   /* ── Weekly bar chart: count bookings per weekday (last 7 days) ── */
   const weeklyData = useMemo(() => {
-    const counts    = [0, 0, 0, 0, 0, 0, 0]; // Mon-Sun
-    const today     = new Date();
+    const counts = [0, 0, 0, 0, 0, 0, 0]; // Mon-Sun
+    const today = new Date();
     const sevenDays = new Date(today);
     sevenDays.setDate(today.getDate() - 6);
 
@@ -115,7 +115,7 @@ const Dashboard = () => {
   /* ── Real week-over-week trend per stat ── */
   const weeklyTrends = useMemo(() => {
     // Compare this week vs last week booking counts per turf stat
-    const today       = new Date();
+    const today = new Date();
     const startThisWeek = new Date(today); startThisWeek.setDate(today.getDate() - 7);
     const startLastWeek = new Date(today); startLastWeek.setDate(today.getDate() - 14);
 
@@ -181,11 +181,11 @@ const Dashboard = () => {
 
   /* ─── Fallback stat cards if API returned nothing ─── */
   const statCards = stats.length > 0 ? stats : [
-    { icon: "🏠",  title: "Total Turfs Owned",  value: "—" },
-    { icon: "📅",  title: "Today's Bookings",   value: "—" },
-    { icon: "🗓️", title: "Upcoming Bookings",  value: "—" },
-    { icon: "💲",  title: "Monthly Earnings",   value: "—" },
-    { icon: "⏳",  title: "Pending Approvals",  value: "—" },
+    { icon: "🏠", title: "Total Turfs Owned", value: "—" },
+    { icon: "📅", title: "Today's Bookings", value: "—" },
+    { icon: "🗓️", title: "Upcoming Bookings", value: "—" },
+    { icon: "💲", title: "Monthly Earnings", value: "—" },
+    { icon: "⏳", title: "Pending Approvals", value: "—" },
   ];
 
   /* ─── JSX ─── */
@@ -217,7 +217,7 @@ const Dashboard = () => {
         {/* ══ KPI STAT CARDS ══ */}
         <div className="stats-grid">
           {statCards.map((item, i) => {
-            const isUp   = weeklyTrends >= 0;
+            const isUp = weeklyTrends >= 0;
             const trendPct = i === 1 || i === 2
               ? Math.abs(weeklyTrends)  // booking-related stats use real WoW
               : null;                    // others: no fake trend
