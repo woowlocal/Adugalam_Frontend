@@ -10,7 +10,6 @@
     "start": "concurrently \"npm run dev\" \"npm run server\""
   },
   "dependencies": {
-    "@cashfreepayments/cashfree-js": "^1.0.7",
     "@react-google-maps/api": "^2.20.8",
     "@tanstack/react-query": "^5.90.21",
     "axios": "^1.13.5",
