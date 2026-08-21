@@ -408,3 +408,27 @@
 }
 
 /* Removing duplicate scrollbar styling because it is already handled above */
+
+/* NOTIFY ME BUTTON */
+.booked-slot-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.notify-btn {
+  background: #ea580c;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.notify-btn:hover {
+  background: #c2410c;
+}

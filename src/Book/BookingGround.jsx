@@ -166,7 +166,7 @@ const BookingGround = () => {
     if (parts.length === 2) {
       const start = parts[0].trim();
       const end = parts[1].trim();
-      
+
       const startIsAM = start.toLowerCase().includes("am");
       const startIsPM = start.toLowerCase().includes("pm");
       const endIsAM = end.toLowerCase().includes("am");
