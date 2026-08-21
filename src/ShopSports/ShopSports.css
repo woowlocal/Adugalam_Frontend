@@ -334,19 +334,57 @@
 
 /* CATEGORY – MOBILE SCROLL */
 @media (max-width: 640px) {
-  .shop-category-grid1 {
+  .categories-grid {
     display: flex;
     overflow-x: auto;
     gap: 16px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar for a cleaner look */
+    scrollbar-width: none;
   }
 
-  .shop-category-card1 {
-    min-width: 80%;
+  .categories-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-card {
+    min-width: 140px;
     flex-shrink: 0;
     scroll-snap-align: start;
+    padding: 20px 10px;
+    text-align: center;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 12px;
+  }
+
+  .category-icon img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .category-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .category-card h3 {
+    font-size: 14px;
+    margin: 4px 0;
+  }
+
+  .category-card p {
+    font-size: 12px;
+    margin: 0;
   }
 }
 
@@ -390,4 +428,35 @@
 
 * {
   box-sizing: border-box;
+}
+
+/* ================= MOBILE LAYOUT FIX ================= */
+@media (max-width: 768px) {
+  /* Prevent the wrapper from stretching to 100vh if flexed by parent */
+  .shop-sports {
+    height: auto !important;
+    min-height: auto !important;
+    display: block !important;
+    flex: none !important;
+  }
+  
+  /* Ensure container doesn't force a huge height or bottom padding */
+  .shop-sports .container {
+    height: auto !important;
+    min-height: auto !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Keep category grid compact */
+  .categories-grid {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Bring features closer to category section */
+  .bowl {
+    padding-top: 10px !important;
+    margin-top: 0 !important;
+  }
 }

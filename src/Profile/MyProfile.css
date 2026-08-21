@@ -48,8 +48,12 @@
 
 /* Edit Button specific */
 .myprofile-header .animated-edit-btn {
+  background: #ffffff;
   color: #0a7c3c;
   transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .myprofile-header .animated-edit-btn:hover {

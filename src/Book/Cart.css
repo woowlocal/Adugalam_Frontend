@@ -90,8 +90,8 @@
   .grandcheck {
     width: calc(100% - 30px);
     left: 15px;
-    bottom: 450px;
-    /* Clear 80px bottom mobile nav */
+    bottom: 230px;
+    /* Clear bottom mobile nav */
     border-radius: 16px;
     padding: 12px 15px;
   }

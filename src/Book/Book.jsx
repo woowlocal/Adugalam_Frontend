@@ -84,14 +84,20 @@ const GroundDetails = () => {
           (t) => String(t.id) === String(turfId)
         );
 
-        setTurf(selectedTurf || null);
+        if (!selectedTurf) {
+          // Turf not found — vendor has turned it off (is_maintenance) or it doesn't exist
+          navigate("/notfound", { replace: true });
+          return;
+        }
+
+        setTurf(selectedTurf);
         setLoading(false);
       })
       .catch((err) => {
         console.error("Turf fetch error:", err);
-        setLoading(false);
+        navigate("/notfound", { replace: true });
       });
-  }, [turfId]);
+  }, [turfId, navigate]);
 
 
   const getImageUrl = (img) => {
@@ -207,7 +213,10 @@ const GroundDetails = () => {
 
   //  LOADING
   if (loading) return <p style={{ padding: 20 }}>Loading...</p>;
-  if (!turf) return <p style={{ padding: 20 }}>Ground not found</p>;
+  if (!turf) {
+    navigate("/notfound", { replace: true });
+    return null;
+  }
 
   return (
     <div className="ground-pagee">

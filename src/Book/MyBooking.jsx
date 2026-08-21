@@ -147,8 +147,8 @@ const MyBooking = () => {
         {/* Header */}
         <div className="booking-header">
           <div className="back-btn-wrapper">
-            <button className="mb-back-btn" onClick={() => navigate(-1)}>
-              <VscChevronLeft size={24} color="#1a202c" />
+            <button className="animated-back-btn" data-text="Back" onClick={() => navigate(-1)}>
+              <VscChevronLeft className="animated-back-icon" />
             </button>
           </div>
           <h2 className="page-title">My Bookings</h2>

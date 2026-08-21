@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
 
 import { VscChevronLeft } from "react-icons/vsc";
 import API from "../api/api";
@@ -41,7 +40,10 @@ const MyProfile = () => {
         </button>
         <h3>My profile</h3>
         <button className="animated-edit-btn" onClick={() => navigate("/EditProfile")} title="Edit Profile">
-          <FaEdit size={18} />
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a7c3c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
         </button>
       </div>
 

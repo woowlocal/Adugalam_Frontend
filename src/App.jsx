@@ -93,6 +93,8 @@ import Location from "./Location/Location.jsx";
 import ForgotPassword from "./Login/ForgotPassword.jsx";
 import Cartpage from "./Book/Cartpage.jsx";
 import { VscChevronLeft } from "react-icons/vsc";
+import NotFound from "./NotFound/NotFound.jsx";
+
 
 /* ---------------- BACK BUTTON WRAPPER (Fixed) ---------------- */
 const BackButtonWrapper = () => {
@@ -134,9 +136,45 @@ const BackButtonWrapper = () => {
   );
 };
 
+/* ---------------- HELPER TO CHECK VALID ROUTES ---------------- */
+const isValidRoute = (pathname) => {
+  const validExactRoutes = [
+    "/", "/login", "/signup", "/vendorlogin", "/vendorsignup", "/adminlogin", "/admin-forgot-password",
+    "/play", "/train", "/profile", "/editprofile", "/myprofile", "/profilehistory", "/hit", "/tvl",
+    "/events", "/eventbooking", "/shop", "/tournaments", "/about", "/contact", "/partner", "/settings",
+    "/changepassword", "/terms", "/privacy", "/clubpolicy",
+    "/peak-hour", "/contact-messages", "/bannermanagement", "/dashboard", "/adminsettings", "/bookingmanagement",
+    "/chart", "/paymentsreport", "/sidebar", "/turfmanagement", "/usermanagement", "/userdelete", "/vendor",
+    "/addvendor", "/adminsidebar", "/adminlayout", "/addturf", "/vendorrequest", "/vendorturflist",
+    "/vendoraddturf", "/vendoreditturf", "/vendorlist", "/editvendor", "/turflist", "/editturf",
+    "/vendordashboard", "/vendorslotbooking", "/discount", "/vendorbookingmanagement", "/vendorlogout",
+    "/scheduletime", "/vendorprofile",
+    "/cart", "/galary", "/bookingground", "/payment", "/bookhome", "/summary", "/mybooking",
+    "/partnerform", "/newonadugalam", "/tennis", "/allcategories", "/myfavourite", "/myreviews",
+    "/download", "/location", "/bottomnavbar", "/forgot-password"
+  ];
+  
+  const path = pathname.toLowerCase();
+  
+  if (validExactRoutes.includes(path)) return true;
+  
+  if (path.startsWith("/book/") || 
+      path.startsWith("/vendoreditturf/") || 
+      path.startsWith("/vendor-edit/") || 
+      path.startsWith("/edit-turf/")) {
+    return true;
+  }
+  
+  return false;
+};
+
 /* ---------------- NAVBAR WRAPPER ---------------- */
 const NavbarWrapper = () => {
   const location = useLocation();
+
+  if (!isValidRoute(location.pathname)) {
+    return null;
+  }
 
   const hideNavbarRoutes = [
     "/Dashboard",
@@ -196,6 +234,10 @@ const NavbarWrapper = () => {
 /* ---------------- FOOTER WRAPPER ---------------- */
 const FooterWrapper = () => {
   const location = useLocation();
+
+  if (!isValidRoute(location.pathname)) {
+    return null;
+  }
 
   const hideFooterRoutes = [
     "/cart",
@@ -271,6 +313,10 @@ const FooterWrapper = () => {
 /* ---------------- BOTTOM NAVBAR WRAPPER (Mobile Only) ---------------- */
 const BottomNavbarWrapper = () => {
   const location = useLocation();
+
+  if (!isValidRoute(location.pathname)) {
+    return null;
+  }
 
   const hideBottomNavbarRoutes = [
     "/Dashboard",
@@ -489,6 +535,9 @@ const App = () => {
           <Route path="/location" element={<Location />} />
           <Route path="/Bottomnavbar" element={<Bottomnavbar />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          
+          {/* FALLBACK 404 NOT FOUND */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </RouteTransition>
 

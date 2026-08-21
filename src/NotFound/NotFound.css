@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap');
+
+/* ═══════════════════════════════════════════════
+   ADUGALAM — 404 TURF INVADERS
+   Theme: Black & White  |  Accent: Green (#059669)
+   ═══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+.nf-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 16px 32px;
+  background: #fafafa;
+  font-family: 'Outfit', sans-serif;
+  color: #111;
+}
+
+/* ─────────────────────────────────────────────
+   404 HEADER
+   ───────────────────────────────────────────── */
+.nf-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.nf-badge {
+  font-size: 60px;
+  font-weight: 900;
+  letter-spacing: -4px;
+  line-height: 1;
+  color: #111;
+  border-right: 3px solid #059669;
+  padding-right: 20px;
+  flex-shrink: 0;
+}
+
+.nf-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nf-headline {
+  font-size: 22px;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: #111;
+}
+
+.nf-sub {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────
+   HUD BAR
+   ───────────────────────────────────────────── */
+.nf-hud {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 600px;
+  border: 2.5px solid #111;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 4px 4px 0 #111;
+}
+
+.nf-hud-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 2px;
+  border-right: 2px solid #111;
+}
+.nf-hud-chip:last-child {
+  border-right: none;
+  border-left: 2px solid #111;
+}
+
+.nf-chip-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.nf-chip-val {
+  font-size: 22px;
+  font-weight: 900;
+  color: #111;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.nf-health-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+}
+
+.nf-health-track {
+  flex: 1;
+  height: 10px;
+  background: #e5e5e5;
+  border-radius: 6px;
+  border: 1.5px solid #ddd;
+  overflow: hidden;
+}
+
+.nf-health-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.35s ease, background 0.35s ease;
+}
+
+.nf-health-pct {
+  font-size: 13px;
+  font-weight: 800;
+  width: 38px;
+  text-align: right;
+  transition: color 0.3s;
+}
+
+/* ─────────────────────────────────────────────
+   GAME CANVAS WRAPPER
+   ───────────────────────────────────────────── */
+.nf-game-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 58vh;
+  min-height: 380px;
+  max-height: 580px;
+  border: 3px solid #111;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 #111;
+  background: #fff;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.nf-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─────────────────────────────────────────────
+   OVERLAYS
+   ───────────────────────────────────────────── */
+.nf-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(3px);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.nf-overlay-wave {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.nf-overlay-victory {
+  background: rgba(240, 253, 244, 0.92);
+}
+
+/* ── MODAL ── */
+.nf-modal {
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 16px;
+  box-shadow: 8px 8px 0 #111;
+  padding: 32px 28px;
+  max-width: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nf-modal-danger { border-color: #111; }
+.nf-modal-success { border-color: #059669; box-shadow: 8px 8px 0 #059669; }
+
+@keyframes modalPop {
+  0%   { opacity: 0; transform: scale(0.88) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.nf-modal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  background: #f5f5f5;
+  border: 2.5px solid #111;
+  border-radius: 50%;
+  color: #111;
+}
+.nf-modal-icon.green { background: #ecfdf5; border-color: #059669; color: #059669; }
+.nf-modal-icon.red   { background: #fef2f2; border-color: #ef4444; color: #ef4444; }
+
+.nf-modal-title {
+  font-size: 26px;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: #111;
+}
+
+.nf-modal-sub {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+  font-weight: 500;
+}
+
+.nf-score-box {
+  background: #f5f5f5;
+  border: 2px solid #111;
+  border-radius: 10px;
+  padding: 12px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.nf-score-big {
+  font-size: 40px;
+  font-weight: 900;
+  color: #111;
+  font-variant-numeric: tabular-nums;
+}
+
+.nf-modal-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+/* ── WAVE PILL ── */
+.nf-wave-pill {
+  background: #111;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: popIn 0.4s ease;
+}
+.nf-wave-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nf-boss-warning {
+  font-size: 13px;
+  color: #f87171;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── START CONTROLS GUIDE ── */
+.nf-controls-guide {
+  display: flex;
+  gap: 16px;
+  background: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.nf-ctrl-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #444;
+  font-weight: 600;
+}
+
+.nf-ctrl-row kbd {
+  background: #111;
+  color: #fff;
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-family: monospace;
+  font-weight: 800;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+   ───────────────────────────────────────────── */
+.nf-btn-dark,
+.nf-btn-green {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 2.5px solid #111;
+  letter-spacing: 0.3px;
+}
+
+.nf-btn-dark {
+  background: #fff;
+  color: #111;
+  box-shadow: 3px 3px 0 #111;
+}
+.nf-btn-dark:hover {
+  background: #f5f5f5;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #111;
+}
+.nf-btn-dark:active { transform: translate(2px, 2px); box-shadow: none; }
+
+.nf-btn-green {
+  background: #059669;
+  color: #fff;
+  border-color: #047857;
+  box-shadow: 3px 3px 0 #047857;
+}
+.nf-btn-green:hover {
+  background: #047857;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #065f46;
+}
+.nf-btn-green:active { transform: translate(2px, 2px); box-shadow: none; }
+
+/* ─────────────────────────────────────────────
+   FLOATING COMPACT MOBILE CONTROLS (inside canvas)
+   ───────────────────────────────────────────── */
+.nf-float-ctrl {
+  display: none; /* Hidden on all devices — canvas touch handles everything */
+}
+
+/* ─────────────────────────────────────────────
+   RETURN HOME BUTTON — Always visible, Green
+   ───────────────────────────────────────────── */
+.nf-home-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+  padding: 16px 24px;
+  background: #059669;
+  color: #fff;
+  border: 2.5px solid #047857;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #047857;
+  transition: all 0.15s ease;
+  letter-spacing: 0.3px;
+}
+
+.nf-home-btn:hover {
+  background: #047857;
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #065f46;
+}
+
+.nf-home-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0;
+}
+
+.nf-home-icon {
+  font-size: 20px;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+
+/* Show floating controls on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .nf-float-ctrl { display: flex; }
+}
+
+@media (max-width: 600px) {
+  .nf-page { gap: 10px; padding: 14px 10px 18px; }
+
+  .nf-badge { font-size: 40px; padding-right: 12px; }
+  .nf-headline { font-size: 16px; }
+  .nf-sub { font-size: 11px; }
+
+  .nf-hud { border-radius: 10px; }
+  .nf-hud-chip { padding: 7px 10px; }
+  .nf-chip-val { font-size: 16px; }
+  .nf-chip-label { font-size: 8px; }
+  .nf-health-wrap { padding: 0 8px; }
+  .nf-health-pct { font-size: 11px; width: 30px; }
+
+  /* Game wrapper taller to give room for floating controls */
+  .nf-game-wrapper { height: 55vh; min-height: 340px; }
+
+  .nf-modal { padding: 20px 16px; gap: 10px; }
+  .nf-modal-title { font-size: 20px; }
+  .nf-modal-icon { width: 56px; height: 56px; }
+  .nf-score-big { font-size: 30px; }
+
+  .nf-modal-actions { flex-direction: row; }
+  .nf-btn-dark, .nf-btn-green { font-size: 13px; padding: 10px 12px; }
+
+  .nf-home-btn { font-size: 14px; padding: 13px 18px; }
+}
+
+@media (max-width: 400px) {
+  .nf-badge { font-size: 36px; }
+  .nf-headline { font-size: 16px; }
+  .nf-hud { flex-wrap: wrap; }
+  .nf-hud-chip:last-child { border-left: none; border-top: 2px solid #111; width: 100%; flex-direction: row; gap: 10px; }
+}

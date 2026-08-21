@@ -3,14 +3,21 @@ import React from 'react';
 import './Privacy.css';
 import { Bold } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { VscChevronLeft } from "react-icons/vsc";
+
 
 const Privacy = () => {
   const navigate=useNavigate();
   return (
     <div className="privacy-policy">
-             <h1 className="back-btn" onClick={()=>navigate(-1)}>&lt;</h1>&nbsp;&nbsp;&nbsp;
-<br /><br />
-      <p className="title">PRIVACY POLICY</p>
+      <div className="privacy-header" style={{ display: 'flex', alignItems: 'center', marginBottom: '24px', position: 'relative', width: '100%', justifyContent: 'center', minHeight: '40px' }}>
+        <div style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)' }}>
+          <button className="animated-back-btn" data-text="Back" onClick={() => navigate(-1)}>
+            <VscChevronLeft className="animated-back-icon" />
+          </button>
+        </div>
+        <p className="title" style={{ margin: 0 }}>PRIVACY POLICY</p>
+      </div>
 
       <p>
         Adugalam Solutions Pvt. Ltd. and our associates/partners/successors/permitted assigns <strong>"Adugalam"</strong>, <strong>"we"</strong>, <strong>"us"</strong> and<strong> "our"</strong> are fully committed to respecting your privacy and are committed to protecting it through our compliance with this privacy policy (<strong>"Policy"</strong>). Reference to <strong>"you"</strong> in this Policy refers to the users of the Adugalam Platform (as defined below), whether or not you access the services available on the Platform or consummate a transaction on the Platform (<strong>"Users"</strong>). The Policy sets out: (a) the types of information that we may collect from you when you access or use our services (collectively, our <strong>"Services"</strong>) through our Platform, and (b) our practices for collecting, using, maintaining, protecting and disclosing that information.
