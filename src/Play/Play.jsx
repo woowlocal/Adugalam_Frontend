@@ -129,7 +129,7 @@ function Play() {
 
 
       <h2 className="popular-heading11">Sports turf near me</h2><br />
-      <h className="apple">Play football, cricket, badminton, tennis, swimming, and volleyball in Tirunelveli. Find local matches and connect with sports players near you</h>
+      <p className="apple">Play football, cricket, badminton, tennis, swimming, and volleyball in Tirunelveli. Find local matches and connect with sports players near you</p>
 
 
 
@@ -149,7 +149,7 @@ function Play() {
 
       <div className="how-works-heading11 text-center">
         <h2 className="text-4xl font-bold text-black">How to Play & Book Turf in Tirunelveli</h2><br />
-        <h className='apple'>Join Matches & Book Turf Online</h>
+        <p className='apple'>Join Matches & Book Turf Online</p>
 
       </div>
 

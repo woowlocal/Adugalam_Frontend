@@ -82,47 +82,38 @@ export default function UpcomingSportsEvents() {
       ) : events.length === 0 ? (
         <p style={{ textAlign: "center", color: "#666", padding: "20px" }}>No upcoming events scheduled. Check back later!</p>
       ) : (
-        <div className={`upcoming-grid${showAll ? " upcoming-grid--all" : ""}`}>
+        <div className={`nb-container1 ${showAll ? "grid-view1" : ""}`}>
           {(showAll ? events : events.slice(0, 4)).map((e) => (
-            <div className="upcoming-card" key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
-              {/* Image */}
-              <div className="upcoming-img-wrapper">
+            <div className="nb-card1" key={e.id} onClick={() => navigate("/eventbooking", { state: { eventId: e.id } })}>
+              <div className="img-wrapper1">
                 {e.image ? (
-                  <img src={e.image} className="upcoming-img" alt={e.title} />
+                  <img src={e.image} className="nb-img1" alt={e.title} />
                 ) : (
-                  <div className="upcoming-img upcoming-placeholder" style={{ background: e.bg_color || "#a5b4fc", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FaTrophy size={32} color="#fff" /></div>
+                  <div className="nb-img1 upcoming-placeholder" style={{ background: e.bg_color || "#a5b4fc", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FaTrophy size={32} color="#fff" /></div>
                 )}
-                <span className="upcoming-badge-soon">{getDaysLeft(e.start_date)}</span>
+                <span className="distance1">{getDaysLeft(e.start_date)}</span>
               </div>
 
-              {/* Body */}
-              <div className="upcoming-body">
-                <h4 className="upcoming-title">{e.title}</h4>
-                <p className="upcoming-location"><FaMapMarkerAlt style={{ marginRight: '4px' }} /> {e.location}</p>
+              <h4>{e.title}</h4>
 
-                <div className="upcoming-date-time">
-                  <span className="upcoming-tag"><FaCalendarAlt style={{ marginRight: '4px' }} /> {fmtDate(e.start_date)}</span>
-                  <span className="upcoming-tag"><FaClock style={{ marginRight: '4px' }} /> {fmtTime(e.start_time)}</span>
-                </div>
+              <div className="loc1">
+                <FaMapMarkerAlt size={12} style={{ marginRight: '4px' }} />
+                {e.location}
               </div>
 
-              {/* Footer */}
-              <div className="upcoming-footer">
-                <button className="upcoming-btn-register">REGISTER NOW</button>
-                <div className="upcoming-footer-right">
-                  <span className="upcoming-price">{e.price}</span>
-                  {e.map_url && (
-                    <a
-                      href={e.map_url}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(ev) => ev.stopPropagation()}
-                      className="upcoming-map-btn"
-                    >
-                      <FaMapMarkerAlt />
-                    </a>
-                  )}
-                </div>
+              <div className="nb-games1">
+                <span className="nb-game-tag1"><FaCalendarAlt size={10} style={{ marginRight: '4px' }} /> {fmtDate(e.start_date)}</span>
+                <span className="nb-game-tag1"><FaClock size={10} style={{ marginRight: '4px' }} /> {fmtTime(e.start_time)}</span>
+              </div>
+
+              <div className="loc1" style={{ marginTop: 'auto', marginBottom: '10px', justifyContent: 'space-between', alignItems: 'center', paddingRight: '5px' }}>
+                <span style={{ fontWeight: 'bold', color: '#0a7c3c', fontSize: '14px' }}>{e.price}</span>
+                <button style={{ background: 'rgba(10, 124, 60, 0.08)', color: '#0a7c3c', border: '1px solid rgba(10, 124, 60, 0.18)', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.2s' }}
+                  onMouseOver={(ev) => { ev.currentTarget.style.background = 'rgba(234, 83, 12, 0.10)'; ev.currentTarget.style.color = '#ea530c'; ev.currentTarget.style.borderColor = 'rgba(234, 83, 12, 0.28)'; }}
+                  onMouseOut={(ev) => { ev.currentTarget.style.background = 'rgba(10, 124, 60, 0.08)'; ev.currentTarget.style.color = '#0a7c3c'; ev.currentTarget.style.borderColor = 'rgba(10, 124, 60, 0.18)'; }}
+                >
+                  REGISTER NOW
+                </button>
               </div>
             </div>
           ))}

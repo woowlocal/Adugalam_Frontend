@@ -148,39 +148,38 @@ export default function FeaturedEvents() {
                 ) : displayedEvents.length === 0 ? (
                     <p className="fe-status-msg">No featured events right now. Check back soon!</p>
                 ) : (
-                    <div className={`poster-grid${showAll ? " poster-grid--all" : ""}`}>
+                    <div className={`nb-container1 ${showAll ? "grid-view1" : ""}`}>
                         {displayedEvents.map((event) => (
-                            <div className="poster-card" key={event.id} onClick={() => navigate("/eventbooking", { state: { eventId: event.id } })}>
-                                {/* Image */}
-                                <div className="poster-img-wrapper">
+                            <div className="nb-card1" key={event.id} onClick={() => navigate("/eventbooking", { state: { eventId: event.id } })}>
+                                <div className="img-wrapper1">
                                     {event.image ? (
-                                        <img src={event.image} className="poster-img" alt={event.title} />
+                                        <img src={event.image} className="nb-img1" alt={event.title} />
                                     ) : (
-                                        <div className="poster-img poster-placeholder" style={{ background: event.bg_color || "#a5b4fc", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FaStar size={32} color="#fff" /></div>
+                                        <div className="nb-img1 poster-placeholder" style={{ background: event.bg_color || "#a5b4fc", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FaStar size={32} color="#fff" /></div>
                                     )}
-                                    <span className="poster-badge-featured">Featured</span>
+                                    <span className="distance1">Featured</span>
                                 </div>
 
-                                {/* Body */}
-                                <div className="poster-body">
-                                    <h4 className="poster-title">{event.title}</h4>
-                                    <p className="poster-location"><FaMapMarkerAlt style={{ marginRight: '4px' }} /> {event.location}</p>
+                                <h4>{event.title}</h4>
 
-                                    <div className="poster-date-time">
-                                        <span className="poster-tag"><FaCalendarAlt style={{ marginRight: '4px' }} /> {fmtDate(event.start_date)}</span>
-                                        <span className="poster-tag"><FaClock style={{ marginRight: '4px' }} /> {fmtTime(event.start_time)}</span>
-                                    </div>
+                                <div className="loc1">
+                                    <FaMapMarkerAlt size={12} style={{ marginRight: '4px' }} />
+                                    {event.location}
                                 </div>
 
-                                {/* Footer */}
-                                <div className="poster-footer">
-                                    <button className="poster-btn-book">BOOK NOW</button>
-                                    <div className="poster-footer-right">
-                                        <span className="poster-price">{event.price}</span>
-                                        {event.map_url && (
-                                            <a href={event.map_url} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()} className="poster-map-btn"><FaMapMarkerAlt /></a>
-                                        )}
-                                    </div>
+                                <div className="nb-games1">
+                                    <span className="nb-game-tag1"><FaCalendarAlt size={10} style={{ marginRight: '4px' }} /> {fmtDate(event.start_date)}</span>
+                                    <span className="nb-game-tag1"><FaClock size={10} style={{ marginRight: '4px' }} /> {fmtTime(event.start_time)}</span>
+                                </div>
+
+                                <div className="loc1" style={{ marginTop: 'auto', marginBottom: '10px', justifyContent: 'space-between', alignItems: 'center', paddingRight: '5px' }}>
+                                    <span style={{ fontWeight: 'bold', color: '#0a7c3c', fontSize: '14px' }}>{event.price}</span>
+                                    <button style={{ background: 'rgba(10, 124, 60, 0.08)', color: '#0a7c3c', border: '1px solid rgba(10, 124, 60, 0.18)', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.2s' }}
+                                        onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(234, 83, 12, 0.10)'; e.currentTarget.style.color = '#ea530c'; e.currentTarget.style.borderColor = 'rgba(234, 83, 12, 0.28)'; }}
+                                        onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(10, 124, 60, 0.08)'; e.currentTarget.style.color = '#0a7c3c'; e.currentTarget.style.borderColor = 'rgba(10, 124, 60, 0.18)'; }}
+                                    >
+                                        BOOK NOW
+                                    </button>
                                 </div>
                             </div>
                         ))}

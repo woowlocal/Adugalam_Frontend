@@ -511,11 +511,23 @@
   .featured-top {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
   }
 
   .featured-actions {
     width: 100%;
-    justify-content: flex-end;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .featured-filter,
+  .view-all-btn {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
   }
 }
