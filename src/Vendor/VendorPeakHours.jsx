@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MdSportsEsports } from "react-icons/md";
+import { MdSportsEsports, MdOutlineStadium, MdDateRange, MdFlashOn, MdAccessTime } from "react-icons/md";
 import "./VendorPeakHours.css";
 
 const DAYS = [
@@ -194,7 +194,9 @@ const PeakHourPage = () => {
 
           {/* ── Step 1: Turf Selection ── */}
           <div className="ph-section-label">
-            <div className="ph-section-label-icon ph-section-label-icon--green">🏟️</div>
+            <div className="ph-section-label-icon ph-section-label-icon--green">
+              <MdOutlineStadium size={20} color="#0a7c3c" />
+            </div>
             <div className="ph-section-label-text">
               <h3>Select Turf</h3>
               <p>Choose which turf to configure peak pricing for</p>
@@ -284,7 +286,9 @@ const PeakHourPage = () => {
           <form onSubmit={handleSave}>
             {/* ── Step 2: Date & Price ── */}
             <div className="ph-section-label">
-              <div className="ph-section-label-icon ph-section-label-icon--green">📅</div>
+              <div className="ph-section-label-icon ph-section-label-icon--green">
+                <MdDateRange size={20} color="#0a7c3c" />
+              </div>
               <div className="ph-section-label-text">
                 <h3>Date Range & Base Price</h3>
                 <p>Peak pricing applies to all matching days within this range</p>
@@ -330,7 +334,9 @@ const PeakHourPage = () => {
 
             {/* ── Step 3: Days ── */}
             <div className="ph-section-label">
-              <div className="ph-section-label-icon ph-section-label-icon--orange">⚡</div>
+              <div className="ph-section-label-icon ph-section-label-icon--orange">
+                <MdFlashOn size={20} color="#d97706" />
+              </div>
               <div className="ph-section-label-text">
                 <h3>Peak Days</h3>
                 <p>Select the days of the week that apply to peak pricing</p>
@@ -359,7 +365,9 @@ const PeakHourPage = () => {
               <>
                 <div className="ph-divider" />
                 <div className="ph-section-label">
-                  <div className="ph-section-label-icon ph-section-label-icon--orange">🕐</div>
+                  <div className="ph-section-label-icon ph-section-label-icon--orange">
+                    <MdAccessTime size={20} color="#d97706" />
+                  </div>
                   <div className="ph-section-label-text">
                     <h3>Time Slots & Prices</h3>
                     <p>Set start time, end time and price per slot for each day</p>

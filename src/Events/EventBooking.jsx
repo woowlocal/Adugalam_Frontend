@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
 import "./EventBooking.css";
 import fallbackBanner from "../assets/aa.jpg";
@@ -48,6 +48,7 @@ const API_BASE = (import.meta.env.VITE_API_BASE_URL || "https://api.adugalam.com
 
 export default function Eventbooking() {
   const location = useLocation();
+  const navigate = useNavigate();
   const id = location.state?.eventId;
 
   const [eventData, setEventData] = useState(null);
@@ -87,12 +88,12 @@ export default function Eventbooking() {
   ];
 
   useEffect(() => {
-    if (!id) { setLoading(false); return; }
+    if (!id) { navigate("/notfound", { replace: true }); return; }
     fetch(`${API_BASE}/api/admin/events/${id}/`)
       .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then(data => { setEventData(data); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, [id]);
+      .catch(() => { navigate("/notfound", { replace: true }); });
+  }, [id, navigate]);
 
   useEffect(() => {
     if (!id) return;
@@ -136,7 +137,7 @@ export default function Eventbooking() {
   );
 
   if (loading) return <main className="container"><p style={{ padding: "40px", textAlign: "center" }}>Loading event details...</p></main>;
-  if (!eventData) return <main className="container"><p style={{ padding: "40px", textAlign: "center" }}>Event not found!</p></main>;
+  if (!eventData) return null;
 
   // ── Derived values ─────────────────────────────────────────────────
   const displayTitle = eventData.title || "Untitled Event";

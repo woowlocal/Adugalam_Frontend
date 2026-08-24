@@ -74,7 +74,10 @@ export default function VendorEditTurf() {
         const res = await fetch(`${API_BASE}/api/vendor/turfs/${id}/`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        if (!res.ok) throw new Error("Failed to load turf data.");
+        if (!res.ok) {
+          navigate("/notfound", { replace: true });
+          return;
+        }
         const data = await res.json();
 
         setForm({
@@ -99,7 +102,7 @@ export default function VendorEditTurf() {
           setMarkerPosition(pos);
         }
       } catch (err) {
-        setError(err.message);
+        navigate("/notfound", { replace: true });
       } finally {
         setLoading(false);
       }

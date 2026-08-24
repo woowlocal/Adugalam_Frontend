@@ -79,11 +79,15 @@ const BookingGround = () => {
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE}/api/turfs/${id}/`);
+      if (!res.ok) {
+        navigate("/notfound", { replace: true });
+        return;
+      }
       const ground = await res.json();
       setGrounds([ground]);
       setSelectedGround(ground);
     } catch {
-      setErrorMsg("Failed to load turf");
+      navigate("/notfound", { replace: true });
     } finally {
       setLoading(false);
     }
