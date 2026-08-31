@@ -39,24 +39,24 @@ const AdminLogin = () => {
         payload
       );
 
-      // Store in admin-specific keys (for adminApi.js auto-refresh)
-      localStorage.setItem("admin_access", res.data.access);
-      localStorage.setItem("admin_refresh", res.data.refresh);
-      // Also store in shared keys so all existing admin components work
+      const role = res.data.role;
+
+      // Store in shared keys so all existing components work (for both Vendors and Admins)
       localStorage.setItem("access", res.data.access);
       localStorage.setItem("refresh", res.data.refresh);
 
-      // Save vendor name for dashboard display
+      // Save vendor/admin name for dashboard display
       const name = res.data.name || res.data.username || identifier.split("@")[0];
       localStorage.setItem("vendor_name", name);
 
       setError("");
 
-      const role = res.data.role;
-
       if (role === "VENDOR") {
         navigate("/VendorDashboard");
       } else {
+        // ONLY set admin-specific keys if they are actually an Admin
+        localStorage.setItem("admin_access", res.data.access);
+        localStorage.setItem("admin_refresh", res.data.refresh);
         navigate("/Dashboard");
       }
     } catch (err) {

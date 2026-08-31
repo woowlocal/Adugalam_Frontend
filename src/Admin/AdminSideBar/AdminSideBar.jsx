@@ -5,7 +5,11 @@ export default function AdminSidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("adminToken");
+    localStorage.removeItem("admin_access");
+    localStorage.removeItem("admin_refresh");
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    localStorage.removeItem("vendor_name");
     sessionStorage.clear();
     navigate("/AdminLogin");
   };
@@ -16,11 +20,11 @@ export default function AdminSidebar() {
       <h2 className="logo">Adugalam</h2>
 
       {/* Search */}
-      <input
+      {/* <input
         type="text"
         placeholder="Search Menu..."
         className="menu-search"
-      />
+      /> */}
 
       {/* MAIN */}
       <p className="menu-title">MAIN</p>
