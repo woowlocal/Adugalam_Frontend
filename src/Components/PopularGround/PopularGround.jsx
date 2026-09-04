@@ -182,7 +182,10 @@ const PopularGround = ({ selectedSport }) => {
                   className="pg-img1"
                   src={getImageUrl(turf.banner_images?.[0])}
                   alt={turf.name}
-                  onError={(e) => (e.target.src = "/no-image.png")}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/no-image.png";
+                  }}
                 />
                 {/* Heart favourite button */}
                 <button

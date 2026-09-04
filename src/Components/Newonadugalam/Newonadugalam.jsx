@@ -152,7 +152,10 @@ const Newonadugalam = () => {
                   src={getImageUrl(turf.banner_images?.[0])}
                   className="na-img1"
                   alt={turf.name}
-                  onError={(e) => (e.target.src = "/no-image.png")}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/no-image.png";
+                  }}
                 />
                 {/* Heart favourite button */}
                 <button
