@@ -2,9 +2,11 @@ name: Deploy Frontend to Vercel
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+    inputs:
+      reason:
+        description: 'Reason for manual deploy'
+        required: false
+        default: 'Manual deployment triggered by user'
 
 jobs:
   deploy:
