@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
 import "./EventBooking.css";
+
 import fallbackBanner from "../assets/aa.jpg";
 import orgLogo from "../assets/aa.jpg";
 import {
