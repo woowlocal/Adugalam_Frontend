@@ -1,13 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Cart.css";
-import {
-  FaHome,
-  FaCalendarAlt,
-  FaShoppingCart,
-  FaBookmark,
-  FaUser
-} from "react-icons/fa";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "https://api.adugalam.com").replace(/\/$/, "");
 
@@ -34,6 +27,15 @@ const Cartpage = () => {
   const slotTimes = booking.slots
     ?.map(slot => slot.time_display)
     .join(", ");
+
+  // ================= PRICE STATE (filled from API after confirm) =================
+  const [pricing, setPricing] = useState(null);
+
+  // Preview before confirm (client-side estimate)
+  const previewOriginal = parseFloat(booking.total_price) || 0;
+  const previewAdvance = Math.round(previewOriginal * 0.30 * 100) / 100;
+  const previewService = 3;
+  const previewTotal = previewAdvance + previewService;
 
   const handleCheckout = async () => {
 
@@ -65,7 +67,7 @@ const Cartpage = () => {
         payload.game_id = booking.game_id;
       }
 
-      console.log("📤 Sending booking:", payload);
+
 
       const response = await fetch(
         `${API_BASE}/api/booking/confirm/`,
@@ -83,23 +85,24 @@ const Cartpage = () => {
 
       // ================= ERROR HANDLE =================
       if (!response.ok) {
-        console.error(" Booking Error:", data);
         alert(data.error || "Booking failed");
         return;
       }
 
-      console.log(" Booking saved:", data);
-
       // ================= NAVIGATE AFTER SAVE =================
+      // Pass all amounts from DB so PaymentPage shows exact figures
       navigate("/payment", {
         state: {
           booking,
           booking_id: data.booking_id,
+          original_amount: data.original_amount,
+          advance_amount: data.advance_amount,
+          service_charge: data.service_charge,
+          total_payable: data.total_payable,
         },
       });
 
     } catch (err) {
-      console.error("SERVER ERROR:", err);
       alert("Server error");
     }
   };
@@ -117,17 +120,37 @@ const Cartpage = () => {
           <h3>{booking.turf_name}</h3>
           <p>Date: {booking.date}</p>
           <p>Time: {slotTimes}</p>
-          <h4>₹{booking.total_price}</h4>
         </div>
+      </div>
+
+      {/* ===== PRICE BREAKDOWN ===== */}
+      <div className="price-breakdown">
+        <div className="price-row">
+          <span>Original Price</span>
+          <span>₹{previewOriginal}</span>
+        </div>
+        <div className="price-row">
+          <span>Service Charge</span>
+          <span>₹{previewService}</span>
+        </div>
+        <div className="price-row">
+          <span>Advance (30%)</span>
+          <span>₹{previewAdvance}</span>
+        </div>
+        <div className="price-row grand">
+          <span>Total Payable Now</span>
+          <span>₹{previewTotal.toFixed(2)}</span>
+        </div>
+        <p className="advance-note">
+          30% advance now · Balance at venue · Inclusive of 18% GST
+        </p>
       </div>
 
       {/* ===== GRAND TOTAL ===== */}
       <div className="grandcheck">
         <div className="grand-left">
-          <p className="grand-label">Grand total</p>
-          <h2 className="grand-amount">
-            ₹{booking.total_price}
-          </h2>
+          <p className="grand-label">Advance Payable</p>
+          <h2 className="grand-amount">₹{previewTotal.toFixed(2)}</h2>
         </div>
 
         <button
