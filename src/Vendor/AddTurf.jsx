@@ -1,12 +1,19 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddTurf.css";
-import {
-  GoogleMap,
-  StandaloneSearchBox,
-  useJsApiLoader,
-  Marker,
-} from "@react-google-maps/api";
+import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+L.Marker.prototype.options.icon = DefaultIcon;
 
 const games = ["Cricket/Football", "Badminton", "Tennis", "Swimming", "Volleyball", "Basketball", "Golf", "Kabaddi"];
 const amenities = ["Camera", "Parking", "Water", "Toilet"];
@@ -28,8 +35,7 @@ const mapContainerStyle = {
 
 const defaultCenter = { lat: 11.1271, lng: 78.6569 };
 
-// ✅ Static constant outside component — prevents new array on every render
-const LIBRARIES = ["places"];
+// Removed Google Maps libraries
 
 export default function AddTurf() {
   const navigate = useNavigate();
@@ -55,13 +61,8 @@ export default function AddTurf() {
   const [showMap, setShowMap] = useState(false);
   const [markerPosition, setMarkerPosition] = useState(null);
 
-  const mapRef = useRef(null);
-  const searchBoxRef = useRef(null);
-
-  const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_KEY,
-    libraries: LIBRARIES,
-  });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searching, setSearching] = useState(false);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -194,66 +195,67 @@ export default function AddTurf() {
     setForm((p) => ({ ...p, generatedSlots: slots }));
   };
 
-  // Map callbacks
-  const onMapLoad = (map) => {
-    mapRef.current = map;
-  };
-
-  const onSearchBoxLoad = (ref) => {
-    searchBoxRef.current = ref;
-  };
-
-  const onPlacesChanged = () => {
-    const places = searchBoxRef.current?.getPlaces();
-    if (!places || places.length === 0) return;
-
-    const place = places[0];
-    if (!place.geometry?.location) return;
-
-    const lat = place.geometry.location.lat();
-    const lng = place.geometry.location.lng();
-
-    const newCenter = { lat, lng };
-
-    mapRef.current?.panTo(newCenter);
-    mapRef.current?.setZoom(16);
-    setCenter(newCenter);
-    setMarkerPosition(newCenter);
-
-    setForm((p) => ({
-      ...p,
-      location: place.formatted_address || place.name,
-      latitude: lat.toFixed(6),
-      longitude: lng.toFixed(6),
-    }));
-  };
-
-  const handleMapClick = (e) => {
-    const lat = e.latLng.lat();
-    const lng = e.latLng.lng();
-
-    setCenter({ lat, lng });
-    setMarkerPosition({ lat, lng });
-
-    // Reverse geocoding
-    const geocoder = new window.google.maps.Geocoder();
-    geocoder.geocode({ location: { lat, lng } }, (results, status) => {
-      if (status === "OK" && results[0]) {
+  // Map search & reverse geocoding via Nominatim
+  const searchLocation = async () => {
+    if (!searchQuery) return;
+    setSearching(true);
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}`);
+      const data = await res.json();
+      if (data && data.length > 0) {
+        const { lat, lon, display_name } = data[0];
+        const newLat = parseFloat(lat);
+        const newLng = parseFloat(lon);
+        const newCenter = { lat: newLat, lng: newLng };
+        setCenter(newCenter);
+        setMarkerPosition(newCenter);
         setForm((p) => ({
           ...p,
-          location: results[0].formatted_address,
-          latitude: lat.toFixed(6),
-          longitude: lng.toFixed(6),
+          location: display_name,
+          latitude: newLat.toFixed(6),
+          longitude: newLng.toFixed(6),
         }));
       } else {
-        setForm((p) => ({
-          ...p,
-          latitude: lat.toFixed(6),
-          longitude: lng.toFixed(6),
-        }));
+        alert("Location not found");
       }
-    });
+    } catch (err) {
+      console.error(err);
+      alert("Error searching location");
+    } finally {
+      setSearching(false);
+    }
   };
+
+  function LocationMarker() {
+    useMapEvents({
+      click(e) {
+        const { lat, lng } = e.latlng;
+        setCenter({ lat, lng });
+        setMarkerPosition({ lat, lng });
+        
+        // Reverse geocoding
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+          .then(res => res.json())
+          .then(data => {
+            setForm((p) => ({
+              ...p,
+              location: data.display_name || p.location,
+              latitude: lat.toFixed(6),
+              longitude: lng.toFixed(6),
+            }));
+          }).catch(console.error);
+      },
+    });
+    
+    const map = useMap();
+    useEffect(() => {
+      map.setView(center, map.getZoom());
+    }, [center, map]);
+
+    return markerPosition === null ? null : (
+      <Marker position={markerPosition}></Marker>
+    );
+  }
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -343,13 +345,7 @@ export default function AddTurf() {
     }
   };
 
-  if (loadError) {
-    return <div>Error loading Google Maps</div>;
-  }
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="page">
@@ -387,35 +383,41 @@ export default function AddTurf() {
         </button>
 
         {showMap && (
-          <div className="map-container">
-            {/* Search Box */}
-            <StandaloneSearchBox
-              onLoad={onSearchBoxLoad}
-              onPlacesChanged={onPlacesChanged}
-            >
+          <div className="map-container" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ display: 'flex', gap: '10px' }}>
               <input
                 type="text"
                 placeholder="Search for a location..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); searchLocation(); } }}
                 style={{
-                  width: "100%",
+                  flex: 1,
                   padding: "10px",
-                  marginBottom: "10px",
                   boxSizing: "border-box",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
                 }}
               />
-            </StandaloneSearchBox>
+              <button 
+                type="button" 
+                onClick={searchLocation} 
+                disabled={searching} 
+                style={{ padding: '10px 16px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+              >
+                {searching ? "Searching..." : "Search"}
+              </button>
+            </div>
 
-            <GoogleMap
-              mapContainerStyle={mapContainerStyle}
-              center={center}
-              zoom={12}
-              onLoad={onMapLoad}
-              onClick={handleMapClick}
-            >
-              {markerPosition && <Marker position={markerPosition} />}
-            </GoogleMap>
+            <div style={{ width: "100%", height: "300px", position: "relative", zIndex: 0, borderRadius: "12px", overflow: "hidden", marginTop: "10px" }}>
+              <MapContainer center={center} zoom={12} style={{ height: "100%", width: "100%" }}>
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <LocationMarker />
+              </MapContainer>
+            </div>
 
             {markerPosition && (
               <p style={{ marginTop: "10px", fontSize: "12px" }}>
@@ -518,7 +520,7 @@ export default function AddTurf() {
         />
 
         {/* Gallery */}
-        <label>Gallery Images</label>
+        <label>Gallery Images <span style={{fontSize: '12px', fontWeight: 'normal', color: '#666'}}>(Recommended: 800x600 px)</span></label>
         <input type="file" name="gallery" multiple onChange={handleFile} />
         <div className="preview-row">
           {form.gallery.map((img, i) => (
@@ -532,7 +534,7 @@ export default function AddTurf() {
         </div>
 
         {/* Banner */}
-        <label>Banner Images</label>
+        <label>Banner Images <span style={{fontSize: '12px', fontWeight: 'normal', color: '#666'}}>(Recommended: 1920x1080 px)</span></label>
         <input type="file" name="banner" multiple onChange={handleFile} />
         <div className="preview-row">
           {form.banner.map((img, i) => (
