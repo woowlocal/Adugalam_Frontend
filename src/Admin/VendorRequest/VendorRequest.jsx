@@ -10,9 +10,12 @@ const VendorRequest = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await fetch(`${API_BASE}/api/vendors/pending/`);
+      const token = localStorage.getItem("access");
+      const res = await fetch(`${API_BASE}/api/vendors/pending/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       const data = await res.json();
-      setRequests(data);
+      setRequests(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error("Failed to load vendors", err);
     }

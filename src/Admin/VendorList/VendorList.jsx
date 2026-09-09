@@ -7,6 +7,8 @@ const API_BASE = (import.meta.env.VITE_API_BASE_URL || "https://api.adugalam.com
 export default function VendorList() {
   const [vendors, setVendors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [confirmDelete, setConfirmDelete] = useState(null); // { id, name }
+  const [deleting, setDeleting] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,6 +56,35 @@ export default function VendorList() {
     }
   };
 
+  /* Delete vendor — open confirmation modal */
+  const handleDeleteClick = (vendor) => {
+    setConfirmDelete({ id: vendor.id, name: vendor.venuename });
+  };
+
+  /* Confirmed — call DELETE API */
+  const confirmDeleteVendor = async () => {
+    if (!confirmDelete) return;
+    setDeleting(true);
+    try {
+      const token = localStorage.getItem("access");
+      const res = await fetch(`${API_BASE}/api/vendors/id/${confirmDelete.id}/`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok || res.status === 204) {
+        setVendors((prev) => prev.filter((v) => v.id !== confirmDelete.id));
+        setConfirmDelete(null);
+      } else {
+        alert("Failed to delete vendor. Please try again.");
+      }
+    } catch (error) {
+      console.error("Delete error:", error);
+      alert("Something went wrong.");
+    } finally {
+      setDeleting(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="vendor-list-page">
@@ -76,7 +107,7 @@ export default function VendorList() {
             <th>District</th>
             <th>Turfs</th>
             <th>Status</th>
-            <th>Edit</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -92,33 +123,39 @@ export default function VendorList() {
 
               <td data-label="Status">
                 <button
-                  className={
-                    v.status === "Approved"
-                      ? "status-on"
-                      : "status-off"
-                  }
+                  className={v.status === "Approved" ? "status-on" : "status-off"}
                   style={{
                     backgroundColor: v.status === "Approved" ? "#22c55e" : "#ef4444",
-                    color: "white"
+                    color: "white",
                   }}
-                  onClick={() =>
-                    toggleStatus(v.vendor_id, v.status)
+                  onClick={() => toggleStatus(v.vendor_id, v.status)}
+                  title={
+                    v.status === "Approved"
+                      ? "Click to deactivate"
+                      : "Click to activate"
                   }
-                  title={v.status === "Approved" ? "Click to deactivate (turf visible but unbookable)" : "Click to activate (turf fully bookable)"}
                 >
                   {v.status === "Approved" ? "ON" : "OFF"}
                 </button>
               </td>
 
-              <td data-label="Edit">
-                <button
-                  className="edit-btn"
-                  onClick={() =>
-                    navigate(`/vendor-edit/${v.vendor_id}`)
-                  }
-                >
-                  Edit
-                </button>
+              <td data-label="Actions">
+                <div className="action-btns">
+                  <button
+                    className="edit-btn"
+                    onClick={() => navigate(`/vendor-edit/${v.vendor_id}`)}
+                    title="Edit vendor"
+                  >
+                    ✏️ Edit
+                  </button>
+                  <button
+                    className="delete-icon-btn"
+                    onClick={() => handleDeleteClick(v)}
+                    title="Delete vendor"
+                  >
+                    🗑️
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
@@ -127,6 +164,37 @@ export default function VendorList() {
 
       {vendors.length === 0 && (
         <p className="no-vendors">No vendors found</p>
+      )}
+
+      {/* ── Confirmation Modal ── */}
+      {confirmDelete && (
+        <div className="delete-modal-overlay">
+          <div className="delete-modal">
+            <div className="delete-modal-icon">🗑️</div>
+            <h3>Delete Vendor?</h3>
+            <p>
+              Are you sure you want to remove{" "}
+              <strong>"{confirmDelete.name}"</strong>?{" "}
+              This action <span className="warn-text">cannot be undone</span>.
+            </p>
+            <div className="delete-modal-actions">
+              <button
+                className="modal-cancel-btn"
+                onClick={() => setConfirmDelete(null)}
+                disabled={deleting}
+              >
+                Cancel
+              </button>
+              <button
+                className="modal-delete-btn"
+                onClick={confirmDeleteVendor}
+                disabled={deleting}
+              >
+                {deleting ? "Deleting..." : "Yes, Delete"}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

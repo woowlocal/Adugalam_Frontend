@@ -99,7 +99,12 @@ const AddVendor = () => {
       const data = await res.json();
 
       if (!res.ok) {
-        alert("Error: " + JSON.stringify(data));
+        // ✅ Friendly duplicate error messages
+        if (data.error === "duplicate") {
+          alert(data.message);
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
         return;
       }
 
@@ -107,7 +112,7 @@ const AddVendor = () => {
       setSuccessId(data.vendor_id);
 
     } catch (err) {
-      alert("Server not reachable");
+      alert("Server not reachable. Please check your connection.");
     }
   };
 
