@@ -20,8 +20,8 @@
   background: rgba(0, 0, 0, 0.03);
   border-radius: 16px;
   margin-bottom: 20px;
-  margin-top: 65px;
-  /* Pushed down to clear fixed back button */
+  margin-top: 10px;
+  /* Reduced to remove blank space */
 }
 
 .cart-card img {
@@ -51,37 +51,27 @@
 .grandcheck {
   position: fixed;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  padding: 165px 20px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
 }
 
-/* Desktop sizing */
-@media (min-width: 1240px) {
-  .grandcheck {
-    width: 1160px;
-    /* matches max-width 1200px minus 40px outer padding */
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 30px;
-    border-radius: 50px;
-  }
-}
-
-/* Tablet & Smaller Desktop */
-@media (max-width: 1239px) and (min-width: 769px) {
+/* Desktop and Tablet sizing */
+@media (min-width: 769px) {
   .grandcheck {
     width: calc(100% - 40px);
-    left: 20px;
-    bottom: 30px;
-    border-radius: 16px;
+    max-width: 1160px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 130px;
+    border-radius: 50px;
   }
 }
 
@@ -90,10 +80,20 @@
   .grandcheck {
     width: calc(100% - 30px);
     left: 15px;
-    bottom: 230px;
-    /* Clear bottom mobile nav */
-    border-radius: 16px;
-    padding: 12px 15px;
+    bottom: 125px;
+    /* Increased to completely clear the tall mobile bottom nav */
+    border-radius: 20px;
+    padding: 16px 20px;
+    z-index: 999;
+  }
+
+  .grand-amount {
+    font-size: 20px;
+  }
+
+  .checkout-btn-fixed {
+    padding: 10px 24px;
+    font-size: 15px;
   }
 }
 
@@ -134,6 +134,43 @@
   box-shadow: 0px 6px 16px rgba(10, 124, 60, 0.5);
 }
 
+
+.price-breakdown {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #333;
+}
+
+.price-row span:last-child {
+  font-weight: 500;
+}
+
+.price-row.grand {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 18px;
+  color: #000;
+}
+
+.advance-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
 
 .bottom-nav {
   position: fixed;
